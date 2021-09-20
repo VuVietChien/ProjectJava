@@ -10,5 +10,5 @@ package CuaHangDienThoai;
  * @author viết chiến
  */
 public class connectDB {
-    public static String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=quanlysieuthidienthoai;user=sa;password=123456";
+    public static String dbURL = "jdbc:sqlserver://THUANNGUYEN\\SQLEXPRESS;databaseName=quanlysieuthidienthoai;user=sa;password=123";
 }
