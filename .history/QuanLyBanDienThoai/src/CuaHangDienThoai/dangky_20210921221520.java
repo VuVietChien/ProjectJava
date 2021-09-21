@@ -257,6 +257,12 @@ public class dangky extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JTextField jTextField1;
+=======
     private javax.swing.JButton btnDangKy;
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JLabel jLabel1;
@@ -264,5 +270,6 @@ public class dangky extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtTenDangNhap;
+>>>>>>> thuan-dev
     // End of variables declaration//GEN-END:variables
 }
