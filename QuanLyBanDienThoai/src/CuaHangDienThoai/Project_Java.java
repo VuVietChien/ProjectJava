@@ -5,6 +5,8 @@
  */
 package CuaHangDienThoai;
 
+import View.dangnhap;
+
 /**
  *
  * @author viết chiến
@@ -15,7 +17,8 @@ public class Project_Java {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        dangnhap login  = new dangnhap();
+        login.setVisible(true);
     }
     
 }
