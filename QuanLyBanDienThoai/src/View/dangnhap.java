@@ -158,8 +158,10 @@ public class dangnhap extends javax.swing.JFrame {
         lbImgUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_circled_user_male_skin_type_1_2_40px.png"))); // NOI18N
 
         txtTenDN.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtTenDN.setText("admin");
 
         txtMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtMatKhau.setText("admin");
 
         txtQuyen.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Seller", " " }));
