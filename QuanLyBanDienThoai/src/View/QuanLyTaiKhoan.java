@@ -5,17 +5,39 @@
  */
 package View;
 
+import Controller.TaiKhoanController;
+import Models.TaiKhoan;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author viết chiến
  */
 public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
 
+    DefaultTableModel tblDanhSachTaiKhoan;
+    List<TaiKhoan> listTaiKhoan = new ArrayList<>();
+    String tentaikhoan, matkhau, manv, maquyen;
+
     /**
      * Creates new form QuanLyTaiKhoan
      */
     public QuanLyTaiKhoan() {
         initComponents();
+        tblDanhSachTaiKhoan = (DefaultTableModel) dgDanhSachTaiKhoan.getModel();
+        Select();
+    }
+
+    public void Select() {
+        listTaiKhoan = TaiKhoanController.Select();
+        tblDanhSachTaiKhoan.setRowCount(0);
+        listTaiKhoan.forEach(p -> {
+            tblDanhSachTaiKhoan.addRow(new Object[]{
+                p.getTenTaiKhoan(),p.getMatKhau(),p.getMaNV(),p.getMaQuyen()
+            });
+        });
     }
 
     /**
@@ -27,15 +49,45 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        dgDanhSachTaiKhoan = new javax.swing.JTable();
+
+        dgDanhSachTaiKhoan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Tên tài khoản", "Mật khẩu", "Mã nhân viên", "Mã Quyền"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(dgDanhSachTaiKhoan);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(125, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(242, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -43,5 +95,7 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable dgDanhSachTaiKhoan;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
