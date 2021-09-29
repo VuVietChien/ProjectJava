@@ -172,6 +172,52 @@ public class TaiKhoanController {
         }
     }
 
+    public static List<TaiKhoan> TimKiemTheoTenTaiKhoan(String tentk) {
+        List<TaiKhoan> listTaiKhoan = new ArrayList<>();
+        conn = null;
+        pstate = null;
+        try {
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            sql = "SELECT * FROM quanlysieuthidienthoai.taikhoan where TenTaiKhoan like ?";
+            pstate = conn.prepareCall(sql);
+            pstate.setString(1, "%" + tentk + "%");
+            ResultSet rs = pstate.executeQuery();
+            while (rs.next()) {
+                TaiKhoan temp = new TaiKhoan(
+                        rs.getString("TenTaiKhoan"),
+                        rs.getString("MatKhau"),
+                        rs.getString("MaNV"),
+                        rs.getString("MaQuyen")
+                );
+                listTaiKhoan.add(temp);
+
+            }
+            state.close();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (state != null) {
+                try {
+                    state.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        }
+        return listTaiKhoan;
+
+    }
+
     // Kiem tra trung tentaikhoan
     public static boolean KiemTraTrungMa(String manhap, boolean ktThem, String macu) {
         boolean kq = false;
