@@ -5,7 +5,7 @@
  */
 package CuaHangDienThoai;
 
-import View.dangnhap;
+import Views.dangnhap;
 
 /**
  *
