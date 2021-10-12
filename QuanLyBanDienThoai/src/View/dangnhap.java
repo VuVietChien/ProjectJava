@@ -5,6 +5,7 @@
  */
 package View;
 
+import CuaHangDienThoai.Project_Java;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
@@ -302,7 +303,10 @@ public class dangnhap extends javax.swing.JFrame {
                     ResultSet rs = statement.executeQuery(sql);
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                        
+                        Project_Java.TenTK=rs.getString("tentaikhoan");
+                        Project_Java.MatKhau=rs.getString("matkhau");
+                        Project_Java.MaNV=rs.getString("manv");
+                        Project_Java.MaQuyen=rs.getString("maquyen");
                         Menu menu = new Menu();
                         menu.setVisible(true);
                         

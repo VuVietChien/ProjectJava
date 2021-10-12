@@ -392,7 +392,7 @@ public class Menu extends javax.swing.JFrame {
     private void jTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTaiKhoanMouseClicked
         // TODO add your handling code here:
         Desktop.removeAll();
-        QuanLyTaiKhoan qlsp = new QuanLyTaiKhoan();
+        mdiQLTK qlsp = new mdiQLTK();
         Desktop.add(qlsp).setVisible(true);
     }//GEN-LAST:event_jTaiKhoanMouseClicked
 

@@ -5,17 +5,12 @@
  */
 package CuaHangDienThoai;
 
+
 import View.dangnhap;
 
-/**
- *
- * @author viết chiến
- */
-public class Project_Java {
 
-    /**
-     * @param args the command line arguments
-     */
+public class Project_Java {
+    public static String TenTK,MatKhau,MaNV,MaQuyen;
     public static void main(String[] args) {
         dangnhap login  = new dangnhap();
         login.setVisible(true);
