@@ -1,0 +1,3 @@
+I.Form sản phẩm
+1.Đơn giá phải nhập là bằng dấu . như 1.3
+2.Ae xoá hết cái dữ liệu trong cột HinhAnh trong bảng sanpham nhé rồi nhập mới trong form nó mới nhận được hình ảnh

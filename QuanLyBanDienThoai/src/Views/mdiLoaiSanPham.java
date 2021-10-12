@@ -345,7 +345,7 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
             return;
         }
 
-        if (KiemTraDLController.KiemTraTrungMa("MaLSP", "LoaiSanPham", malsp, ktThem, macu) == true) {
+        if (KiemTraDLController.KiemTraTrungMa("MaLSP", "quanlysieuthidienthoai.loaiSanPham", malsp, ktThem, macu) == true) {
             JOptionPane.showMessageDialog(this, "Bạn nhập trùng mã loại sản phẩm", "Thông báo", JOptionPane.WARNING_MESSAGE);
             txtMaLSP.requestFocus();
             return;
