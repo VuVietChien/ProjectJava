@@ -10,34 +10,33 @@ package Models;
  * @author admin
  */
 public class ChiTietHoaDon extends HoaDon{
-    protected String MaHD,MSP,SoLuong,DonGia;
+    protected String MaHD,MSP,DonGia;
+    protected int SoLuong;
 
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(String MaHD, String MSP, String SoLuong, String DonGia) {
+    public ChiTietHoaDon(String MaHD, String MSP, String DonGia, int SoLuong) {
         this.MaHD = MaHD;
         this.MSP = MSP;
-        this.SoLuong = SoLuong;
         this.DonGia = DonGia;
+        this.SoLuong = SoLuong;
     }
 
-    public ChiTietHoaDon(String MaHD, String MSP, String SoLuong, String DonGia, String MaKH, String NgayLap, String TongTien) {
-        super(MaHD, MaKH, NgayLap, TongTien);
-        this.MaHD = MaHD;
-        this.MSP = MSP;
-        this.SoLuong = SoLuong;
-        this.DonGia = DonGia;
-    }
-
-    public ChiTietHoaDon(String MaHD, String MSP, String SoLuong, String DonGia, String MaKH, String NgayLap, String TongTien, String MaNV, String TenNV, String NgaySinh, String DiaChi, String SDT) {
+    public ChiTietHoaDon(String MaHD, String MSP, String DonGia, int SoLuong, String MaKH, String NgayLap, float TongTien, String MaNV, String TenNV, String NgaySinh, String DiaChi, String SDT) {
         super(MaHD, MaKH, NgayLap, TongTien, MaNV, TenNV, NgaySinh, DiaChi, SDT);
         this.MaHD = MaHD;
         this.MSP = MSP;
-        this.SoLuong = SoLuong;
         this.DonGia = DonGia;
+        this.SoLuong = SoLuong;
     }
 
+   
+    @Override
+    public String toString() {
+        return "ChiTietHoaDon{" + "MaHD=" + MaHD + ", MSP=" + MSP + ", DonGia=" + DonGia + ", SoLuong=" + SoLuong + '}';
+    }
+    
     public String getMaHD() {
         return MaHD;
     }
@@ -54,14 +53,6 @@ public class ChiTietHoaDon extends HoaDon{
         this.MSP = MSP;
     }
 
-    public String getSoLuong() {
-        return SoLuong;
-    }
-
-    public void setSoLuong(String SoLuong) {
-        this.SoLuong = SoLuong;
-    }
-
     public String getDonGia() {
         return DonGia;
     }
@@ -69,5 +60,15 @@ public class ChiTietHoaDon extends HoaDon{
     public void setDonGia(String DonGia) {
         this.DonGia = DonGia;
     }
+
+    public int getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(int SoLuong) {
+        this.SoLuong = SoLuong;
+    }
+
+    
     
 }
