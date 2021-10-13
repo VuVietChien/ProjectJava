@@ -5,7 +5,7 @@
  */
 package Controllers;
 
-import Models.SanPham;
+import Models.SanPham1;
 import Views.connectDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,8 +29,8 @@ public class SanPhamController {
     public static PreparedStatement pstate;
     public static String sql;
 
-    public static List<SanPham> Select() {
-        List<SanPham> listSanPham = new ArrayList<>();
+    public static List<SanPham1> Select() {
+        List<SanPham1> listSanPham = new ArrayList<>();
         conn = null;
         state = null;
         try {
@@ -39,7 +39,7 @@ public class SanPhamController {
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
-                SanPham temp = new SanPham(
+                SanPham1 temp = new SanPham1(
                         rs.getString("MaSP"),
                         rs.getString("MaLSP"),
                         rs.getString("TenLSP"),
@@ -77,7 +77,7 @@ public class SanPhamController {
 
     }
 
-    public static void Insert(SanPham tk) {
+    public static void Insert(SanPham1 tk) {
         try {
             conn = null;
             pstate = null;
@@ -114,7 +114,7 @@ public class SanPhamController {
         }
     }
 
-    public static void Update(SanPham tk, String macu) {
+    public static void Update(SanPham1 tk, String macu) {
         try {
             conn = null;
             pstate = null;
@@ -184,8 +184,8 @@ public class SanPhamController {
         }
     }
 
-    public static List<SanPham> TimKiemTheoTenSanPham(String tenlsp) {
-        List<SanPham> listSanPham = new ArrayList<>();
+    public static List<SanPham1> TimKiemTheoTenSanPham(String tenlsp) {
+        List<SanPham1> listSanPham = new ArrayList<>();
         conn = null;
         pstate = null;
         try {
@@ -196,7 +196,7 @@ public class SanPhamController {
             pstate.setString(1, "%" + tenlsp + "%");
             ResultSet rs = pstate.executeQuery();
             while (rs.next()) {
-                SanPham temp = new SanPham(
+                SanPham1 temp = new SanPham1(
                         rs.getString("MaSP"),
                         rs.getString("MaLSP"),
                         rs.getString("TenLSP"),

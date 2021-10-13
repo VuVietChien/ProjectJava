@@ -9,13 +9,13 @@ package Models;
  *
  * @author thuan
  */
-public class SanPham {
+public class SanPham1 {
 
     String MaSP, MaLSP, TenSP, HinhAnh, TenLSP;
     float DonGia;
     int SoLuong;
 
-    public SanPham(String MaSP, String MaLSP, String TenSP, String HinhAnh, float DonGia, int SoLuong) {
+    public SanPham1(String MaSP, String MaLSP, String TenSP, String HinhAnh, float DonGia, int SoLuong) {
         this.MaSP = MaSP;
         this.MaLSP = MaLSP;
         this.TenSP = TenSP;
@@ -24,7 +24,7 @@ public class SanPham {
         this.SoLuong = SoLuong;
     }
 
-    public SanPham(String MaSP, String MaLSP, String TenLSP, String TenSP, String HinhAnh, float DonGia, int SoLuong) {
+    public SanPham1(String MaSP, String MaLSP, String TenLSP, String TenSP, String HinhAnh, float DonGia, int SoLuong) {
         this.MaSP = MaSP;
         this.MaLSP = MaLSP;
         this.TenSP = TenSP;
@@ -34,7 +34,7 @@ public class SanPham {
         this.SoLuong = SoLuong;
     }
 
-    public SanPham() {
+    public SanPham1() {
     }
 
     public String getMaSP() {

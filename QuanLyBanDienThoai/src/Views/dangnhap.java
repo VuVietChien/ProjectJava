@@ -5,7 +5,6 @@
  */
 package Views;
 
-
 import CuaHangDienThoai.Project_Java;
 import Models.TaiKhoan;
 import java.awt.event.FocusEvent;
@@ -21,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import Views.Menu;
+import helpers.SharedData;
 
 /**
  *
@@ -97,15 +97,13 @@ public class dangnhap extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         plInput = new javax.swing.JPanel();
         rbNhoMatKhau = new javax.swing.JRadioButton();
         lbImgPass = new javax.swing.JLabel();
         lbImgUser = new javax.swing.JLabel();
         txtTenDN = new javax.swing.JTextField();
         txtMatKhau = new javax.swing.JPasswordField();
-        txtQuyen = new javax.swing.JComboBox<>();
-        lbImgUser1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         btnDangNhap = new javax.swing.JButton();
         btnDangKy = new javax.swing.JButton();
 
@@ -145,9 +143,6 @@ public class dangnhap extends javax.swing.JFrame {
                 .addContainerGap(97, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("ĐĂNG NHẬP");
-
         rbNhoMatKhau.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         rbNhoMatKhau.setText("Giữ đăng nhập");
         rbNhoMatKhau.addActionListener(new java.awt.event.ActionListener() {
@@ -162,14 +157,17 @@ public class dangnhap extends javax.swing.JFrame {
 
         txtTenDN.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtTenDN.setText("admin");
+        txtTenDN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTenDNActionPerformed(evt);
+            }
+        });
 
         txtMatKhau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtMatKhau.setText("admin");
 
-        txtQuyen.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Seller", " " }));
-
-        lbImgUser1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_key_30px.png"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("ĐĂNG NHẬP");
 
         javax.swing.GroupLayout plInputLayout = new javax.swing.GroupLayout(plInput);
         plInput.setLayout(plInputLayout);
@@ -178,49 +176,39 @@ public class dangnhap extends javax.swing.JFrame {
             .addGroup(plInputLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(plInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbImgUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbImgPass))
+                .addGap(5, 5, 5)
+                .addGroup(plInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(plInputLayout.createSequentialGroup()
-                        .addComponent(lbImgPass)
-                        .addGroup(plInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(plInputLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbNhoMatKhau)
-                                .addGap(0, 119, Short.MAX_VALUE))
-                            .addGroup(plInputLayout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(txtMatKhau))))
-                    .addGroup(plInputLayout.createSequentialGroup()
-                        .addGroup(plInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(plInputLayout.createSequentialGroup()
-                                .addComponent(lbImgUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plInputLayout.createSequentialGroup()
-                                .addComponent(lbImgUser1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(plInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(plInputLayout.createSequentialGroup()
-                                .addComponent(txtQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtTenDN))))
+                        .addComponent(rbNhoMatKhau)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                    .addComponent(txtTenDN))
                 .addContainerGap())
+            .addGroup(plInputLayout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         plInputLayout.setVerticalGroup(
             plInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plInputLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(plInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbImgUser1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(plInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTenDN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbImgUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(plInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbImgPass, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addComponent(rbNhoMatKhau)
-                .addContainerGap())
+                    .addGroup(plInputLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(plInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtTenDN, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbImgUser, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(plInputLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbImgPass, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(8, 8, 8)
+                .addComponent(rbNhoMatKhau))
         );
 
         btnDangNhap.setText("Đăng nhập");
@@ -246,28 +234,22 @@ public class dangnhap extends javax.swing.JFrame {
                 .addComponent(plInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(100, 100, 100))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(btnDangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(104, 104, 104)
                 .addComponent(plInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 76, Short.MAX_VALUE))
+                .addGap(0, 108, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -296,24 +278,28 @@ public class dangnhap extends javax.swing.JFrame {
                 String username, password;
                 username = txtTenDN.getText();
                 password = txtMatKhau.getText();
-               
 
                 if (username.equals("") || password.equals("")) {
                     JOptionPane.showMessageDialog(this, "Thiếu tên tài khoản hoặc mật khẩu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
-                String sql = "Select * from quanlysieuthidienthoai.taikhoan where tentaikhoan='" + username + "' and matkhau='" + password + "'";
+                
+                String sql = "Select * from quanlysieuthidienthoai.taikhoan,quanlysieuthidienthoai.phanquyen where quanlysieuthidienthoai.phanquyen.MaQuyen=quanlysieuthidienthoai.taikhoan.MaQuyen and tentaikhoan='" + username + "' and matkhau='" + password + "'";
                 try ( Statement statement = conn.createStatement()) {
                     ResultSet rs = statement.executeQuery(sql);
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 
-                        Project_Java.TenTK=rs.getString("tentaikhoan");
-                        Project_Java.MatKhau=rs.getString("matkhau");
-                        Project_Java.MaNV=rs.getString("manv");
-                        Project_Java.MaQuyen=rs.getString("maquyen");
+                        Project_Java.TenTK = rs.getString("tentaikhoan");
+                        Project_Java.MatKhau = rs.getString("matkhau");
+                        Project_Java.MaNV = rs.getString("manv");
+                        Project_Java.MaQuyen = rs.getString("maquyen");
 
                         TaiKhoan tk = new TaiKhoan();
+                        tk.setTenTaiKhoan(username);
+                        tk.setMaQuyen(rs.getString("MaQuyen"));
+                        tk.setTenQuyen(rs.getString("TenQuyen"));
+                        SharedData.nguoiDangNhap = tk;
                         Menu menu = new Menu();
                         menu.setVisible(true);
 
@@ -337,6 +323,10 @@ public class dangnhap extends javax.swing.JFrame {
         dk.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnDangKyActionPerformed
+
+    private void txtTenDNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenDNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenDNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -392,11 +382,9 @@ public class dangnhap extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbImgPass;
     private javax.swing.JLabel lbImgUser;
-    private javax.swing.JLabel lbImgUser1;
     private javax.swing.JPanel plInput;
     private javax.swing.JRadioButton rbNhoMatKhau;
     private javax.swing.JPasswordField txtMatKhau;
-    private javax.swing.JComboBox<String> txtQuyen;
     private javax.swing.JTextField txtTenDN;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,7 +3,7 @@ package Models;
 
 
 public class TaiKhoan {
-    String TenTaiKhoan,MatKhau,MaNV,MaQuyen;
+    String TenTaiKhoan,MatKhau,MaNV,MaQuyen,TenQuyen;
 
     public TaiKhoan() {
     }
@@ -45,6 +45,14 @@ public class TaiKhoan {
 
     public void setMaQuyen(String MaQuyen) {
         this.MaQuyen = MaQuyen;
+    }
+
+    public String getTenQuyen() {
+        return TenQuyen;
+    }
+
+    public void setTenQuyen(String TenQuyen) {
+        this.TenQuyen = TenQuyen;
     }
     
     
