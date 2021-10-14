@@ -15,5 +15,9 @@ public class ThongKe {
     public void setThanhTien(float thanhTien) {
         this.thanhTien = thanhTien;
     }
+
+    public float getThanhTien() {
+        return thanhTien;
+    }
      
 }
