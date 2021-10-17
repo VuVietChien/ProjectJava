@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Views/mdiSanPham1.java</file>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Views/Menu.java</file>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Controllers/SanPhamController.java</file>
@@ -22,6 +23,11 @@
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Models/TaiKhoan.java</file>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Models/SanPham1.java</file>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Views/DoiMatKhau.java</file>
+=======
+            <file>file:/F:/hocjava/Baitaplon/ProjectJava/QuanLyBanDienThoai/src/Controllers/ThongKeDoanhSo_Controller.java</file>
+            <file>file:/F:/hocjava/Baitaplon/ProjectJava/QuanLyBanDienThoai/src/Models/HoaDon.java</file>
+            <file>file:/F:/hocjava/Baitaplon/ProjectJava/QuanLyBanDienThoai/src/Views/QuanLyThongKe.java</file>
+>>>>>>> 0effa608e72626b9ced262a09bedbc7f1b9dac0e
         </group>
     </open-files>
 </project-private>

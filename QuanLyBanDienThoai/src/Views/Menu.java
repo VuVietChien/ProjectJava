@@ -128,6 +128,11 @@ public class Menu extends javax.swing.JFrame {
         lbThongKe.setForeground(new java.awt.Color(255, 255, 255));
         lbThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_futures_30px.png"))); // NOI18N
         lbThongKe.setText("Thống kê");
+        lbThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbThongKeMouseClicked(evt);
+            }
+        });
 
         lbTaiKhoan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
@@ -371,6 +376,12 @@ public class Menu extends javax.swing.JFrame {
         QuanLyTaiKhoan qlsp = new QuanLyTaiKhoan();
         Desktop.add(qlsp).setVisible(true);
     }//GEN-LAST:event_lbTaiKhoanMouseClicked
+
+    private void lbThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbThongKeMouseClicked
+        Desktop.removeAll();
+        QuanLyThongKe qlsp = new QuanLyThongKe();
+        Desktop.add(qlsp).setVisible(true);
+    }//GEN-LAST:event_lbThongKeMouseClicked
 
     /**
      * @param args the command line arguments

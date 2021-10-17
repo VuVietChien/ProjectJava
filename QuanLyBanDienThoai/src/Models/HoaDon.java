@@ -7,25 +7,19 @@ package Models;
 
 
 public class HoaDon extends NhanVien {
-     private String MaHD,MaKH,NgayLap,TongTien;
-
+     private String MaHD,MaKH,NgayLap;
+     private float TongTien;
     public HoaDon() {
     }
 
-    public HoaDon(String MaHD, String MaKH, String NgayLap, String TongTien) {
-        this.MaHD = MaHD;
-        this.MaKH = MaKH;
-        this.NgayLap = NgayLap;
-        this.TongTien = TongTien;
-    }
 
-    public HoaDon(String MaHD, String MaKH, String NgayLap, String TongTien, String MaNV, String TenNV, String NgaySinh, String DiaChi, String SDT) {
+    public HoaDon(String MaHD, String MaKH, String NgayLap, float TongTien, String MaNV, String TenNV, String NgaySinh, String DiaChi, String SDT) {
         super(MaNV, TenNV, NgaySinh, DiaChi, SDT);
         this.MaHD = MaHD;
         this.MaKH = MaKH;
         this.NgayLap = NgayLap;
         this.TongTien = TongTien;
-    }   
+    }
 
     public String getMaHD() {
         return MaHD;
@@ -51,12 +45,14 @@ public class HoaDon extends NhanVien {
         this.NgayLap = NgayLap;
     }
 
-    public String getTongTien() {
+    public float getTongTien() {
         return TongTien;
     }
 
-    public void setTongTien(String TongTien) {
+    public void setTongTien(float TongTien) {
         this.TongTien = TongTien;
     }
+
+    
      
 }

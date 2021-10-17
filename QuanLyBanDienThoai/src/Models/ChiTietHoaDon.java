@@ -10,32 +10,34 @@ package Models;
  * @author admin
  */
 public class ChiTietHoaDon extends HoaDon{
-    protected String MaHD,MSP,SoLuong,DonGia;
+    protected String MaHD,MSP;
+    protected int DonGia,SoLuong;
+    protected float thanhTien;
 
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(String MaHD, String MSP, String SoLuong, String DonGia) {
+    public ChiTietHoaDon(String MaHD, String MSP, int DonGia, int SoLuong, float thanhTien) {
         this.MaHD = MaHD;
         this.MSP = MSP;
-        this.SoLuong = SoLuong;
         this.DonGia = DonGia;
+        this.SoLuong = SoLuong;
+        this.thanhTien = thanhTien;
     }
 
-    public ChiTietHoaDon(String MaHD, String MSP, String SoLuong, String DonGia, String MaKH, String NgayLap, String TongTien) {
-        super(MaHD, MaKH, NgayLap, TongTien);
-        this.MaHD = MaHD;
-        this.MSP = MSP;
-        this.SoLuong = SoLuong;
-        this.DonGia = DonGia;
-    }
-
-    public ChiTietHoaDon(String MaHD, String MSP, String SoLuong, String DonGia, String MaKH, String NgayLap, String TongTien, String MaNV, String TenNV, String NgaySinh, String DiaChi, String SDT) {
+    public ChiTietHoaDon(String MaHD, String MSP, int DonGia, int SoLuong, float thanhTien, String MaKH, String NgayLap, float TongTien, String MaNV, String TenNV, String NgaySinh, String DiaChi, String SDT) {
         super(MaHD, MaKH, NgayLap, TongTien, MaNV, TenNV, NgaySinh, DiaChi, SDT);
         this.MaHD = MaHD;
         this.MSP = MSP;
-        this.SoLuong = SoLuong;
         this.DonGia = DonGia;
+        this.SoLuong = SoLuong;
+        this.thanhTien = thanhTien;
+    }
+
+   
+    @Override
+    public String toString() {
+        return "ChiTietHoaDon{" + "MaHD=" + MaHD + ", MSP=" + MSP + ", DonGia=" + DonGia + ", SoLuong=" + SoLuong + '}';
     }
 
     public String getMaHD() {
@@ -54,20 +56,31 @@ public class ChiTietHoaDon extends HoaDon{
         this.MSP = MSP;
     }
 
-    public String getSoLuong() {
-        return SoLuong;
-    }
-
-    public void setSoLuong(String SoLuong) {
-        this.SoLuong = SoLuong;
-    }
-
-    public String getDonGia() {
+    public int getDonGia() {
         return DonGia;
     }
 
-    public void setDonGia(String DonGia) {
+    public void setDonGia(int DonGia) {
         this.DonGia = DonGia;
     }
+
+    public int getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(int SoLuong) {
+        this.SoLuong = SoLuong;
+    }
+
+    public float getThanhTien() {
+        return thanhTien;
+    }
+
+    public void setThanhTien(float thanhTien) {
+        this.thanhTien = thanhTien;
+    }
+    
+   
+    
     
 }
