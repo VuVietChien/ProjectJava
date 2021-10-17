@@ -5,6 +5,7 @@ package Views;
 import Controllers.ThongKeDoanhSo_Controller;
 import Models.ChiTietHoaDon;
 import Models.ThongKe;
+import helpers.PriceFormatter;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
@@ -47,7 +48,7 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
                 p.getTenNV(),
                 p.getMaKH(),
                 p.getNgayLap(),
-                p.getThanhTien()
+                PriceFormatter.format(p.getThanhTien()) 
             });
         });
     }
@@ -60,7 +61,7 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
     private void loadTongTien() {
         tkList = ThongKeDoanhSo_Controller.getTongTien();
         for(ThongKe tk : tkList){
-            lblTongDanhThu.setText("Tổng doanh thu: " + tk.getThanhTien());
+            lblTongDanhThu.setText("Tổng doanh thu: " +PriceFormatter.format(tk.getThanhTien()) );
         }
     }
     

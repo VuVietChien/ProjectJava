@@ -34,7 +34,7 @@ public class ThongKeDoanhSo_Controller {
             conn = DriverManager.getConnection(connectDB.dbURL);
             String sql = "select chitiethoadon.maHD, HoaDon.maNV,tenNV, khachhang.MaKH, ngayLap, sum(chitiethoadon.SoLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
                 "from chitiethoadon inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD,NhanVien,khachhang\n" +
-                "where NhanVien.maNV = HoaDon.maNV\n" +
+                "where NhanVien.maNV = HoaDon.maNV and khachhang.MaKH=hoadon.MaKH\n" +
                 "group by chitiethoadon.maHD, HoaDon.maNV, tenNV, khachhang.MaKH, ngayLap";
             pstate = conn.prepareStatement(sql);
             rs = pstate.executeQuery();
@@ -78,7 +78,7 @@ public class ThongKeDoanhSo_Controller {
             conn = DriverManager.getConnection(connectDB.dbURL);
             String sql = "select chitiethoadon.maHD, HoaDon.maNV,tenNV, khachhang.MaKH, ngayLap, sum(chitiethoadon.SoLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
                 "from chitiethoadon inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD,NhanVien,khachhang\n" +
-                "where NhanVien.maNV = HoaDon.maNV and ngayLap=?\n" +
+                "where NhanVien.maNV = HoaDon.maNV and khachhang.MaKH=hoadon.MaKH and ngayLap=?\n" +
                 "group by chitiethoadon.maHD, HoaDon.maNV, tenNV, khachhang.MaKH, ngayLap";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, ngayLap);
@@ -123,7 +123,7 @@ public class ThongKeDoanhSo_Controller {
             conn = DriverManager.getConnection(connectDB.dbURL);
             String sql = "select chitiethoadon.maHD, HoaDon.maNV,tenNV, khachhang.MaKH, ngayLap, sum(chitiethoadon.soLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
 "from chitiethoadon inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD,NhanVien,khachhang\n" +
-"where NhanVien.maNV = HoaDon.maNV\n" +
+"where NhanVien.maNV = HoaDon.maNV and khachhang.MaKH=hoadon.MaKH\n" +
 "group by chitiethoadon.maHD, HoaDon.maNV, tenNV, khachhang.MaKH, ngayLap\n" +
                 "order by thanhTien";
             
@@ -136,7 +136,7 @@ public class ThongKeDoanhSo_Controller {
                 ct.setTenNV(rs.getString("tenNV"));
                 ct.setMaKH(rs.getString("makh"));
                 ct.setNgayLap(rs.getString("ngaylap"));
-                ct.setTongTien(rs.getFloat("tongtien"));
+                ct.setThanhTien(rs.getFloat("thanhtien"));
                 cthds.add(ct);
             }
         } catch (SQLException ex) {
