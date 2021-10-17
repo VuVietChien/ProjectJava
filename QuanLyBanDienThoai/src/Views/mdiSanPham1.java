@@ -457,7 +457,7 @@ public class mdiSanPham1 extends javax.swing.JInternalFrame {
             return;
         }
 
-        if (KiemTraDLController.KiemTraTrungMa("MaSP", "quanlysieuthidienthoai.sanpham", masp, ktThem, macu) == true) {
+        if (KiemTraDLController.KiemTraTrungMa("MaSP", "sanpham", masp, ktThem, macu) == true) {
             JOptionPane.showMessageDialog(this, "Bạn nhập trùng mã sản phẩm", "Thông báo", JOptionPane.WARNING_MESSAGE);
             txtMaSP.requestFocus();
             return;

@@ -30,7 +30,7 @@ public class TaiKhoanController {
         state = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "Select * from quanlysieuthidienthoai.taikhoan";
+            sql = "Select * from taikhoan";
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
@@ -74,7 +74,7 @@ public class TaiKhoanController {
             conn = null;
             pstate = null;
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "INSERT INTO quanlysieuthidienthoai.taikhoan(TenTaiKhoan,MatKhau,MaNV,MaQuyen) VALUES(?,?,?,?)";
+            sql = "INSERT INTO taikhoan(TenTaiKhoan,MatKhau,MaNV,MaQuyen) VALUES(?,?,?,?)";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, tk.getTenTaiKhoan());
             pstate.setString(2, tk.getMatKhau());
@@ -109,7 +109,7 @@ public class TaiKhoanController {
             conn = null;
             pstate = null;
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "UPDATE quanlysieuthidienthoai.taikhoan SET TenTaiKhoan=?,MatKhau=?,MaNV=?,MaQuyen=? WHERE TenTaiKhoan=?";
+            sql = "UPDATE taikhoan SET TenTaiKhoan=?,MatKhau=?,MaNV=?,MaQuyen=? WHERE TenTaiKhoan=?";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, tk.getTenTaiKhoan());
             pstate.setString(2, tk.getMatKhau());
@@ -145,7 +145,7 @@ public class TaiKhoanController {
             conn = null;
             pstate = null;
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "DELETE FROM quanlysieuthidienthoai.taikhoan WHERE TenTaiKhoan=?";
+            sql = "DELETE FROM taikhoan WHERE TenTaiKhoan=?";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, macu);
             pstate.execute();
@@ -178,7 +178,7 @@ public class TaiKhoanController {
         pstate = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "SELECT * FROM quanlysieuthidienthoai.taikhoan where TenTaiKhoan like ?";
+            sql = "SELECT * FROM taikhoan where TenTaiKhoan like ?";
             pstate = conn.prepareCall(sql);
             pstate.setString(1, "%" + tentk + "%");
             ResultSet rs = pstate.executeQuery();
@@ -226,9 +226,9 @@ public class TaiKhoanController {
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
             if (ktThem == true) {
-                sql = "SELECT TenTaiKhoan FROM quanlysieuthidienthoai.taikhoan WHERE TenTaiKhoan = '" + manhap + "'";
+                sql = "SELECT TenTaiKhoan FROM taikhoan WHERE TenTaiKhoan = '" + manhap + "'";
             } else {
-                sql = "SELECT TenTaiKhoan FROM quanlysieuthidienthoai.taikhoan WHERE TenTaiKhoan='"
+                sql = "SELECT TenTaiKhoan FROM taikhoan WHERE TenTaiKhoan='"
                         + manhap + "' and TenTaiKhoan<>'" + macu + "'";
             }
             state = conn.createStatement();

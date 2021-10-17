@@ -284,7 +284,7 @@ public class dangnhap extends javax.swing.JFrame {
                     return;
                 }
                 
-                String sql = "Select * from quanlysieuthidienthoai.taikhoan,quanlysieuthidienthoai.phanquyen where quanlysieuthidienthoai.phanquyen.MaQuyen=quanlysieuthidienthoai.taikhoan.MaQuyen and tentaikhoan='" + username + "' and matkhau='" + password + "'";
+                String sql = "Select * from taikhoan,phanquyen where phanquyen.MaQuyen=taikhoan.MaQuyen and tentaikhoan='" + username + "' and matkhau='" + password + "'";
                 try ( Statement statement = conn.createStatement()) {
                     ResultSet rs = statement.executeQuery(sql);
                     if (rs.next()) {

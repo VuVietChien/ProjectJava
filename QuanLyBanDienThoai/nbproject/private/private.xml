@@ -4,14 +4,22 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Views/mdiSanPham1.java</file>
-            <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/CuaHangDienThoai/Project_Java.java</file>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Views/Menu.java</file>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Controllers/SanPhamController.java</file>
+            <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Views/QuanLyNhanVien.java</file>
+            <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Models/ChiTietHoaDon.java</file>
+            <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Models/NhanVien.java</file>
+            <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Controllers/ThongKeDoanhSo_Controller.java</file>
+            <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Controllers/KiemTraDLController.java</file>
+            <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Controllers/TaiKhoanController.java</file>
+            <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/CuaHangDienThoai/Project_Java.java</file>
+            <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Views/dangky.java</file>
+            <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Controllers/LoaiSanPhamController.java</file>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Views/QuanLyTaiKhoan.java</file>
+            <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Views/PhanQuyen.java</file>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/helpers/SharedData.java</file>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Views/dangnhap.java</file>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Models/TaiKhoan.java</file>
-            <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Models/NhanVien.java</file>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Models/SanPham1.java</file>
             <file>file:/D:/ProjectJavaNetbean12/ProjectJava/ProjectJava/QuanLyBanDienThoai/src/Views/DoiMatKhau.java</file>
         </group>

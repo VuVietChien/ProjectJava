@@ -35,7 +35,7 @@ public class SanPhamController {
         state = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "Select * from quanlysieuthidienthoai.sanpham,quanlysieuthidienthoai.loaisanpham where quanlysieuthidienthoai.sanpham.MaLSP=quanlysieuthidienthoai.loaisanpham.MaLSP";
+            sql = "Select * from sanpham,loaisanpham where sanpham.MaLSP=loaisanpham.MaLSP";
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
@@ -82,7 +82,7 @@ public class SanPhamController {
             conn = null;
             pstate = null;
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "INSERT INTO quanlysieuthidienthoai.sanpham(MaSP,MaLSP,TenSP,DonGia,SoLuong,HinhAnh) VALUES(?,?,?,?,?,?)";
+            sql = "INSERT INTO sanpham(MaSP,MaLSP,TenSP,DonGia,SoLuong,HinhAnh) VALUES(?,?,?,?,?,?)";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, tk.getMaSP());
             pstate.setString(2, tk.getMaLSP());
@@ -119,7 +119,7 @@ public class SanPhamController {
             conn = null;
             pstate = null;
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "UPDATE quanlysieuthidienthoai.sanpham SET MaSP=?,MaLSP=?,TenSP=?,DonGia=?,SoLuong=?,HinhAnh=? WHERE MaSP=?";
+            sql = "UPDATE sanpham SET MaSP=?,MaLSP=?,TenSP=?,DonGia=?,SoLuong=?,HinhAnh=? WHERE MaSP=?";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, tk.getMaSP());
             pstate.setString(2, tk.getMaLSP());
@@ -157,7 +157,7 @@ public class SanPhamController {
             conn = null;
             pstate = null;
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "DELETE FROM quanlysieuthidienthoai.sanpham WHERE MaSP=?";
+            sql = "DELETE FROM sanpham WHERE MaSP=?";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, macu);
             pstate.execute();
@@ -190,7 +190,7 @@ public class SanPhamController {
         pstate = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "Select * from quanlysieuthidienthoai.sanpham,quanlysieuthidienthoai.loaisanpham where quanlysieuthidienthoai.sanpham.MaLSP=quanlysieuthidienthoai.loaisanpham.MaLSP "
+            sql = "Select * from sanpham,loaisanpham where sanpham.MaLSP=loaisanpham.MaLSP "
                     + "and TenSP like ?";
             pstate = conn.prepareCall(sql);
             pstate.setString(1, "%" + tenlsp + "%");
@@ -242,9 +242,9 @@ public class SanPhamController {
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
             if (ktThem == true) {
-                sql = "SELECT TenSanPham FROM quanlysieuthidienthoai.sanpham WHERE MaSP = '" + manhap + "'";
+                sql = "SELECT TenSanPham FROM sanpham WHERE MaSP = '" + manhap + "'";
             } else {
-                sql = "SELECT TenSanPham FROM quanlysieuthidienthoai.sanpham WHERE MaSP='"
+                sql = "SELECT TenSanPham FROM sanpham WHERE MaSP='"
                         + manhap + "' and MaSP<>'" + macu + "'";
             }
             state = conn.createStatement();

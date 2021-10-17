@@ -37,7 +37,7 @@ public class LoaiSanPhamController {
         state = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "Select * from quanlysieuthidienthoai.loaisanpham";
+            sql = "Select * from loaisanpham";
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
@@ -80,7 +80,7 @@ public class LoaiSanPhamController {
             conn = null;
             pstate = null;
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "INSERT INTO quanlysieuthidienthoai.loaisanpham(MaLSP,TenLSP,MoTa) VALUES(?,?,?)";
+            sql = "INSERT INTO loaisanpham(MaLSP,TenLSP,MoTa) VALUES(?,?,?)";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, tk.getMaLSP());
             pstate.setString(2, tk.getTenLSP());
@@ -114,7 +114,7 @@ public class LoaiSanPhamController {
             conn = null;
             pstate = null;
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "UPDATE quanlysieuthidienthoai.loaisanpham SET MaLSP=?,TenLSP=?,Mota=? WHERE MaLSP=?";
+            sql = "UPDATE loaisanpham SET MaLSP=?,TenLSP=?,Mota=? WHERE MaLSP=?";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, tk.getMaLSP());
             pstate.setString(2, tk.getTenLSP());
@@ -149,7 +149,7 @@ public class LoaiSanPhamController {
             conn = null;
             pstate = null;
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "DELETE FROM quanlysieuthidienthoai.loaisanpham WHERE MaLSP=?";
+            sql = "DELETE FROM loaisanpham WHERE MaLSP=?";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, macu);
             pstate.execute();
@@ -182,7 +182,7 @@ public class LoaiSanPhamController {
         pstate = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "SELECT * FROM quanlysieuthidienthoai.loaisanpham where TenLSP like ?";
+            sql = "SELECT * FROM loaisanpham where TenLSP like ?";
             pstate = conn.prepareCall(sql);
             pstate.setString(1, "%" + tenlsp + "%");
             ResultSet rs = pstate.executeQuery();
@@ -229,9 +229,9 @@ public class LoaiSanPhamController {
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
             if (ktThem == true) {
-                sql = "SELECT TenLoaiSanPham FROM quanlysieuthidienthoai.loaisanpham WHERE MaLSP = '" + manhap + "'";
+                sql = "SELECT TenLoaiSanPham FROM loaisanpham WHERE MaLSP = '" + manhap + "'";
             } else {
-                sql = "SELECT TenLoaiSanPham FROM quanlysieuthidienthoai.loaisanpham WHERE MaLSP='"
+                sql = "SELECT TenLoaiSanPham FROM loaisanpham WHERE MaLSP='"
                         + manhap + "' and MaLSP<>'" + macu + "'";
             }
             state = conn.createStatement();
