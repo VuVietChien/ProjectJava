@@ -32,10 +32,10 @@ public class ThongKeDoanhSo_Controller {
         rs = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            String sql = "select quanlysieuthidienthoai.chitiethoadon.maHD, quanlysieuthidienthoai.HoaDon.maNV,tenNV, quanlysieuthidienthoai.khachhang.MaKH, ngayLap, sum(quanlysieuthidienthoai.chitiethoadon.SoLuong * quanlysieuthidienthoai.chitiethoadon.DonGia) as 'thanhTien'\n" +
-                "from quanlysieuthidienthoai.chitiethoadon inner join quanlysieuthidienthoai.HoaDon on quanlysieuthidienthoai.ChiTietHoaDon.maHD = quanlysieuthidienthoai.HoaDon.maHD,quanlysieuthidienthoai.NhanVien,quanlysieuthidienthoai.khachhang\n" +
+            String sql = "select chitiethoadon.maHD, HoaDon.maNV,tenNV, khachhang.MaKH, ngayLap, sum(chitiethoadon.SoLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
+                "from chitiethoadon inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD,NhanVien,khachhang\n" +
                 "where NhanVien.maNV = HoaDon.maNV\n" +
-                "group by quanlysieuthidienthoai.chitiethoadon.maHD, quanlysieuthidienthoai.HoaDon.maNV, tenNV, quanlysieuthidienthoai.khachhang.MaKH, ngayLap";
+                "group by chitiethoadon.maHD, HoaDon.maNV, tenNV, khachhang.MaKH, ngayLap";
             pstate = conn.prepareStatement(sql);
             rs = pstate.executeQuery();
             while (rs.next()) {
@@ -76,10 +76,10 @@ public class ThongKeDoanhSo_Controller {
         rs = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            String sql = "select quanlysieuthidienthoai.chitiethoadon.maHD, quanlysieuthidienthoai.HoaDon.maNV,tenNV, quanlysieuthidienthoai.khachhang.MaKH, ngayLap, sum(quanlysieuthidienthoai.chitiethoadon.soLuong * quanlysieuthidienthoai.chitiethoadon.DonGia) as 'thanhTien'\n" +
-"from quanlysieuthidienthoai.chitiethoadon inner join quanlysieuthidienthoai.HoaDon on quanlysieuthidienthoai.ChiTietHoaDon.maHD = quanlysieuthidienthoai.HoaDon.maHD,quanlysieuthidienthoai.NhanVien,quanlysieuthidienthoai.khachhang\n" +
+            String sql = "select chitiethoadon.maHD, HoaDon.maNV,tenNV, khachhang.MaKH, ngayLap, sum(chitiethoadon.soLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
+"from chitiethoadon inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD,NhanVien,khachhang\n" +
 "where NhanVien.maNV = HoaDon.maNV\n" +
-"group by quanlysieuthidienthoai.chitiethoadon.maHD, quanlysieuthidienthoai.HoaDon.maNV, tenNV, quanlysieuthidienthoai.khachhang.MaKH, ngayLap\n" +
+"group by chitiethoadon.maHD, HoaDon.maNV, tenNV, khachhang.MaKH, ngayLap\n" +
                 "order by thanhTien";
             
             pstate = conn.prepareStatement(sql);
@@ -124,7 +124,7 @@ public class ThongKeDoanhSo_Controller {
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
             String sql = "select sum(SoLuong*donGia) as 'tongTien'\n" +
-                          "from quanlysieuthidienthoai.ChiTietHoaDon";
+                          "from ChiTietHoaDon";
             pstate = conn.prepareStatement(sql);
             rs = pstate.executeQuery();
             while (rs.next()) {

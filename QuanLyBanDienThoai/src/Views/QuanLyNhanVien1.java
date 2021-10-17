@@ -320,7 +320,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         txtMaKH.setText(makh);
         txtTenkh.setText(tenkh);
         txtSDT.setText(sdt);
-        txtTenkh.setText(diachi);
+        txtDiaChi.setText(diachi);
         txtNgaySinh.setText(ngaysinh);
     }//GEN-LAST:event_dgDanhSachTaiKhoanMouseClicked
 
