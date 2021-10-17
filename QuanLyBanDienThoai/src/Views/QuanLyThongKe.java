@@ -5,9 +5,14 @@ package Views;
 import Controllers.ThongKeDoanhSo_Controller;
 import Models.ChiTietHoaDon;
 import Models.ThongKe;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -241,7 +246,6 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
@@ -280,7 +284,7 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSapXepActionPerformed
 
     private void btnInThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInThongKeActionPerformed
-//
+
 //        FileOutputStream fileOutputStream = null;
 //        BufferedOutputStream outputStream = null;
 //        XSSFWorkbook workbook = null;
@@ -349,21 +353,21 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
 //                    try {
 //                        outputStream.close();
 //                    } catch (IOException ex) {
-//                        Logger.getLogger(ThongKeDoanhSo.class.getName()).log(Level.SEVERE, null, ex);
+//                        Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
 //                    }
 //                }
 //                if (fileOutputStream != null) {
 //                    try {
 //                        fileOutputStream.close();
 //                    } catch (IOException ex) {
-//                        Logger.getLogger(ThongKeDoanhSo.class.getName()).log(Level.SEVERE, null, ex);
+//                        Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
 //                    }
 //                }
 //                if (workbook != null) {
 //                    try {
 //                        workbook.close();
 //                    } catch (IOException ex) {
-//                        Logger.getLogger(ThongKeDoanhSo.class.getName()).log(Level.SEVERE, null, ex);
+//                        Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
 //                    }
 //                }
 //            }
@@ -372,35 +376,35 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
 
     private void btnThongKeNgayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeNgayActionPerformed
         // TODO add your handling code here:
-//
-//        try {
-//            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-//            String ngayLap = dateFormat.format(dateNgayThongKe.getDate());
-//            int tongTT = 0;
-//            if (dateNgayThongKe.getDate() != null || dateNgayThongKe.equals("") == false) {
-//                cthdList = ThongKeDoanhSoDao.findByDate(ngayLap);
-//                tableModel.setRowCount(0);
-//                for (ChiTietHoaDon cthd : cthdList) {
-//                    tableModel.addRow(new Object[]{
-//                        cthd.getMaHD(),
-//                        cthd.getMaNV(),
-//                        cthd.getTenNV(),
-//                        cthd.getTenKH(),
-//                        cthd.getNgayLap(),
-//                        cthd.getThanhTien()
-//                    });
-//                    tongTT += cthd.getThanhTien();
-//                    lblTongDanhThu.setText("Tổng doanh thu: " + String.valueOf(tongTT));
-//                }
-//                loadSoLuongHD();
-//            } else {
-//                loadData();
-//                loadTongTien();
-//                loadSoLuongHD();
-//            }
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(rootPane, "Ngày thống kê không để trống!");
-//        }
+
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            String ngayLap = dateFormat.format(dateNgayThongKe.getDate());
+            int tongTT = 0;
+            if (dateNgayThongKe.getDate() != null || dateNgayThongKe.equals("") == false) {
+                cthdList = ThongKeDoanhSo_Controller.findByDate(ngayLap);
+                tableModel.setRowCount(0);
+                for (ChiTietHoaDon cthd : cthdList) {
+                    tableModel.addRow(new Object[]{
+                        cthd.getMaHD(),
+                        cthd.getMaNV(),
+                        cthd.getTenNV(),
+                        cthd.getMaKH(),
+                        cthd.getNgayLap(),
+                        cthd.getThanhTien()
+                    });
+                    tongTT += cthd.getThanhTien();
+                    lblTongDanhThu.setText("Tổng doanh thu: " + String.valueOf(tongTT));
+                }
+                loadSoLuongHD();
+            } else {
+                loadData();
+                loadTongTien();
+                loadSoLuongHD();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, "Ngày thống kê không để trống!");
+        }
     }//GEN-LAST:event_btnThongKeNgayActionPerformed
 
 

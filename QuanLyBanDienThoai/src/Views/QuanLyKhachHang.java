@@ -323,7 +323,7 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-              if (txtMaKH.getText().length() <= 0) {
+        if (txtMaKH.getText().length() <= 0) {
             return;
         }
         int kq = JOptionPane.showConfirmDialog(this, "bạn có muốn xóa [" + txtMaKH.getText() + "] không ?",

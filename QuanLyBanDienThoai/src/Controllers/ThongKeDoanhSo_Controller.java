@@ -69,6 +69,51 @@ public class ThongKeDoanhSo_Controller {
         return cthdList;
     }
     
+    public static List<ChiTietHoaDon> findByDate(String ngayLap){
+        List<ChiTietHoaDon> cthdList = new ArrayList<>();
+        conn = null;
+        pstate = null;
+        rs = null;
+        try {
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            String sql = "select chitiethoadon.maHD, HoaDon.maNV,tenNV, khachhang.MaKH, ngayLap, sum(chitiethoadon.SoLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
+                "from chitiethoadon inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD,NhanVien,khachhang\n" +
+                "where NhanVien.maNV = HoaDon.maNV and ngayLap=?\n" +
+                "group by chitiethoadon.maHD, HoaDon.maNV, tenNV, khachhang.MaKH, ngayLap";
+            pstate = conn.prepareStatement(sql);
+            pstate.setString(1, ngayLap);
+            rs = pstate.executeQuery();
+            while (rs.next()) {
+                ChiTietHoaDon ct = new ChiTietHoaDon();
+                ct.setMaHD(rs.getString("maHD"));
+                ct.setMaNV(rs.getString("maNV"));
+                ct.setTenNV(rs.getString("tenNV"));
+                ct.setMaKH(rs.getString("MaKH"));
+                ct.setNgayLap(rs.getString("ngaylap"));
+                ct.setThanhTien(rs.getFloat("thanhTien"));
+                cthdList.add(ct);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi: " + ex);
+        } finally {
+            if (pstate != null) {
+                try {
+                    pstate.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return cthdList;
+    }
+    
      public static List<ChiTietHoaDon> sortByTT() {
         List<ChiTietHoaDon> cthds = new ArrayList<>();
         conn = null;
