@@ -40,7 +40,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         txtMaKH.setEditable(!b);
         txtTenkh.setEditable(!b);
         txtSDT.setEditable(!b);
-        txtDiaChi.setEditable(!b);
+        txtTenkh.setEditable(!b);
         txtNgaySinh.setEditable(!b);
         dgDanhSachTaiKhoan.setEnabled(b);
     }
@@ -49,7 +49,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         txtMaKH.setText("");
         txtTenkh.setText("");
         txtSDT.setText("");
-        txtDiaChi.setText("");
+        txtTenkh.setText("");
         txtNgaySinh.setText("");
     }
 
@@ -88,10 +88,9 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         jLaMaKH = new javax.swing.JLabel();
         txtMaKH = new javax.swing.JTextField();
         jLaTenKH = new javax.swing.JLabel();
-        txtTenkh = new javax.swing.JPasswordField();
         JLaDiaChi = new javax.swing.JLabel();
         jLaSDT = new javax.swing.JLabel();
-        txtDiaChi = new javax.swing.JTextField();
+        txtTenkh = new javax.swing.JTextField();
         txtSDT = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
@@ -103,6 +102,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         btnReset = new javax.swing.JButton();
         txtNgaySinh = new javax.swing.JTextField();
         jLNgaySinh = new javax.swing.JLabel();
+        txtDiaChi = new javax.swing.JTextField();
 
         dgDanhSachTaiKhoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,7 +112,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Mã Khách Hàng", "Tên Khách Hàng", "Ngày Sinh", "Địa chỉ", "Số điện thoại"
+                "Mã Khách Hàng", "Tên Nhân Viên", "Ngày Sinh", "Địa chỉ", "Số điện thoại"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -136,7 +136,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         jLaMaKH.setText("Mã khách hàng:");
 
         jLaTenKH.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLaTenKH.setText("Tên Khách hàng:");
+        jLaTenKH.setText("Tên Nhân Viên:");
 
         JLaDiaChi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         JLaDiaChi.setText("Địa chỉ:");
@@ -221,9 +221,9 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtMaKH, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
                             .addComponent(txtTenkh)
-                            .addComponent(txtDiaChi)
                             .addComponent(txtSDT)
-                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -255,11 +255,11 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLaTenKH)
                     .addComponent(txtTenkh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JLaDiaChi))
-                .addGap(18, 18, 18)
+                    .addComponent(JLaDiaChi)
+                    .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLaSDT)
                     .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -270,7 +270,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLNgaySinh)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
@@ -320,7 +320,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         txtMaKH.setText(makh);
         txtTenkh.setText(tenkh);
         txtSDT.setText(sdt);
-        txtDiaChi.setText(diachi);
+        txtTenkh.setText(diachi);
         txtNgaySinh.setText(ngaysinh);
     }//GEN-LAST:event_dgDanhSachTaiKhoanMouseClicked
 
@@ -376,26 +376,33 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
 
     private void btnGhiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGhiActionPerformed
         if (txtMaKH.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập mã môn", "thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "bạn chưa nhập mã nhân viên", "thông báo", JOptionPane.WARNING_MESSAGE);
             txtMaKH.requestFocus();
             return;
         }
 
         //
         if (txtTenkh.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập tên môn", "thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "bạn chưa nhập tên nhân viên", "thông báo", JOptionPane.WARNING_MESSAGE);
             txtTenkh.requestFocus();
             return;
         }
 
+          if (txtNgaySinh.getText().length() <= 0) {
+            JOptionPane.showMessageDialog(this, "bạn chưa nhập ngày sinh", "thông báo", JOptionPane.WARNING_MESSAGE);
+            txtNgaySinh.requestFocus();
+            return;
+        }
+        
+        
         if (txtSDT.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập số tiết", "thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "bạn chưa nhập số điện thoại", "thông báo", JOptionPane.WARNING_MESSAGE);
             txtSDT.requestFocus();
             return;
         }
 
         if (txtDiaChi.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập số tiết", "thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "bạn chưa nhập địa chỉ", "thông báo", JOptionPane.WARNING_MESSAGE);
             txtDiaChi.requestFocus();
             return;
         }
@@ -410,7 +417,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         makh = txtMaKH.getText();
         tenkh = txtTenkh.getText();
         sdt = txtSDT.getText();
-        diachi = txtDiaChi.getText();
+        diachi = txtTenkh.getText();
         ngaysinh=txtNgaySinh.getText();
         //
         NhanVien d = new NhanVien(makh, tenkh, ngaysinh,diachi,sdt);
@@ -467,6 +474,6 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtNgaySinh;
     private javax.swing.JTextField txtSDT;
-    private javax.swing.JPasswordField txtTenkh;
+    private javax.swing.JTextField txtTenkh;
     // End of variables declaration//GEN-END:variables
 }

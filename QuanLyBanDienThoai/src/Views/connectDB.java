@@ -10,5 +10,5 @@ package Views;
  * @author viết chiến
  */
 public class connectDB {
-    public static String dbURL = "jdbc:sqlserver://localhost;databaseName=quanlysieuthidienthoai;user=sa;password=123456";
+    public static String dbURL = "jdbc:sqlserver://localhost;databaseName=quanlysieuthidienthoai;user=sa;password=long123";
 }

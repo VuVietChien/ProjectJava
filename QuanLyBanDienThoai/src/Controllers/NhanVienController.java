@@ -26,7 +26,7 @@ public class NhanVienController {
         Statement state = null;
         try {
             conn = DriverManager.getConnection(dbURL);
-            sql = "Select * From quanlysieuthidienthoai.NhanVien";
+            sql = "Select * From NhanVien";
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
@@ -69,7 +69,7 @@ public class NhanVienController {
         try {
             conn = DriverManager.getConnection(dbURL);
 
-            sql = "Insert Into quanlysieuthidienthoai.nhanvien(MaNV,TenNV,NgaySinh,DiaChi,SDT) values (?,?,?,?,?)";
+            sql = "Insert Into nhanvien(MaNV,TenNV,nhanvien.NgaySinh,DiaChi,SDT) values (?,?,?,?,?)";
             state = conn.prepareStatement(sql);
             state.setString(1, cn.getMaNV());
             state.setString(2, cn.getTenNV());
@@ -108,7 +108,7 @@ public class NhanVienController {
         try {
             conn = DriverManager.getConnection(dbURL);
 
-            sql = "Update quanlysieuthidienthoai.nhanvien Set manv=?,tennv=?,ngaysinh=?, diachi=?,sdt=? Where manv=?";
+            sql = "Update nhanvien Set manv=?,tennv=?,ngaysinh=?, diachi=?,sdt=? Where manv=?";
             state = conn.prepareStatement(sql);
               state.setString(1, cn.getMaNV());
             state.setString(2, cn.getTenNV());
@@ -147,7 +147,7 @@ public class NhanVienController {
         try {
             conn = DriverManager.getConnection(dbURL);
 
-            sql = "DELETE FROM quanlysieuthidienthoai.nhanvien WHERE nhanvien.tennv=?";
+            sql = "DELETE FROM nhanvien WHERE nhanvien.tennv=?";
             state = conn.prepareStatement(sql);
             state.setString(1, manganh);
             state.execute();
@@ -181,9 +181,9 @@ public class NhanVienController {
         try {
             conn = DriverManager.getConnection(dbURL);
             if (ktThem == true) {
-                sql = "SELECT Manv FROM quanlysieuthidienthoai.nhanvien WHERE Manv = '" + manhap + "'";
+                sql = "SELECT Manv FROM nhanvien WHERE Manv = '" + manhap + "'";
             } else {
-                sql = "SELECT Manv FROM quanlysieuthidienthoai.nhanvien WHERE Manv='"
+                sql = "SELECT Manv FROM nhanvien WHERE Manv='"
                         + manhap + "' and Manv<>'" + macu + "'";
             }
             state = conn.createStatement();
@@ -220,7 +220,7 @@ public class NhanVienController {
         pstate = null;
         try {
             conn = DriverManager.getConnection(dbURL);
-            sql = "SELECT * FROM quanlysieuthidienthoai.nhanvien where nhanvien.manv like ?";
+            sql = "SELECT * FROM nhanvien where nhanvien.manv like ?";
             pstate = conn.prepareCall(sql);
             pstate.setString(1, "%" + tentk + "%");
             ResultSet rs = pstate.executeQuery();

@@ -96,9 +96,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtMaKH" alignment="0" pref="412" max="32767" attributes="0"/>
-                              <Component id="txtTenkh" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtDiaChi" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtSDT" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtTenkh" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -148,9 +148,8 @@
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="txtSDT" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnTimKiem" alignment="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnThem" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnKetThuc" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -160,8 +159,9 @@
                           <Component id="btnGhi" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnReset" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="btnTimKiem" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -184,8 +184,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="T&#xea;n Kh&#xe1;ch h&#xe0;ng:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JPasswordField" name="txtTenkh">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -270,6 +268,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTenkh">
         </Component>
       </SubComponents>
     </Container>

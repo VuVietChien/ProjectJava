@@ -103,11 +103,21 @@ public class Menu extends javax.swing.JFrame {
         lbNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         lbNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_assistant_30px.png"))); // NOI18N
         lbNhanVien.setText("Nhân Viên ");
+        lbNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbNhanVienMouseClicked(evt);
+            }
+        });
 
         lbKhachHang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbKhachHang.setForeground(new java.awt.Color(255, 255, 255));
         lbKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_user_30px.png"))); // NOI18N
         lbKhachHang.setText("Khách Hàng");
+        lbKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbKhachHangMouseClicked(evt);
+            }
+        });
 
         lbSanPham.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbSanPham.setForeground(new java.awt.Color(255, 255, 255));
@@ -382,6 +392,22 @@ public class Menu extends javax.swing.JFrame {
         QuanLyThongKe qlsp = new QuanLyThongKe();
         Desktop.add(qlsp).setVisible(true);
     }//GEN-LAST:event_lbThongKeMouseClicked
+
+    private void lbNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbNhanVienMouseClicked
+        Desktop.removeAll();
+        QuanLyNhanVien1 qlsp = new QuanLyNhanVien1();
+        Desktop.add(qlsp).setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbNhanVienMouseClicked
+
+    private void lbKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbKhachHangMouseClicked
+    Desktop.removeAll();
+        QuanLyKhachHang qlsp = new QuanLyKhachHang();
+        Desktop.add(qlsp).setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbKhachHangMouseClicked
 
     /**
      * @param args the command line arguments

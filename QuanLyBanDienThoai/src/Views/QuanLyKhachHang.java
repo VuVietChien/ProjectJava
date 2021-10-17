@@ -80,7 +80,6 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         txtMaKH = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtTenkh = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtDiaChi = new javax.swing.JTextField();
@@ -93,6 +92,7 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
         btnGhi = new javax.swing.JButton();
         btnTimKiem = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
+        txtTenkh = new javax.swing.JTextField();
 
         dgDanhSachTaiKhoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -206,9 +206,9 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtMaKH, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
-                            .addComponent(txtTenkh)
                             .addComponent(txtDiaChi)
-                            .addComponent(txtSDT))
+                            .addComponent(txtSDT)
+                            .addComponent(txtTenkh))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -250,7 +250,6 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
                     .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnThem)
                         .addComponent(btnKetThuc)
@@ -258,8 +257,9 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
                         .addComponent(btnXoa)
                         .addComponent(btnSua)
                         .addComponent(btnGhi)
-                        .addComponent(btnReset)))
-                .addContainerGap())
+                        .addComponent(btnReset))
+                    .addComponent(btnTimKiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -354,26 +354,26 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
 
     private void btnGhiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGhiActionPerformed
         if (txtMaKH.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập mã môn", "thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "bạn chưa nhập mã khách hàng", "thông báo", JOptionPane.WARNING_MESSAGE);
             txtMaKH.requestFocus();
             return;
         }
 
         //
         if (txtTenkh.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập tên môn", "thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "bạn chưa nhập tên khách hàng", "thông báo", JOptionPane.WARNING_MESSAGE);
             txtTenkh.requestFocus();
             return;
         }
 
         if (txtSDT.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập số tiết", "thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "bạn chưa nhập số điện thoại", "thông báo", JOptionPane.WARNING_MESSAGE);
             txtSDT.requestFocus();
             return;
         }
         
            if (txtDiaChi.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập số tiết", "thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "bạn chưa nhập địa chỉ", "thông báo", JOptionPane.WARNING_MESSAGE);
             txtDiaChi.requestFocus();
             return;
         }
@@ -442,6 +442,6 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtSDT;
-    private javax.swing.JPasswordField txtTenkh;
+    private javax.swing.JTextField txtTenkh;
     // End of variables declaration//GEN-END:variables
 }

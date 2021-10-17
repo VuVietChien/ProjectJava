@@ -26,7 +26,7 @@ public class KhachHangController {
         Statement state = null;
         try {
             conn = DriverManager.getConnection(dbURL);
-            sql = "Select * From quanlysieuthidienthoai.KhachHang";
+            sql = "Select * From KhachHang";
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
@@ -67,7 +67,7 @@ public class KhachHangController {
         try {
             conn = DriverManager.getConnection(dbURL);
 
-            sql = "Insert Into quanlysieuthidienthoai.khachhang(makh,tenkh,diachi,sdt) values (?,?,?,?)";
+            sql = "Insert Into khachhang(makh,tenkh,diachi,sdt) values (?,?,?,?)";
             state = conn.prepareStatement(sql);
             state.setString(1, cn.getMaKHString());
             state.setString(2, cn.getTenKH());
@@ -103,7 +103,7 @@ public class KhachHangController {
         try {
             conn = DriverManager.getConnection(dbURL);
 
-            sql = "Update quanlysieuthidienthoai.khachhang Set makh=?,tenkh=?,diachi=?,sdt=? Where makh=?";
+            sql = "Update khachhang Set makh=?,tenkh=?,diachi=?,sdt=? Where makh=?";
             state = conn.prepareStatement(sql);
             state.setString(1, cn.getMaKHString());
             state.setString(2, cn.getTenKH());
@@ -141,7 +141,7 @@ public class KhachHangController {
         try {
             conn = DriverManager.getConnection(dbURL);
 
-            sql = "DELETE FROM quanlysieuthidienthoai.khachhang WHERE KhachHang.tenkh=?";
+            sql = "DELETE FROM khachhang WHERE KhachHang.tenkh=?";
             state = conn.prepareStatement(sql);
             state.setString(1, manganh);
             state.execute();
@@ -175,9 +175,9 @@ public class KhachHangController {
         try {
             conn = DriverManager.getConnection(dbURL);
             if (ktThem == true) {
-                sql = "SELECT MaKH FROM quanlysieuthidienthoai.khachhang WHERE MaKH = '" + manhap + "'";
+                sql = "SELECT MaKH FROM khachhang WHERE MaKH = '" + manhap + "'";
             } else {
-                sql = "SELECT MaKH FROM quanlysieuthidienthoai.khachhang WHERE MaKH='"
+                sql = "SELECT MaKH FROM khachhang WHERE MaKH='"
                         + manhap + "' and MaKH<>'" + macu + "'";
             }
             state = conn.createStatement();
@@ -214,7 +214,7 @@ public class KhachHangController {
         pstate = null;
         try {
             conn = DriverManager.getConnection(dbURL);
-            sql = "SELECT * FROM quanlysieuthidienthoai.khachhang where khachhang.makh like ?";
+            sql = "SELECT * FROM khachhang where khachhang.makh like ?";
             pstate = conn.prepareCall(sql);
             pstate.setString(1, "%" + tentk + "%");
             ResultSet rs = pstate.executeQuery();
