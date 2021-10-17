@@ -136,7 +136,7 @@ public class ThongKeDoanhSo_Controller {
                 ct.setTenNV(rs.getString("tenNV"));
                 ct.setMaKH(rs.getString("makh"));
                 ct.setNgayLap(rs.getString("ngaylap"));
-                ct.setTongTien(rs.getFloat("tongtien"));
+                ct.setThanhTien(rs.getFloat("thanhtien"));
                 cthds.add(ct);
             }
         } catch (SQLException ex) {
@@ -169,7 +169,7 @@ public class ThongKeDoanhSo_Controller {
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
             String sql = "select sum(SoLuong*donGia) as 'tongTien'\n" +
-                          "from quanlysieuthidienthoai.ChiTietHoaDon";
+                          "from ChiTietHoaDon";
             pstate = conn.prepareStatement(sql);
             rs = pstate.executeQuery();
             while (rs.next()) {

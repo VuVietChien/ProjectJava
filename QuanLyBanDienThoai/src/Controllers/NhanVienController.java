@@ -141,13 +141,13 @@ public class NhanVienController {
     }
 
     public static void XoaNganh(String manganh) {
-        conn = null;
+         conn = null;
         PreparedStatement state = null;
 
         try {
             conn = DriverManager.getConnection(dbURL);
 
-            sql = "DELETE FROM nhanvien WHERE nhanvien.tennv=?";
+            sql = "Delete From NhanVien Where nhanvien.tennv = ?";
             state = conn.prepareStatement(sql);
             state.setString(1, manganh);
             state.execute();
@@ -171,8 +171,8 @@ public class NhanVienController {
                 }
             }
         }
-    }
-
+        }
+    
     // Kiem tra trung tentaikhoan
     public static boolean KiemTraTrungMa(String manhap, boolean ktThem, String macu) {
         boolean kq = false;

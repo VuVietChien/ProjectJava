@@ -89,7 +89,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLaMaKH" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                              <Component id="jLaMaNV" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
                               <Component id="jLaTenKH" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLaSDT" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="JLaDiaChi" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -97,7 +97,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtMaKH" alignment="0" pref="412" max="32767" attributes="0"/>
+                              <Component id="txtMaNV" alignment="0" pref="412" max="32767" attributes="0"/>
                               <Component id="txtTenkh" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtSDT" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtNgaySinh" alignment="1" max="32767" attributes="0"/>
@@ -133,8 +133,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLaMaKH" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtMaKH" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLaMaNV" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtMaNV" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -178,15 +178,15 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLaMaKH">
+        <Component class="javax.swing.JLabel" name="jLaMaNV">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="M&#xe3; kh&#xe1;ch h&#xe0;ng:"/>
+            <Property name="text" type="java.lang.String" value="M&#xe3; Nh&#xe2;n Vi&#xea;n:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtMaKH">
+        <Component class="javax.swing.JTextField" name="txtMaNV">
         </Component>
         <Component class="javax.swing.JLabel" name="jLaTenKH">
           <Properties>
