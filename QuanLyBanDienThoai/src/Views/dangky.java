@@ -183,7 +183,7 @@ public class dangky extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Thiếu tên tài khoản hoặc mật khẩu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
-                String sql = "insert into quanlysieuthidienthoai.taikhoan values (?,?,?,?)";
+                String sql = "insert into taikhoan values (?,?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ps.setString(1, username);
                 ps.setString(2, password);

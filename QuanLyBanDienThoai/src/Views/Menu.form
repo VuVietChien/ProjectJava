@@ -208,6 +208,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Nh&#xe2;n Vi&#xea;n "/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbNhanVienMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbKhachHang">
           <Properties>
@@ -222,6 +225,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Kh&#xe1;ch H&#xe0;ng"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbKhachHangMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbSanPham">
           <Properties>
