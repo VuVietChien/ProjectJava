@@ -147,7 +147,7 @@ public class NhanVienController {
         try {
             conn = DriverManager.getConnection(dbURL);
 
-            sql = "Delete From NhanVien Where nhanvien.tennv = ?";
+            sql = "Delete From NhanVien Where nhanvien.manv = ?";
             state = conn.prepareStatement(sql);
             state.setString(1, manganh);
             state.execute();

@@ -239,6 +239,9 @@
           </Events>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="dateNgayThongKe">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value=""/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnThongKeNgay">
           <Properties>

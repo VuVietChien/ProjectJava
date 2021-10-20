@@ -283,7 +283,7 @@ public class dangnhap extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Thiếu tên tài khoản hoặc mật khẩu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
-                
+
                 String sql = "Select * from taikhoan,phanquyen where phanquyen.MaQuyen=taikhoan.MaQuyen and tentaikhoan='" + username + "' and matkhau='" + password + "'";
                 try ( Statement statement = conn.createStatement()) {
                     ResultSet rs = statement.executeQuery(sql);
@@ -300,6 +300,7 @@ public class dangnhap extends javax.swing.JFrame {
                         tk.setMaQuyen(rs.getString("MaQuyen"));
                         tk.setTenQuyen(rs.getString("TenQuyen"));
                         SharedData.nguoiDangNhap = tk;
+                        this.setVisible(false);
                         Menu menu = new Menu();
                         menu.setVisible(true);
 
