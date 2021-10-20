@@ -5,11 +5,16 @@
  */
 package Controllers;
 
-import Models.TaiKhoan;
+import Models.Quyen;
 import Views.connectDB;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.sql.*;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,46 +22,41 @@ import java.util.logging.Logger;
  *
  * @author thuan
  */
-public class TaiKhoanController {
+public class QuyenController {
 
     public static Connection conn;
     public static Statement state;
     public static PreparedStatement pstate;
     public static String sql;
 
-    public static List<TaiKhoan> Select() {
-        List<TaiKhoan> listTaiKhoan = new ArrayList<>();
+    public static List<Quyen> Select() {
+        List<Quyen> listQuyen = new ArrayList<>();
         conn = null;
         state = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "Select * from taikhoan,nhanvien,phanquyen "
-                    + "WHERE taikhoan.MaNV=nhanvien.MaNV AND "
-                    + "taikhoan.MaQuyen=phanquyen.MaQuyen";
+            sql = "Select * from phanquyen";
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
-                TaiKhoan temp = new TaiKhoan(
-                        rs.getString("TenTaiKhoan"),
-                        rs.getString("MatKhau"),
-                        rs.getString("MaNV"),
+                Quyen temp = new Quyen(
                         rs.getString("MaQuyen"),
                         rs.getString("TenQuyen"),
-                        rs.getString("TenNV")
+                        rs.getString("ChiTietQuyen")
                 );
-                listTaiKhoan.add(temp);
+                listQuyen.add(temp);
 
             }
             state.close();
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (state != null) {
                 try {
                     state.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -64,81 +64,79 @@ public class TaiKhoanController {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
         }
-        return listTaiKhoan;
+        return listQuyen;
 
     }
 
-    public static void Insert(TaiKhoan tk) {
+    public static void Insert(Quyen tk) {
         try {
             conn = null;
             pstate = null;
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "INSERT INTO taikhoan(TenTaiKhoan,MatKhau,MaNV,MaQuyen) VALUES(?,?,?,?)";
+            sql = "INSERT INTO phanquyen(MaQuyen,TenQuyen,ChiTietQuyen) VALUES(?,?,?)";
             pstate = conn.prepareStatement(sql);
-            pstate.setString(1, tk.getTenTaiKhoan());
-            pstate.setString(2, tk.getMatKhau());
-            pstate.setString(3, tk.getMaNV());
-            pstate.setString(4, tk.getMaQuyen());
+            pstate.setString(1, tk.getMaQuyen());
+            pstate.setString(2, tk.getTenQuyen());
+            pstate.setString(3, tk.getChiTietQuyen());
             pstate.execute();
             pstate.close();
             conn.close();
 
         } catch (SQLException ex) {
-            Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (pstate != null) {
                 try {
                     pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
     }
 
-    public static void Update(TaiKhoan tk, String macu) {
+    public static void Update(Quyen tk, String macu) {
         try {
             conn = null;
             pstate = null;
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "UPDATE taikhoan SET TenTaiKhoan=?,MatKhau=?,MaNV=?,MaQuyen=? WHERE TenTaiKhoan=?";
+            sql = "UPDATE phanquyen SET MaQuyen=?,TenQuyen=?,ChiTietQuyen=? WHERE MaQuyen=?";
             pstate = conn.prepareStatement(sql);
-            pstate.setString(1, tk.getTenTaiKhoan());
-            pstate.setString(2, tk.getMatKhau());
-            pstate.setString(3, tk.getMaNV());
-            pstate.setString(4, tk.getMaQuyen());
-            pstate.setString(5, macu);
+            pstate.setString(1, tk.getMaQuyen());
+            pstate.setString(2, tk.getTenQuyen());
+            pstate.setString(3, tk.getChiTietQuyen());
+            pstate.setString(4, macu);
             pstate.execute();
             pstate.close();
             conn.close();
 
         } catch (SQLException ex) {
-            Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (pstate != null) {
                 try {
                     pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -149,7 +147,7 @@ public class TaiKhoanController {
             conn = null;
             pstate = null;
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "DELETE FROM taikhoan WHERE TenTaiKhoan=?";
+            sql = "DELETE FROM phanquyen WHERE MaQuyen=?";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, macu);
             pstate.execute();
@@ -157,59 +155,54 @@ public class TaiKhoanController {
             conn.close();
 
         } catch (SQLException ex) {
-            Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (pstate != null) {
                 try {
                     pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
     }
 
-    public static List<TaiKhoan> TimKiemTheoTenTaiKhoan(String tentk) {
-        List<TaiKhoan> listTaiKhoan = new ArrayList<>();
+    public static List<Quyen> TimKiemTheoTenQuyen(String tenlsp) {
+        List<Quyen> listQuyen = new ArrayList<>();
         conn = null;
         pstate = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "Select * from taikhoan,nhanvien,phanquyen "
-                    + "WHERE taikhoan.MaNV=nhanvien.MaNV AND "
-                    + "taikhoan.MaQuyen=phanquyen.MaQuyen and TenTaiKhoan like ?";
+            sql = "SELECT * FROM phanquyen where TenQuyen like ?";
             pstate = conn.prepareCall(sql);
-            pstate.setString(1, "%" + tentk + "%");
+            pstate.setString(1, "%" + tenlsp + "%");
             ResultSet rs = pstate.executeQuery();
             while (rs.next()) {
-                TaiKhoan temp = new TaiKhoan(
-                        rs.getString("TenTaiKhoan"),
-                        rs.getString("MatKhau"),
-                        rs.getString("MaNV"),
+                Quyen temp = new Quyen(
                         rs.getString("MaQuyen"),
                         rs.getString("TenQuyen"),
-                        rs.getString("TenNV")
+                        rs.getString("ChiTietQuyen")
                 );
-                listTaiKhoan.add(temp);
+                listQuyen.add(temp);
 
             }
             state.close();
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (state != null) {
                 try {
                     state.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -217,16 +210,16 @@ public class TaiKhoanController {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
         }
-        return listTaiKhoan;
+        return listQuyen;
 
     }
 
-    // Kiem tra trung tentaikhoan
+    // Kiem tra trung tenphanquyen
     public static boolean KiemTraTrungMa(String manhap, boolean ktThem, String macu) {
         boolean kq = false;
         conn = null;
@@ -234,10 +227,10 @@ public class TaiKhoanController {
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
             if (ktThem == true) {
-                sql = "SELECT TenTaiKhoan FROM taikhoan WHERE TenTaiKhoan = '" + manhap + "'";
+                sql = "SELECT TenQuyen FROM phanquyen WHERE MaQuyen = '" + manhap + "'";
             } else {
-                sql = "SELECT TenTaiKhoan FROM taikhoan WHERE TenTaiKhoan='"
-                        + manhap + "' and TenTaiKhoan<>'" + macu + "'";
+                sql = "SELECT TenQuyen FROM phanquyen WHERE MaQuyen='"
+                        + manhap + "' and MaQuyen<>'" + macu + "'";
             }
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
@@ -247,20 +240,20 @@ public class TaiKhoanController {
             state.close();
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (state != null) {
                 try {
                     state.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QuyenController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }

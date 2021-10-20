@@ -479,6 +479,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Quy&#x1ec1;n"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbQuyenMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbDoiMatKhau">
               <Properties>

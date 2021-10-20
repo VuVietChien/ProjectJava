@@ -35,9 +35,16 @@ public class Menu extends javax.swing.JFrame {
         listTaiKhoan = TaiKhoanController.Select();
     }
 
+    // phan quyen tai khoan
     private void processLoginSuccessful() {
         lbLoginName.setText(SharedData.nguoiDangNhap.getTenTaiKhoan());
         lbRole.setText(SharedData.nguoiDangNhap.getTenQuyen());
+        if (SharedData.nguoiDangNhap.getTenQuyen().equalsIgnoreCase("Nhân viên thống kê")) {
+            lbSanPham.setVisible(false);
+            lbTaiKhoan.setVisible(false);
+
+        }
+
     }
 
     @SuppressWarnings("unchecked")
@@ -258,6 +265,11 @@ public class Menu extends javax.swing.JFrame {
         lbQuyen.setForeground(new java.awt.Color(255, 255, 255));
         lbQuyen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_police_badge_30px.png"))); // NOI18N
         lbQuyen.setText("Quyền");
+        lbQuyen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbQuyenMouseClicked(evt);
+            }
+        });
 
         lbDoiMatKhau.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbDoiMatKhau.setForeground(new java.awt.Color(255, 255, 255));
@@ -426,6 +438,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lbKhachHangMouseClicked
 
+
     private void lbHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbHoaDonMouseClicked
 
         Desktop.removeAll();
@@ -435,6 +448,15 @@ public class Menu extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_lbHoaDonMouseClicked
+
+    private void lbQuyenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbQuyenMouseClicked
+        // TODO add your handling code here:
+        Desktop.removeAll();
+        mdiPhanQuyen qlsp = new mdiPhanQuyen();
+        Desktop.add(qlsp).setVisible(true);
+        qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
+    }//GEN-LAST:event_lbQuyenMouseClicked
+
 
     /**
      * @param args the command line arguments
