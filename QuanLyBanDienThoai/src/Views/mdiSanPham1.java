@@ -58,6 +58,7 @@ public class mdiSanPham1 extends javax.swing.JInternalFrame {
         cbLSP.setEnabled(!b);
         txtMaSP.setEditable(!b);
         dgDanhSach.setEnabled(b);
+        btnFolderAnh.setEnabled(!b);
     }
 
     public void XoaTrang() {
@@ -403,7 +404,7 @@ public class mdiSanPham1 extends javax.swing.JInternalFrame {
     private void btnFolderAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFolderAnhActionPerformed
         // TODO add your handling code here:
         try {
-            JFileChooser f = new JFileChooser("D:\\ProjectJavaNetbean12\\ProjectJava\\ProjectJava\\QuanLyBanDienThoai\\src\\giaodienchuan\\images\\Product Images");
+            JFileChooser f = new JFileChooser("E:\\DhCNGTVT2022\\Java_tutorial\\ProjectJava\\QuanLyBanDienThoai\\src\\giaodienchuan\\images\\Product Images");
             f.setDialogTitle("Mở file");
             f.showOpenDialog(null);
             File ftenanh = f.getSelectedFile();

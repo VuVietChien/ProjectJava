@@ -169,6 +169,8 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
             }
         });
 
+        dateNgayThongKe.setDateFormatString("");
+
         btnThongKeNgay.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnThongKeNgay.setText("Thống kê theo ngày");
         btnThongKeNgay.addActionListener(new java.awt.event.ActionListener() {
