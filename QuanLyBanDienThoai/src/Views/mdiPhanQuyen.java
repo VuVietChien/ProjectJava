@@ -6,8 +6,8 @@
 package Views;
 
 import Controllers.KiemTraDLController;
-import Controllers.LoaiSanPhamController;
-import Models.LoaiSanPham;
+import Controllers.QuyenController;
+import Models.Quyen;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -18,19 +18,16 @@ import javax.swing.table.TableModel;
  *
  * @author thuan
  */
-public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
+public class mdiPhanQuyen extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form mdiLoaiSanPham
-     */
-    DefaultTableModel tblDanhSachLoaiSanPham;
-    List<LoaiSanPham> listLoaiSanPham = new ArrayList<>();
-    public String malsp, tenlsp, mota, macu;
+    DefaultTableModel tblDanhSachQuyen;
+    List<Quyen> listQuyen = new ArrayList<>();
+    public String maquyen, tenquyen, chitietquyen, macu;
     private boolean ktThem;
 
-    public mdiLoaiSanPham() {
+    public mdiPhanQuyen() {
         initComponents();
-        tblDanhSachLoaiSanPham = (DefaultTableModel) dgDanhSach.getModel();
+        tblDanhSachQuyen = (DefaultTableModel) dgDanhSach.getModel();
         KhoaMo(true);
         Select();
     }
@@ -42,24 +39,24 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
         btnKetThuc.setEnabled(b);
         btnGhi.setEnabled(!b);
         btnKhong.setEnabled(!b);
-        txtMaLSP.setEditable(!b);
-        txtMoTa.setEditable(!b);
-        txtTenLSP.setEditable(!b);
+        txtMaQuyen.setEditable(!b);
+        txtChiTietQuyen.setEditable(!b);
+        txtTenQuyen.setEditable(!b);
         dgDanhSach.setEnabled(b);
     }
 
     public void XoaTrang() {
-        txtMoTa.setText("");
-        txtTenLSP.setText("");
-        txtMaLSP.setText("");
+        txtChiTietQuyen.setText("");
+        txtTenQuyen.setText("");
+        txtMaQuyen.setText("");
     }
 
     public void Select() {
-        listLoaiSanPham = LoaiSanPhamController.Select();
-        tblDanhSachLoaiSanPham.setRowCount(0);
-        listLoaiSanPham.forEach(p -> {
-            tblDanhSachLoaiSanPham.addRow(new Object[]{
-                p.getMaLSP(), p.getTenLSP(), p.getMoTa()
+        listQuyen = QuyenController.Select();
+        tblDanhSachQuyen.setRowCount(0);
+        listQuyen.forEach(p -> {
+            tblDanhSachQuyen.addRow(new Object[]{
+                p.getMaQuyen(), p.getTenQuyen(), p.getChiTietQuyen()
             });
         });
     }
@@ -77,7 +74,7 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
         dgDanhSach = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtMaLSP = new javax.swing.JTextField();
+        txtMaQuyen = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
@@ -87,9 +84,11 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
         btnGhi = new javax.swing.JButton();
         btnTimKiem = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
-        txtTenLSP = new javax.swing.JTextField();
+        txtTenQuyen = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtMoTa = new javax.swing.JTextField();
+        txtChiTietQuyen = new javax.swing.JTextField();
+
+        setClosable(true);
 
         dgDanhSach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,7 +98,7 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
                 {null, null, null}
             },
             new String [] {
-                "Mã loại SP", "Tên loại SP", "Mô tả"
+                "Mã Quyền", "Tên Quyền", "Chi Tiết Quyền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -120,10 +119,10 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin chi tiêt", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Mã loại SP:");
+        jLabel1.setText("Mã Quyền:");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("Tên loại SP:");
+        jLabel5.setText("Tên Quyền:");
 
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +181,7 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setText("Mô tả:");
+        jLabel6.setText("Chi Tiết Quyền:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -215,9 +214,9 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMaLSP, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTenLSP, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtChiTietQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMaQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTenQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -227,15 +226,15 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtMaLSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtTenLSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTenQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(txtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtChiTietQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
@@ -277,13 +276,13 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int index = dgDanhSach.getSelectedRow();
         TableModel model = dgDanhSach.getModel();
-        malsp = model.getValueAt(index, 0).toString();
-        tenlsp = model.getValueAt(index, 1).toString();
-        mota = model.getValueAt(index, 2).toString();
+        maquyen = model.getValueAt(index, 0).toString();
+        tenquyen = model.getValueAt(index, 1).toString();
+        chitietquyen = model.getValueAt(index, 2).toString();
 
-        txtMaLSP.setText(malsp);
-        txtTenLSP.setText(tenlsp);
-        txtMoTa.setText(mota);
+        txtMaQuyen.setText(maquyen);
+        txtTenQuyen.setText(tenquyen);
+        txtChiTietQuyen.setText(chitietquyen);
     }//GEN-LAST:event_dgDanhSachMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -291,29 +290,29 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
         XoaTrang();
         KhoaMo(false);
         ktThem = true;
-        txtMaLSP.requestFocus();
+        txtMaQuyen.requestFocus();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        if (txtMaLSP.getText().length() <= 0) {
+        if (txtMaQuyen.getText().length() <= 0) {
             return;
         }
-        macu = txtMaLSP.getText();
+        macu = txtMaQuyen.getText();
         KhoaMo(false);
         ktThem = false;
-        txtMaLSP.requestFocus();
+        txtMaQuyen.requestFocus();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        if (txtMaLSP.getText().length() <= 0) {
+        if (txtMaQuyen.getText().length() <= 0) {
             return;
         }
-        macu = txtMaLSP.getText();
-        int kq = JOptionPane.showConfirmDialog(this, "Bạn có muốn xoá mã loại sản phẩm [" + txtMaLSP.getText() + "] không?", "Thông báo", JOptionPane.YES_NO_OPTION);
+        macu = txtMaQuyen.getText();
+        int kq = JOptionPane.showConfirmDialog(this, "Bạn có muốn xoá mã quyền [" + txtMaQuyen.getText() + "] không?", "Thông báo", JOptionPane.YES_NO_OPTION);
         if (kq == JOptionPane.YES_OPTION) {
-            LoaiSanPhamController.Delete(macu);
+            QuyenController.Delete(macu);
             XoaTrang();
             Select();
         }
@@ -335,23 +334,23 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
 
     private void btnGhiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGhiActionPerformed
         // TODO add your handling code here:
-        LoaiSanPhamController tkc = new LoaiSanPhamController();
-        malsp = txtMaLSP.getText();
-        tenlsp = txtTenLSP.getText();
-        mota = txtMoTa.getText();
+        QuyenController tkc = new QuyenController();
+        maquyen = txtMaQuyen.getText();
+        tenquyen = txtTenQuyen.getText();
+        chitietquyen = txtChiTietQuyen.getText();
 
-        if (malsp.length() <= 0 || tenlsp.length() <= 0 || mota.length() <= 0) {
+        if (maquyen.length() <= 0 || tenquyen.length() <= 0 || chitietquyen.length() <= 0) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập đầy đủ thông tin", "Thông báo", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        if (KiemTraDLController.KiemTraTrungMa("MaLSP", "loaisanpham", malsp, ktThem, macu) == true) {
-            JOptionPane.showMessageDialog(this, "Bạn nhập trùng mã loại sản phẩm", "Thông báo", JOptionPane.WARNING_MESSAGE);
-            txtMaLSP.requestFocus();
+        if (KiemTraDLController.KiemTraTrungMa("MaQuyen", "phanquyen", maquyen, ktThem, macu) == true) {
+            JOptionPane.showMessageDialog(this, "Bạn nhập trùng mã quyền", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtMaQuyen.requestFocus();
             return;
         }
 
-        LoaiSanPham tk = new LoaiSanPham(malsp, tenlsp, mota);
+        Quyen tk = new Quyen(maquyen, tenquyen, chitietquyen);
         if (ktThem == true) {
 
             tkc.Insert(tk);
@@ -368,13 +367,13 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
         // TODO add your handling code here:
-        String tenlsp = JOptionPane.showInputDialog(this, "Nhập tên loại sản phẩm cần tìm");
-        if (tenlsp != null && tenlsp.length() > 0) {
-            listLoaiSanPham = LoaiSanPhamController.TimKiemTheoTenLoaiSanPham(tenlsp);
-            tblDanhSachLoaiSanPham.setRowCount(0);
-            listLoaiSanPham.forEach(p -> {
-                tblDanhSachLoaiSanPham.addRow(new Object[]{
-                    p.getMaLSP(), p.getTenLSP(), p.getMoTa()
+        String tenquyen = JOptionPane.showInputDialog(this, "Nhập tên ngành cần tìm");
+        if (tenquyen != null && tenquyen.length() > 0) {
+            listQuyen = QuyenController.TimKiemTheoTenQuyen(tenquyen);
+            tblDanhSachQuyen.setRowCount(0);
+            listQuyen.forEach(p -> {
+                tblDanhSachQuyen.addRow(new Object[]{
+                    p.getMaQuyen(), p.getTenQuyen(), p.getChiTietQuyen()
                 });
             });
         } else {
@@ -404,8 +403,8 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtMaLSP;
-    private javax.swing.JTextField txtMoTa;
-    private javax.swing.JTextField txtTenLSP;
+    private javax.swing.JTextField txtChiTietQuyen;
+    private javax.swing.JTextField txtMaQuyen;
+    private javax.swing.JTextField txtTenQuyen;
     // End of variables declaration//GEN-END:variables
 }

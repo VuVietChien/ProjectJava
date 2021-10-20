@@ -3,7 +3,7 @@ package Models;
 
 
 public class TaiKhoan {
-    String TenTaiKhoan,MatKhau,MaNV,MaQuyen,TenQuyen;
+    String TenTaiKhoan,MatKhau,MaNV,MaQuyen,TenQuyen,TenNV;
 
     public TaiKhoan() {
     }
@@ -15,6 +15,15 @@ public class TaiKhoan {
         this.MaQuyen = MaQuyen;
     }
 
+    public TaiKhoan(String TenTaiKhoan, String MatKhau, String MaNV, String MaQuyen, String TenQuyen, String TenNV) {
+        this.TenTaiKhoan = TenTaiKhoan;
+        this.MatKhau = MatKhau;
+        this.MaNV = MaNV;
+        this.MaQuyen = MaQuyen;
+        this.TenQuyen = TenQuyen;
+        this.TenNV = TenNV;
+    }
+    
     public String getTenTaiKhoan() {
         return TenTaiKhoan;
     }
@@ -53,6 +62,14 @@ public class TaiKhoan {
 
     public void setTenQuyen(String TenQuyen) {
         this.TenQuyen = TenQuyen;
+    }
+
+    public String getTenNV() {
+        return TenNV;
+    }
+
+    public void setTenNV(String TenNV) {
+        this.TenNV = TenNV;
     }
     
     

@@ -5,7 +5,12 @@
  */
 package Views;
 
+import Controllers.LoaiSanPhamController;
+import Controllers.NhanVienController;
+import Controllers.QuyenController;
 import Controllers.TaiKhoanController;
+import Models.NhanVien;
+import Models.Quyen;
 import Models.TaiKhoan;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +26,8 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
 
     DefaultTableModel tblDanhSachTaiKhoan;
     List<TaiKhoan> listTaiKhoan = new ArrayList<>();
+    List<Quyen> listQuyen = new ArrayList<>();
+    List<NhanVien> listNhanVien = new ArrayList<>();
     public String tentaikhoan, matkhau, manv, maquyen, macu;
     private boolean ktThem;
 
@@ -31,7 +38,38 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
         initComponents();
         tblDanhSachTaiKhoan = (DefaultTableModel) dgDanhSachTaiKhoan.getModel();
         KhoaMo(true);
+        LayNguonCBO();
         Select();
+    }
+
+    public void LayNguonCBO() {
+        listQuyen = QuyenController.Select();
+        for (int i = 0; i < listQuyen.size(); i++) {
+            cboQuyen.addItem(listQuyen.get(i).getTenQuyen());
+        }
+
+        listNhanVien = NhanVienController.LayNguonNganh();
+        for (int i = 0; i < listNhanVien.size(); i++) {
+            cboNV.addItem(listNhanVien.get(i).getTenNV());
+        }
+    }
+
+    public int vtQuyen(String malsp) {
+        for (int i = 0; i < listQuyen.size(); i++) {
+            if (listQuyen.get(i).getTenQuyen().equals(malsp)) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public int vtNV(String manv) {
+        for (int i = 0; i < listNhanVien.size(); i++) {
+            if (listNhanVien.get(i).getTenNV().equals(manv)) {
+                return i;
+            }
+        }
+        return 0;
     }
 
     public void KhoaMo(boolean b) {
@@ -43,16 +81,15 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
         btnKhong.setEnabled(!b);
         txtTenTK.setEditable(!b);
         txtMatKhau.setEditable(!b);
-        txtMaQuyen.setEditable(!b);
-        txtMaNV.setEditable(!b);
+        cboNV.setEnabled(!b);
+        cboQuyen.setEnabled(!b);
         dgDanhSachTaiKhoan.setEnabled(b);
     }
 
     public void XoaTrang() {
         txtTenTK.setText("");
         txtMatKhau.setText("");
-        txtMaQuyen.setText("");
-        txtMaNV.setText("");
+
     }
 
     public void Select() {
@@ -60,7 +97,7 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
         tblDanhSachTaiKhoan.setRowCount(0);
         listTaiKhoan.forEach(p -> {
             tblDanhSachTaiKhoan.addRow(new Object[]{
-                p.getTenTaiKhoan(), p.getMatKhau(), p.getMaNV(), p.getMaQuyen()
+                p.getTenTaiKhoan(), p.getMatKhau(), p.getTenNV(), p.getTenQuyen()
             });
         });
     }
@@ -83,8 +120,6 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
         txtMatKhau = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtMaNV = new javax.swing.JTextField();
-        txtMaQuyen = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -93,6 +128,8 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
         btnGhi = new javax.swing.JButton();
         btnTimKiem = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
+        cboNV = new javax.swing.JComboBox<>();
+        cboQuyen = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setMaximizable(true);
@@ -106,7 +143,7 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Tên tài khoản", "Mật khẩu", "Mã nhân viên", "Mã Quyền"
+                "Tên tài khoản", "Mật khẩu", "Tên Nhân viên", "Tên Quyền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -194,6 +231,8 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
             }
         });
 
+        cboNV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -211,8 +250,8 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtTenTK, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
                             .addComponent(txtMatKhau)
-                            .addComponent(txtMaNV)
-                            .addComponent(txtMaQuyen))
+                            .addComponent(cboNV, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboQuyen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -246,12 +285,12 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
                     .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(cboNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtMaQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
@@ -329,8 +368,8 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
         TaiKhoanController tkc = new TaiKhoanController();
         String tentk = txtTenTK.getText();
         String matkhau = txtMatKhau.getText();
-        String manv = txtMaNV.getText();
-        String maquyen = txtMaQuyen.getText();
+        manv = listNhanVien.get(cboNV.getSelectedIndex()).getMaNV();
+        maquyen = listQuyen.get(cboQuyen.getSelectedIndex()).getMaQuyen();
 
         if (tentk.length() <= 0 || matkhau.length() <= 0 || manv.length() <= 0 || maquyen.length() <= 0) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập đầy đủ thông tin", "Thông báo", JOptionPane.WARNING_MESSAGE);
@@ -382,11 +421,11 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
         matkhau = model.getValueAt(index, 1).toString();
         manv = model.getValueAt(index, 2).toString();
         maquyen = model.getValueAt(index, 3).toString();
-
+        cboNV.setSelectedIndex(vtNV(manv));
+        cboQuyen.setSelectedIndex(vtQuyen(maquyen));
         txtTenTK.setText(tentaikhoan);
         txtMatKhau.setText(matkhau);
-        txtMaNV.setText(manv);
-        txtMaQuyen.setText(maquyen);
+
     }//GEN-LAST:event_dgDanhSachTaiKhoanMouseClicked
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
@@ -397,7 +436,7 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
             tblDanhSachTaiKhoan.setRowCount(0);
             listTaiKhoan.forEach(p -> {
                 tblDanhSachTaiKhoan.addRow(new Object[]{
-                    p.getTenTaiKhoan(), p.getMatKhau(), p.getMaNV(), p.getMaQuyen()
+                    p.getTenTaiKhoan(), p.getMatKhau(), p.getTenNV(), p.getTenQuyen()
                 });
             });
         } else {
@@ -421,6 +460,8 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cboNV;
+    private javax.swing.JComboBox<String> cboQuyen;
     private javax.swing.JTable dgDanhSachTaiKhoan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -428,8 +469,6 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtMaNV;
-    private javax.swing.JTextField txtMaQuyen;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtTenTK;
     // End of variables declaration//GEN-END:variables
