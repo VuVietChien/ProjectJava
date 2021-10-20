@@ -35,12 +35,13 @@ public class Menu extends javax.swing.JFrame {
         listTaiKhoan = TaiKhoanController.Select();
     }
 
-    // phan quyen
+    // phan quyen tai khoan
     private void processLoginSuccessful() {
         lbLoginName.setText(SharedData.nguoiDangNhap.getTenTaiKhoan());
         lbRole.setText(SharedData.nguoiDangNhap.getTenQuyen());
         if (SharedData.nguoiDangNhap.getTenQuyen().equalsIgnoreCase("Nhân viên thống kê")) {
             lbSanPham.setVisible(false);
+            lbTaiKhoan.setVisible(false);
 
         }
 
