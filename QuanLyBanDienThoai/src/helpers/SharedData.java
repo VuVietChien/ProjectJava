@@ -13,4 +13,6 @@ import Models.TaiKhoan;
  */
 public class SharedData {
     public static TaiKhoan nguoiDangNhap;
+    
+
 }

@@ -276,7 +276,7 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
                     cthd.getTenNV(),
                     cthd.getMaKH(),
                     cthd.getNgayLap(),
-                    cthd.getThanhTien()
+                    PriceFormatter.format(cthd.getThanhTien()) 
                 });
             }
             loadSoLuongHD();
@@ -396,8 +396,8 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
                         cthd.getNgayLap(),
                         cthd.getThanhTien()
                     });
-                    tongTT += cthd.getThanhTien();
-                    lblTongDanhThu.setText("Tổng doanh thu: " + String.valueOf(tongTT));
+                    PriceFormatter.format(tongTT += cthd.getThanhTien());
+                    lblTongDanhThu.setText("Tổng doanh thu: " + String.valueOf(PriceFormatter.format(tongTT)));
                 }
                 loadSoLuongHD();
             } else {
