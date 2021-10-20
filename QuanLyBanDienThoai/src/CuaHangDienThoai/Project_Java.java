@@ -8,6 +8,7 @@ package CuaHangDienThoai;
 
 
 
+import Views.Splash;
 import Views.dangnhap;
 
 
@@ -15,8 +16,10 @@ import Views.dangnhap;
 public class Project_Java {
     public static String TenTK,MatKhau,MaNV,MaQuyen;
     public static void main(String[] args) {
-        dangnhap login  = new dangnhap();
-        login.setVisible(true);
+//        dangnhap login  = new dangnhap();
+//        login.setVisible(true);
+        Splash sp = new Splash();
+        sp.setVisible(true);
     }
     
 }
