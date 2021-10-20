@@ -14,7 +14,7 @@ import Views.dangnhap;
 
 
 public class Project_Java {
-    public static String TenTK,MatKhau,MaNV,MaQuyen;
+//    public static String TenTK,MatKhau,MaNV,MaQuyen;
     public static void main(String[] args) {
         dangnhap login  = new dangnhap();
         login.setVisible(true);

@@ -193,6 +193,11 @@ public class Menu extends javax.swing.JFrame {
         lbHoaDon.setForeground(new java.awt.Color(255, 255, 255));
         lbHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_agreement_30px.png"))); // NOI18N
         lbHoaDon.setText("Hóa Đơn");
+        lbHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbHoaDonMouseClicked(evt);
+            }
+        });
 
         lbNhanVien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbNhanVien.setForeground(new java.awt.Color(255, 255, 255));
@@ -370,14 +375,14 @@ public class Menu extends javax.swing.JFrame {
         Desktop.removeAll();
         mdiLoaiSanPham qlsp = new mdiLoaiSanPham();
         Desktop.add(qlsp).setVisible(true);
-        qlsp.setLocation((Desktop.getWidth()-qlsp.getWidth())/2,(Desktop.getHeight()-qlsp.getHeight())/2);
+        qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
     }//GEN-LAST:event_lbLoaiSPMouseClicked
 
     private void lbDoiMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbDoiMatKhauMouseClicked
         Desktop.removeAll();
         DoiMatKhau qlsp = new DoiMatKhau();
         Desktop.add(qlsp).setVisible(true);
-        qlsp.setLocation((Desktop.getWidth()-qlsp.getWidth())/2,(Desktop.getHeight()-qlsp.getHeight())/2);
+        qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
     }//GEN-LAST:event_lbDoiMatKhauMouseClicked
 
     private void lbSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbSanPhamMouseClicked
@@ -385,7 +390,7 @@ public class Menu extends javax.swing.JFrame {
         Desktop.removeAll();
         mdiSanPham1 qlsp = new mdiSanPham1();
         Desktop.add(qlsp).setVisible(true);
-        qlsp.setLocation((Desktop.getWidth()-qlsp.getWidth())/2,(Desktop.getHeight()-qlsp.getHeight())/2);
+        qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
     }//GEN-LAST:event_lbSanPhamMouseClicked
 
     private void lbTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbTaiKhoanMouseClicked
@@ -393,33 +398,43 @@ public class Menu extends javax.swing.JFrame {
         Desktop.removeAll();
         QuanLyTaiKhoan qlsp = new QuanLyTaiKhoan();
         Desktop.add(qlsp).setVisible(true);
-        qlsp.setLocation((Desktop.getWidth()-qlsp.getWidth())/2,(Desktop.getHeight()-qlsp.getHeight())/2);
+        qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
     }//GEN-LAST:event_lbTaiKhoanMouseClicked
 
     private void lbThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbThongKeMouseClicked
         Desktop.removeAll();
         QuanLyThongKe qlsp = new QuanLyThongKe();
         Desktop.add(qlsp).setVisible(true);
-        qlsp.setLocation((Desktop.getWidth()-qlsp.getWidth())/2,(Desktop.getHeight()-qlsp.getHeight())/2);
+        qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
     }//GEN-LAST:event_lbThongKeMouseClicked
 
     private void lbNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbNhanVienMouseClicked
         Desktop.removeAll();
         QuanLyNhanVien1 qlsp = new QuanLyNhanVien1();
         Desktop.add(qlsp).setVisible(true);
-        qlsp.setLocation((Desktop.getWidth()-qlsp.getWidth())/2,(Desktop.getHeight()-qlsp.getHeight())/2);
+        qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_lbNhanVienMouseClicked
 
     private void lbKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbKhachHangMouseClicked
-    Desktop.removeAll();
+        Desktop.removeAll();
         QuanLyKhachHang qlsp = new QuanLyKhachHang();
         Desktop.add(qlsp).setVisible(true);
-        qlsp.setLocation((Desktop.getWidth()-qlsp.getWidth())/2,(Desktop.getHeight()-qlsp.getHeight())/2);
+        qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_lbKhachHangMouseClicked
+
+    private void lbHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbHoaDonMouseClicked
+
+        Desktop.removeAll();
+        QuanLyHoaDon qlsp = new QuanLyHoaDon();
+        Desktop.add(qlsp).setVisible(true);
+        qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbHoaDonMouseClicked
 
     /**
      * @param args the command line arguments

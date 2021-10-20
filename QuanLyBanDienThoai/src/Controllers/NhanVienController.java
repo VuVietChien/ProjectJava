@@ -108,7 +108,7 @@ public class NhanVienController {
         try {
             conn = DriverManager.getConnection(dbURL);
 
-            sql = "Update nhanvien Set manv=?,tennv=?,ngaysinh=?, diachi=?,sdt=? Where manv=?";
+            sql = "Update nhanvien Set manv=?,tennv=?,ngaysinh=?, nhanvien.diachi=?,nhanvien.sdt=? Where manv=?";
             state = conn.prepareStatement(sql);
               state.setString(1, cn.getMaNV());
             state.setString(2, cn.getTenNV());

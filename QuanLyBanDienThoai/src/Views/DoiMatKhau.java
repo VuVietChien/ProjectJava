@@ -4,10 +4,8 @@ package Views;
 
 import Controllers.TaiKhoanController;
 import CuaHangDienThoai.Project_Java;
-import static CuaHangDienThoai.Project_Java.MaNV;
-import static CuaHangDienThoai.Project_Java.MaQuyen;
-import static CuaHangDienThoai.Project_Java.TenTK;
 import Models.TaiKhoan;
+import helpers.SharedData;
 import javax.swing.JOptionPane;
 
 public class DoiMatKhau extends javax.swing.JInternalFrame {
@@ -19,9 +17,9 @@ public class DoiMatKhau extends javax.swing.JInternalFrame {
     }
     
     private void HienThongTin(){
-        txtTenTK.setText(TenTK);
-        txtMaNV.setText(MaNV);
-        txtMaQuyen.setText(MaQuyen);
+        txtTenTK.setText(SharedData.nguoiDangNhap.getTenTaiKhoan());
+        txtMaNV.setText(SharedData.nguoiDangNhap.getMaNV());
+        txtMaQuyen.setText(SharedData.nguoiDangNhap.getMaQuyen());
     }
   
     @SuppressWarnings("unchecked")
@@ -156,7 +154,7 @@ public class DoiMatKhau extends javax.swing.JInternalFrame {
             txtMatKhau.requestFocus();
             return;
         }
-        if (txtMatKhau.getText().toUpperCase().equals(Project_Java.MatKhau.toUpperCase())==false) {
+        if (txtMatKhau.getText().toUpperCase().equals(SharedData.nguoiDangNhap.getMatKhau().toUpperCase())==false) {
             JOptionPane.showMessageDialog(this, "Bạn nhập sai mật khẩu.", "Thông Báo", JOptionPane.ERROR_MESSAGE);
             txtMatKhau.requestFocus();
             return;

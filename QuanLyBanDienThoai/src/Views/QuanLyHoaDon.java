@@ -5,8 +5,12 @@
  */
 package Views;
 
+import Controllers.ChiTietHoaDonController;
+import Controllers.HoaDonController;
 import Models.*;
+import helpers.PriceFormatter;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,9 +19,19 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class HoaDon extends javax.swing.JInternalFrame {
+public class QuanLyHoaDon extends javax.swing.JInternalFrame {
+
+    public QuanLyHoaDon() {
+        initComponents();
+        setResizable(false);
+
+        tableModel = (DefaultTableModel) tblDanhSach.getModel();
+
+        btnXoa.setEnabled(false);
+    }
 
     String maNV;
+       int row;
 
     public String getMaNV() {
         return maNV;
@@ -26,23 +40,13 @@ public class HoaDon extends javax.swing.JInternalFrame {
     public void setMaNV(String maNV) {
         this.maNV = maNV;
     }
-    List<HoaDon> thdList = new ArrayList<>();
+    List<QuanLyHoaDon> thdList = new ArrayList<>();
     List<ChiTietHoaDon> cTHDList = new ArrayList<>();
-
     DefaultTableModel tableModel;
 
-    public HoaDon() {
-        initComponents();
-        setResizable(false);
-       
-        tableModel = (DefaultTableModel) tblDanhSach.getModel();
-
-        btnXoa.setEnabled(false);
-    }
-
     
-      private void getData(){
-        cTHDList = ChiTietHoaDonDao.getTTHD(this.getMaNV());
+    private void getData(){
+        cTHDList = ChiTietHoaDonController.getTTHD(this.getMaNV());
         tableModel.setRowCount(0);
         for (ChiTietHoaDon cthd : cTHDList) {
             tableModel.addRow(new Object[]{
@@ -58,7 +62,42 @@ public class HoaDon extends javax.swing.JInternalFrame {
         int n = tableModel.getRowCount();
         lblSoLuongHD.setText("Số lượng hóa đơn: " + String.valueOf(n));
     }
-    
+    private void loadTongTien(){
+        Connection conn = null;
+        PreparedStatement pre = null;
+        ResultSet rs = null;
+        try {
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            String sql = "select sum(soLuong*donGia) as 'tongTien' "
+                    + "from SanPham inner join ChiTietHoaDon on SanPham.maSP = ChiTietHoaDon.maSP "
+                    + "inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD "
+                    + "where maNV = ?";
+            pre = conn.prepareStatement(sql);
+            pre.setString(1, getMaNV());
+            rs = pre.executeQuery();
+            while(rs.next()){
+                lblTongTien.setText("Tổng tiền hóa đơn: " + rs.getString("tongTien").trim());
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi: " + ex);
+        } finally {
+            if (pre != null) {
+                try {
+                    pre.close();
+                } catch (SQLException ex) {
+                    System.out.println("Lỗi: " + ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("Lỗi: " + ex);
+                }
+            }
+        }
+        
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -260,7 +299,7 @@ public class HoaDon extends javax.swing.JInternalFrame {
         try {
             String MaHD = JOptionPane.showInputDialog(this, "Nhập mã hóa đơn cần tìm");
             if (MaHD.equals("") == false) {
-                cTHDList = ChiTietHoaDonDao.findByMaHD(MaHD, getMaNV());
+                cTHDList = ChiTietHoaDonController.findByMaHD(MaHD, getMaNV());
                 tableModel.setRowCount(0);
                 for (ChiTietHoaDon cthd : cTHDList) {
                     tableModel.addRow(new Object[]{
@@ -292,8 +331,8 @@ public class HoaDon extends javax.swing.JInternalFrame {
             ChiTietHoaDon cthd = cTHDList.get(row);
             int option = JOptionPane.showConfirmDialog(rootPane, "Bạn có muốn xóa không");
             if (option == 0) {
-                ChiTietHoaDonDao.deleteCTHD(cthd.getMaHD());
-                HoaDonDao.deleteHD(cthd.getMaHD());
+                ChiTietHoaDonController.deleteCTHD(cthd.getMaHD());
+                HoaDonController.deleteHD(cthd.getMaHD());
             }
             btnXoa.setEnabled(false);
         }
@@ -304,7 +343,7 @@ public class HoaDon extends javax.swing.JInternalFrame {
 
     private void btnSapXepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSapXepActionPerformed
         // TODO add your handling code here:
-        cTHDList = ChiTietHoaDonDao.sortByDate(getMaNV());
+        cTHDList = ChiTietHoaDonController.sortByDate(getMaNV());
         tableModel.setRowCount(0);
         for (ChiTietHoaDon cthd : cTHDList) {
             tableModel.addRow(new Object[]{
