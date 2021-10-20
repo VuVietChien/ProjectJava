@@ -290,15 +290,18 @@ public class dangnhap extends javax.swing.JFrame {
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 
-                        Project_Java.TenTK = rs.getString("tentaikhoan");
-                        Project_Java.MatKhau = rs.getString("matkhau");
-                        Project_Java.MaNV = rs.getString("manv");
-                        Project_Java.MaQuyen = rs.getString("maquyen");
+//                        Project_Java.TenTK = rs.getString("tentaikhoan");
+//                        Project_Java.MatKhau = rs.getString("matkhau");
+//                        Project_Java.MaNV = rs.getString("manv");
+//                        Project_Java.MaQuyen = rs.getString("maquyen");
 
                         TaiKhoan tk = new TaiKhoan();
                         tk.setTenTaiKhoan(username);
                         tk.setMaQuyen(rs.getString("MaQuyen"));
                         tk.setTenQuyen(rs.getString("TenQuyen"));
+                        tk.setMatKhau(password);
+                        tk.setMaNV(rs.getString("MaNV"));
+                        
                         SharedData.nguoiDangNhap = tk;
                         Menu menu = new Menu();
                         menu.setVisible(true);
