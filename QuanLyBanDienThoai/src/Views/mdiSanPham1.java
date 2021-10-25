@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -54,7 +54,7 @@ public class mdiSanPham1 extends javax.swing.JInternalFrame {
         txtDonGia.setEditable(!b);
         txtTenSP.setEditable(!b);
         txtSoLuong.setEditable(!b);
-        txtTenAnh.setEditable(!b);
+        txtTenAnh.setEditable(b);
         cbLSP.setEnabled(!b);
         txtMaSP.setEditable(!b);
         dgDanhSach.setEnabled(b);
@@ -404,7 +404,7 @@ public class mdiSanPham1 extends javax.swing.JInternalFrame {
     private void btnFolderAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFolderAnhActionPerformed
         // TODO add your handling code here:
         try {
-            JFileChooser f = new JFileChooser("E:\\DhCNGTVT2022\\Java_tutorial\\ProjectJava\\QuanLyBanDienThoai\\src\\giaodienchuan\\images\\Product Images");
+            JFileChooser f = new JFileChooser("D:\\ProjectJavaNetbean12\\ProjectJava\\ProjectJava\\ProjectJava\\QuanLyBanDienThoai\\src\\giaodienchuan\\images\\Product Images");
             f.setDialogTitle("Mở file");
             f.showOpenDialog(null);
             File ftenanh = f.getSelectedFile();
@@ -495,7 +495,7 @@ public class mdiSanPham1 extends javax.swing.JInternalFrame {
             tblDanhSachSanPham.setRowCount(0);
             listSanPham.forEach(p -> {
                 tblDanhSachSanPham.addRow(new Object[]{
-                    p.getMaSP(), p.getMaLSP(), p.getTenSP(), p.getHinhAnh(), p.getDonGia(), p.getSoLuong()
+                    p.getMaSP(), p.getTenLSP(), p.getTenSP(), p.getHinhAnh(), p.getDonGia(), p.getSoLuong()
                 });
             });
         } else {
