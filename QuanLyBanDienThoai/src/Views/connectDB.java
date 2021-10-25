@@ -9,9 +9,13 @@ package Views;
  *
  */
 public class connectDB {
+<<<<<<< HEAD
 
 
     public static String dbURL = "jdbc:sqlserver://localhost;databaseName=quanlysieuthidienthoai;user=sa;password=long123";
 
 
+=======
+    public static String dbURL = "jdbc:sqlserver://localhost;databaseName=quanlysieuthidienthoai;user=sa;password=123456";
+>>>>>>> 4842562f1b9b499366f1c8b31b628f1650a07dde
 }

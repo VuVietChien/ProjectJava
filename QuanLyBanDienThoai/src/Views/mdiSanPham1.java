@@ -491,7 +491,7 @@ public class mdiSanPham1 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         String tensp = JOptionPane.showInputDialog(this, "Nhập tên sản phẩm cần tìm");
         if (tensp != null && tensp.length() > 0) {
-            listSanPham = SanPhamController.TimKiemTheoTenSanPham(tensp);
+            listSanPham = SanPhamController.TimKiem(tensp,tensp);
             tblDanhSachSanPham.setRowCount(0);
             listSanPham.forEach(p -> {
                 tblDanhSachSanPham.addRow(new Object[]{

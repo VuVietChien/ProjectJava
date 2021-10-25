@@ -3,8 +3,12 @@ package Controllers;
 
 
 import Models.ChiTietHoaDon;
+import Models.KhachHang;
+import Models.NhaCungCap;
+import Models.NhanVien;
+import Models.SanPham1;
 import Models.ThongKe;
-import Views.QuanLyThongKe;
+//import Views.QuanLyThongKe;
 import Views.connectDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -198,4 +202,155 @@ public class ThongKeDoanhSo_Controller {
         return tkList;
     }
     
+<<<<<<< HEAD
 }
+=======
+    public static List<SanPham1> getTongSP() {
+        List<SanPham1> tksp = new ArrayList<>();
+        
+        conn = null;
+        pstate = null;
+        rs = null;
+        try {
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            String sql = "select count(MaSP) as 'soluong' from sanpham";
+            pstate = conn.prepareStatement(sql);
+            rs = pstate.executeQuery();
+            while (rs.next()) {
+                SanPham1 tk1 = new SanPham1();
+                tk1.setMaSP(rs.getString("soluong"));
+                tksp.add(tk1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi: " + ex);
+        } finally {
+            if (pstate != null) {
+                try {
+                    pstate.close();
+                } catch (SQLException ex) {
+                    System.out.println("Lỗi: " + ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("Lỗi: " + ex);
+                }
+            }
+        }
+        return tksp;
+    }
+    
+     public static List<NhanVien> getTongNV() {
+        List<NhanVien> tknv = new ArrayList<>();
+        
+        conn = null;
+        pstate = null;
+        rs = null;
+        try {
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            String sql = "select count(MaNV) as 'soluong' from nhanvien";
+            pstate = conn.prepareStatement(sql);
+            rs = pstate.executeQuery();
+            while (rs.next()) {
+                NhanVien nv = new NhanVien();
+                nv.setMaNV(rs.getString("soluong"));
+                tknv.add(nv);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi: " + ex);
+        } finally {
+            if (pstate != null) {
+                try {
+                    pstate.close();
+                } catch (SQLException ex) {
+                    System.out.println("Lỗi: " + ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("Lỗi: " + ex);
+                }
+            }
+        }
+        return tknv;
+    }
+    
+     public static List<KhachHang> getTongKH() {
+        List<KhachHang> tkkh = new ArrayList<>();
+        
+        conn = null;
+        pstate = null;
+        rs = null;
+        try {
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            String sql = "select count(MaKH) as 'soluong' from khachhang";
+            pstate = conn.prepareStatement(sql);
+            rs = pstate.executeQuery();
+            while (rs.next()) {
+                KhachHang kh = new KhachHang();
+                kh.setMaKHString(rs.getString("soluong"));
+                tkkh.add(kh);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi: " + ex);
+        } finally {
+            if (pstate != null) {
+                try {
+                    pstate.close();
+                } catch (SQLException ex) {
+                    System.out.println("Lỗi: " + ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("Lỗi: " + ex);
+                }
+            }
+        }
+        return tkkh;
+    }
+     
+    public static List<NhaCungCap> getTongNCC() {
+        List<NhaCungCap> tkncc = new ArrayList<>();
+        
+        conn = null;
+        pstate = null;
+        rs = null;
+        try {
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            String sql = "select count(MaNCC) as 'soluong' from NhaCungCap";
+            pstate = conn.prepareStatement(sql);
+            rs = pstate.executeQuery();
+            while (rs.next()) {
+                NhaCungCap ncc = new NhaCungCap();
+                ncc.setMaNCC(rs.getString("soluong"));
+                tkncc.add(ncc);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi: " + ex);
+        } finally {
+            if (pstate != null) {
+                try {
+                    pstate.close();
+                } catch (SQLException ex) {
+                    System.out.println("Lỗi: " + ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("Lỗi: " + ex);
+                }
+            }
+        }
+        return tkncc;
+    }
+}
+>>>>>>> 4842562f1b9b499366f1c8b31b628f1650a07dde

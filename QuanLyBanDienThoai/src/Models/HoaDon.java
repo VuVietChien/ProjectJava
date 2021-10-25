@@ -22,6 +22,7 @@ public class HoaDon extends NhanVien {
         this.TongTien = TongTien;
     }
 
+<<<<<<< HEAD
     
     
     public HoaDon(String maNV, String ngayLap, String tenKH){
@@ -31,6 +32,17 @@ public class HoaDon extends NhanVien {
     }
 
     
+=======
+    public HoaDon(String MaHD, String MaKH, String NgayLap, float TongTien) {
+        this.MaHD = MaHD;
+        this.MaKH = MaKH;
+        this.NgayLap = NgayLap;
+        this.TongTien = TongTien;
+    }
+    
+    
+
+>>>>>>> 4842562f1b9b499366f1c8b31b628f1650a07dde
     public String getMaHD() {
         return MaHD;
     }
