@@ -312,6 +312,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="B&#xe1;n h&#xe0;ng"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mouseClickedQLbanhang"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbNhapHang">
               <Properties>

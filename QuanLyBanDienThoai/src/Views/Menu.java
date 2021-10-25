@@ -173,6 +173,11 @@ public class Menu extends javax.swing.JFrame {
         lbBanHang.setForeground(new java.awt.Color(255, 255, 255));
         lbBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_small_business_30px_3.png"))); // NOI18N
         lbBanHang.setText("Bán hàng");
+        lbBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mouseClickedQLbanhang(evt);
+            }
+        });
 
         lbNhapHang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbNhapHang.setForeground(new java.awt.Color(255, 255, 255));
@@ -420,6 +425,14 @@ public class Menu extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_lbKhachHangMouseClicked
+
+    private void mouseClickedQLbanhang(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mouseClickedQLbanhang
+        // TODO add your handling code here:
+        QuanLyBanHang qlbh = new QuanLyBanHang();
+        Desktop.add(qlbh);
+        qlbh.setVisible(true);
+        qlbh.setLocation((Desktop.getWidth()-qlbh.getWidth())/2,(Desktop.getHeight()-qlbh.getHeight())/2);
+    }//GEN-LAST:event_mouseClickedQLbanhang
 
     /**
      * @param args the command line arguments
