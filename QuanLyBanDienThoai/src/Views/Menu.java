@@ -438,7 +438,6 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lbKhachHangMouseClicked
 
-<<<<<<< HEAD
     private void mouseClickedQLbanhang(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mouseClickedQLbanhang
         // TODO add your handling code here:
         QuanLyBanHang qlbh = new QuanLyBanHang();
@@ -446,7 +445,7 @@ public class Menu extends javax.swing.JFrame {
         qlbh.setVisible(true);
         qlbh.setLocation((Desktop.getWidth()-qlbh.getWidth())/2,(Desktop.getHeight()-qlbh.getHeight())/2);
     }//GEN-LAST:event_mouseClickedQLbanhang
-=======
+
     private void lbQuyenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbQuyenMouseClicked
         // TODO add your handling code here:
         Desktop.removeAll();
@@ -454,7 +453,7 @@ public class Menu extends javax.swing.JFrame {
         Desktop.add(qlsp).setVisible(true);
         qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
     }//GEN-LAST:event_lbQuyenMouseClicked
->>>>>>> 2e3e31d621aaa42e7b3c3d76efd273f866ee98a9
+
 
     /**
      * @param args the command line arguments
