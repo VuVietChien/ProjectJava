@@ -28,7 +28,8 @@ public class SanPhamController {
     public static Statement state;
     public static PreparedStatement pstate;
     public static String sql;
-
+    
+   
     public static List<SanPham1> Select() {
         List<SanPham1> listSanPham = new ArrayList<>();
         conn = null;

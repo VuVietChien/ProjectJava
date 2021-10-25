@@ -398,7 +398,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void lbThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbThongKeMouseClicked
         Desktop.removeAll();
-        QuanLyThongKe qlsp = new QuanLyThongKe();
+        HomeThongKe qlsp = new HomeThongKe();
         Desktop.add(qlsp).setVisible(true);
         qlsp.setLocation((Desktop.getWidth()-qlsp.getWidth())/2,(Desktop.getHeight()-qlsp.getHeight())/2);
     }//GEN-LAST:event_lbThongKeMouseClicked
