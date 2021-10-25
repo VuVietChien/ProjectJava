@@ -202,9 +202,9 @@ public class ThongKeDoanhSo_Controller {
         return tkList;
     }
     
-<<<<<<< HEAD
-}
-=======
+
+
+
     public static List<SanPham1> getTongSP() {
         List<SanPham1> tksp = new ArrayList<>();
         
@@ -316,6 +316,7 @@ public class ThongKeDoanhSo_Controller {
         return tkkh;
     }
      
+        
     public static List<NhaCungCap> getTongNCC() {
         List<NhaCungCap> tkncc = new ArrayList<>();
         
@@ -353,4 +354,4 @@ public class ThongKeDoanhSo_Controller {
         return tkncc;
     }
 }
->>>>>>> 4842562f1b9b499366f1c8b31b628f1650a07dde
+

@@ -443,7 +443,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lbKhachHangMouseClicked
 
-<<<<<<< HEAD
+
 
     private void lbHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbHoaDonMouseClicked
 
@@ -454,7 +454,7 @@ public class Menu extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_lbHoaDonMouseClicked
-=======
+
     private void mouseClickedQLbanhang(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mouseClickedQLbanhang
         // TODO add your handling code here:
         QuanLyBanHang qlbh = new QuanLyBanHang();
@@ -462,7 +462,6 @@ public class Menu extends javax.swing.JFrame {
         qlbh.setVisible(true);
         qlbh.setLocation((Desktop.getWidth()-qlbh.getWidth())/2,(Desktop.getHeight()-qlbh.getHeight())/2);
     }//GEN-LAST:event_mouseClickedQLbanhang
->>>>>>> 4842562f1b9b499366f1c8b31b628f1650a07dde
 
     private void lbQuyenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbQuyenMouseClicked
         // TODO add your handling code here:
