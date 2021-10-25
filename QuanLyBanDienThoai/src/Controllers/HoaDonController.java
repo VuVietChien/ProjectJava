@@ -1,4 +1,3 @@
-
 package Controllers;
 
 import Models.HoaDon;
@@ -9,15 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- *
- * @author Ho Nam
- */
 public class HoaDonController {
-    
+
     static Connection conn = null;
     static PreparedStatement pre = null;
-    
+
     public static void insertHD(HoaDon sp) {
         try {
             conn = DriverManager.getConnection(dbURL);
@@ -25,6 +20,7 @@ public class HoaDonController {
             pre = conn.prepareStatement(sql);
             pre.setString(1, sp.getMaHD());
             pre.setString(2, sp.getMaNV());
+            pre.setString(3, sp.getSDT());
             pre.setString(4, sp.getTenKH());
             pre.setString(5, sp.getNgayLap());
             pre.setString(6, sp.getDiaChi());

@@ -1,12 +1,16 @@
 package Controllers;
 
 import Models.ChiTietHoaDon;
+import Models.ThongKe;
+import Views.QuanLyThongKe;
 import Views.connectDB;
+import static Views.connectDB.dbURL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -14,110 +18,170 @@ import java.util.logging.Logger;
 
 public class ChiTietHoaDonController {
 
-    public static List<ChiTietHoaDon> getTTHD(String maNV) {
+    public static Connection conn;
+    public static Statement state;
+    public static String sql;
+    public static PreparedStatement pstate;
+    public static ResultSet rs;
 
-        List<ChiTietHoaDon> cthds = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement pre = null;
-        ResultSet rs = null;
-
-        String sql = "select ChiTietHoaDon.maHD, ngayLap, maNV, tenKH, sum(soLuong * donGia) as 'thanhTien'\n"
-                + "from ChiTietHoaDon inner join SanPham on SanPham.maSP = ChiTietHoaDon.maSP\n"
-                + "inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD\n"
-                + "where maNV = ?\n"
-                + "group by ChiTietHoaDon.maHD,ngayLap, maNV, tenKH";
+    public static List<ChiTietHoaDon> layNguon() {
+        List<ChiTietHoaDon> cthdList = new ArrayList<>();
+        conn = null;
+        pstate = null;
+        rs = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            pre = conn.prepareStatement(sql);
-            pre.setString(1, maNV);
-            rs = pre.executeQuery();
+            String sql = "select chitiethoadon.maHD, HoaDon.maNV,tenNV, khachhang.MaKH, ngayLap, sum(chitiethoadon.SoLuong * chitiethoadon.DonGia) as 'thanhTien'\n"
+                    + "from chitiethoadon inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD,NhanVien,khachhang\n"
+                    + "where NhanVien.maNV = HoaDon.maNV and khachhang.MaKH=hoadon.MaKH\n"
+                    + "group by chitiethoadon.maHD, HoaDon.maNV, tenNV, khachhang.MaKH, ngayLap";
+            pstate = conn.prepareStatement(sql);
+            rs = pstate.executeQuery();
             while (rs.next()) {
-                ChiTietHoaDon ct = new ChiTietHoaDon(rs.getString("maHD"), rs.getString("ngayLap"),
-                        rs.getString("maNV"), rs.getString("tenKH"), rs.getFloat("thanhTien"));
-                cthds.add(ct);
+                ChiTietHoaDon ct = new ChiTietHoaDon();
+                ct.setMaHD(rs.getString("maHD"));
+                ct.setMaNV(rs.getString("maNV"));
+                ct.setTenNV(rs.getString("tenNV"));
+                ct.setMaKH(rs.getString("MaKH"));
+                ct.setNgayLap(rs.getString("ngaylap"));
+                ct.setThanhTien(rs.getFloat("thanhTien"));
+                cthdList.add(ct);
             }
         } catch (SQLException ex) {
-            System.out.println("Lỗi: " + ex);
+            System.out.println("Lôi: " + ex);
         } finally {
-            if (pre != null) {
+            if (pstate != null) {
                 try {
-                    pre.close();
+                    pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ChiTietHoaDonController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    System.out.println("Lỗi: " + ex);
+                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return cthdList;
+    }
+
+    public static List<ChiTietHoaDon> findByDate(String maHD) {
+        List<ChiTietHoaDon> cthdList = new ArrayList<>();
+        conn = null;
+        pstate = null;
+        rs = null;
+        try {
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            String sql = "select chitiethoadon.maHD, HoaDon.maNV,tenNV, khachhang.MaKH, ngayLap, sum(chitiethoadon.SoLuong * chitiethoadon.DonGia) as 'thanhTien'\n"
+                    + "from chitiethoadon inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD,NhanVien,khachhang\n"
+                    + "where NhanVien.maNV = HoaDon.maNV and khachhang.MaKH=hoadon.MaKH and chitiethoadon.maHD=?\n"
+                    + "group by chitiethoadon.maHD, HoaDon.maNV, tenNV, khachhang.MaKH, ngayLap";
+            pstate = conn.prepareStatement(sql);
+            pstate.setString(1, maHD);
+            rs = pstate.executeQuery();
+            while (rs.next()) {
+                ChiTietHoaDon ct = new ChiTietHoaDon();
+                ct.setMaHD(rs.getString("maHD"));
+                ct.setMaNV(rs.getString("maNV"));
+                ct.setTenNV(rs.getString("tenNV"));
+                ct.setMaKH(rs.getString("MaKH"));
+                ct.setNgayLap(rs.getString("ngaylap"));
+                ct.setThanhTien(rs.getFloat("thanhTien"));
+                cthdList.add(ct);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi: " + ex);
+        } finally {
+            if (pstate != null) {
+                try {
+                    pstate.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return cthdList;
+    }
+
+    public static List<ChiTietHoaDon> sortByTT() {
+        List<ChiTietHoaDon> cthds = new ArrayList<>();
+        conn = null;
+        pstate = null;
+        rs = null;
+        try {
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            String sql = "select chitiethoadon.maHD, HoaDon.maNV,tenNV, khachhang.MaKH, ngayLap, sum(chitiethoadon.soLuong * chitiethoadon.DonGia) as 'thanhTien'\n"
+                    + "from chitiethoadon inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD,NhanVien,khachhang\n"
+                    + "where NhanVien.maNV = HoaDon.maNV and khachhang.MaKH=hoadon.MaKH\n"
+                    + "group by chitiethoadon.maHD, HoaDon.maNV, tenNV, khachhang.MaKH, ngayLap\n"
+                    + "order by thanhTien";
+
+            pstate = conn.prepareStatement(sql);
+            rs = pstate.executeQuery();
+            while (rs.next()) {
+                ChiTietHoaDon ct = new ChiTietHoaDon();
+                ct.setMaHD(rs.getString("maHD"));
+                ct.setMaNV(rs.getString("maNV"));
+                ct.setTenNV(rs.getString("tenNV"));
+                ct.setMaKH(rs.getString("makh"));
+                ct.setNgayLap(rs.getString("ngaylap"));
+                ct.setThanhTien(rs.getFloat("thanhtien"));
+                cthds.add(ct);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi: " + ex);
+        } finally {
+            if (pstate != null) {
+                try {
+                    pstate.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
         return cthds;
     }
 
-    public static List<ChiTietHoaDon> findByMaHD(String maHD, String maNV) {
-        List<ChiTietHoaDon> cthds = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement pre = null;
-        ResultSet rs = null;
+    public static List<ThongKe> getTongTien() {
+        List<ThongKe> tkList = new ArrayList<>();
 
-        String sql = "select ChiTietHoaDon.maHD, ngayLap, maNV, tenKH, sum(soLuong * donGia) as 'thanhTien'\n"
-                + "from ChiTietHoaDon inner join SanPham on SanPham.maSP = ChiTietHoaDon.maSP inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD\n"
-                + "where ChiTietHoaDon.maHD = ? and maNV = ?\n"
-                + "group by ChiTietHoaDon.maHD,ngayLap, maNV, tenKH";
-
+        conn = null;
+        pstate = null;
+        rs = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            pre = conn.prepareStatement(sql);
-            pre.setString(1, maHD);
-            pre.setString(2, maNV);
-            rs = pre.executeQuery();
+            String sql = "select sum(SoLuong*donGia) as 'tongTien'\n"
+                    + "from ChiTietHoaDon";
+            pstate = conn.prepareStatement(sql);
+            rs = pstate.executeQuery();
             while (rs.next()) {
-                ChiTietHoaDon ct = new ChiTietHoaDon(rs.getString("maHD"), rs.getString("ngayLap"), rs.getString("maNV"), rs.getString("tenKH"), rs.getFloat("thanhTien"));
-                cthds.add(ct);
+                ThongKe tk = new ThongKe();
+                tk.setThanhTien(Float.parseFloat(rs.getString("tongTien")));
+                tkList.add(tk);
             }
         } catch (SQLException ex) {
             System.out.println("Lỗi: " + ex);
         } finally {
-            if (pre != null) {
+            if (pstate != null) {
                 try {
-                    pre.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ChiTietHoaDonController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ChiTietHoaDonController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-        return cthds;
-    }
-
-    public static void insertCTHD(ChiTietHoaDon cthd) {
-        Connection conn = null;
-        PreparedStatement pre = null;
-        try {
-            conn = DriverManager.getConnection(connectDB.dbURL);
-            String sql = "insert into ChiTietHoaDon values(?,?,?)";
-            pre = conn.prepareStatement(sql);
-            pre.setString(1, cthd.getMaHD());
-            pre.setString(2, cthd.getMSP());
-            pre.setInt(3, cthd.getSoLuong());
-
-            pre.executeUpdate();
-
-        } catch (SQLException ex) {
-            System.out.println("Lỗi: " + ex);
-        } finally {
-            if (pre != null) {
-                try {
-                    pre.close();
+                    pstate.close();
                 } catch (SQLException ex) {
                     System.out.println("Lỗi: " + ex);
                 }
@@ -130,13 +194,14 @@ public class ChiTietHoaDonController {
                 }
             }
         }
+        return tkList;
     }
 
     public static void deleteCTHD(String maHD) {
         Connection conn = null;
         PreparedStatement pre = null;
         try {
-            conn = DriverManager.getConnection(connectDB.dbURL);
+            conn = DriverManager.getConnection(dbURL);
             String sql = "delete from ChiTietHoaDon where maHD = ?";
             pre = conn.prepareStatement(sql);
             pre.setString(1, maHD);
@@ -160,46 +225,6 @@ public class ChiTietHoaDonController {
                 }
             }
         }
-    }
 
-    public static List<ChiTietHoaDon> sortByDate(String maNV) {
-        List<ChiTietHoaDon> cthds = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement pre = null;
-        ResultSet rs = null;
-        try {
-            String sql = "select ChiTietHoaDon.maHD, ngayLap, maNV, tenKH, sum(soLuong * donGia) as 'thanhTien'\n"
-                    + "from ChiTietHoaDon inner join SanPham on SanPham.maSP = ChiTietHoaDon.maSP inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD\n"
-                    + "where maNV = ?\n"
-                    + "group by ChiTietHoaDon.maHD,ngayLap, maNV, tenKH\n"
-                    + "order by ngayLap";
-            conn = DriverManager.getConnection(connectDB.dbURL);
-            pre = conn.prepareStatement(sql);
-            pre.setString(1, maNV);
-            rs = pre.executeQuery();
-            while (rs.next()) {
-                ChiTietHoaDon ct = new ChiTietHoaDon(rs.getString("maHD"), rs.getString("ngayLap"),
-                        rs.getString("maNV"), rs.getString("tenKH"), rs.getFloat("thanhTien"));
-                cthds.add(ct);
-            }
-        } catch (SQLException ex) {
-            System.out.println("Lỗi: " + ex);
-        } finally {
-            if (pre != null) {
-                try {
-                    pre.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ChiTietHoaDonController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ChiTietHoaDonController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-        return cthds;
     }
 }

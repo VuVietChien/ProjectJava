@@ -34,8 +34,8 @@ public class ChiTietHoaDon extends HoaDon{
         this.thanhTien = thanhTien;
     }
 
-    public ChiTietHoaDon(String maHD, String ngayLap, String maNV,String tenKH, float thanhTien){
-        super(maNV, ngayLap,tenKH);
+    public ChiTietHoaDon(String maHD, String ngayLap, String tenNV,String tenKH, float thanhTien){
+        super(tenNV, ngayLap,tenKH);
         this.MaHD = maHD;
         this.thanhTien = thanhTien;
     }

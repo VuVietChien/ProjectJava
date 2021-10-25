@@ -71,6 +71,15 @@ public class HoaDon extends NhanVien {
         this.TongTien = TongTien;
     }
 
+    public String getSDT() {
+        return SDT;
+    }
+
+     @Override
+    public void setSDT(String SDT) {
+        this.SDT = SDT;
+    }
+
 
 }
         
