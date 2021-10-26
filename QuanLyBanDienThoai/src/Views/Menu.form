@@ -432,6 +432,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nh&#xe0; Cung C&#x1ea5;p"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LbNhaCCMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbThongKe">
               <Properties>
