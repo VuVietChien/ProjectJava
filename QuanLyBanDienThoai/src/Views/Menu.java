@@ -245,6 +245,11 @@ public class Menu extends javax.swing.JFrame {
         LbNhaCC.setForeground(new java.awt.Color(255, 255, 255));
         LbNhaCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_company_30px.png"))); // NOI18N
         LbNhaCC.setText("Nhà Cung Cấp");
+        LbNhaCC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LbNhaCCMouseClicked(evt);
+            }
+        });
 
         lbThongKe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbThongKe.setForeground(new java.awt.Color(255, 255, 255));
@@ -444,7 +449,6 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_lbKhachHangMouseClicked
 
 
-
     private void lbHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbHoaDonMouseClicked
 
         Desktop.removeAll();
@@ -460,7 +464,7 @@ public class Menu extends javax.swing.JFrame {
         QuanLyBanHang qlbh = new QuanLyBanHang();
         Desktop.add(qlbh);
         qlbh.setVisible(true);
-        qlbh.setLocation((Desktop.getWidth()-qlbh.getWidth())/2,(Desktop.getHeight()-qlbh.getHeight())/2);
+        qlbh.setLocation((Desktop.getWidth() - qlbh.getWidth()) / 2, (Desktop.getHeight() - qlbh.getHeight()) / 2);
     }//GEN-LAST:event_mouseClickedQLbanhang
 
     private void lbQuyenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbQuyenMouseClicked
@@ -471,6 +475,13 @@ public class Menu extends javax.swing.JFrame {
         qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
     }//GEN-LAST:event_lbQuyenMouseClicked
 
+    private void LbNhaCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LbNhaCCMouseClicked
+        // TODO add your handling code here:
+        Desktop.removeAll();
+        mdiNhaCungCap qlsp = new mdiNhaCungCap();
+        Desktop.add(qlsp).setVisible(true);
+        qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
+    }//GEN-LAST:event_LbNhaCCMouseClicked
 
     /**
      * @param args the command line arguments
