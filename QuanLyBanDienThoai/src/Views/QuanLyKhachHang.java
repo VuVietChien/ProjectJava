@@ -419,6 +419,11 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
+            txtMaKH.setText("");
+        txtTenkh.setText("");
+        txtSDT.setText("");
+        txtDiaChi.setText("");//
+        txtMaKH.requestFocus();
         
     }//GEN-LAST:event_btnResetActionPerformed
 

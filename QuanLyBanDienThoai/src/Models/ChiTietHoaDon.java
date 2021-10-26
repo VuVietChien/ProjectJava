@@ -26,7 +26,7 @@ public class ChiTietHoaDon extends HoaDon{
     }
 
     public ChiTietHoaDon(String MaHD, String MSP, int DonGia, int SoLuong, float thanhTien, String MaKH, String NgayLap, float TongTien, String MaNV, String TenNV, String NgaySinh, String DiaChi, String SDT) {
-        super(MaHD, MaKH, NgayLap, TongTien, MaNV, TenNV, NgaySinh, DiaChi, SDT);
+  
         this.MaHD = MaHD;
         this.MSP = MSP;
         this.DonGia = DonGia;
@@ -34,6 +34,15 @@ public class ChiTietHoaDon extends HoaDon{
         this.thanhTien = thanhTien;
     }
 
+    public ChiTietHoaDon(String maHD, String ngayLap, String tenNV,String tenKH, float thanhTien){
+        super(tenNV, ngayLap,tenKH);
+        this.MaHD = maHD;
+        this.thanhTien = thanhTien;
+    }
+
+    
+    
+    
    
     @Override
     public String toString() {

@@ -28,7 +28,8 @@ public class SanPhamController {
     public static Statement state;
     public static PreparedStatement pstate;
     public static String sql;
-
+    
+   
     public static List<SanPham1> Select() {
         List<SanPham1> listSanPham = new ArrayList<>();
         conn = null;
@@ -184,16 +185,67 @@ public class SanPhamController {
         }
     }
 
-    public static List<SanPham1> TimKiemTheoTenSanPham(String tenlsp) {
+//    public static List<SanPham1> TimKiemTheoTenSanPham(String tenlsp) {
+//        List<SanPham1> listSanPham = new ArrayList<>();
+//        conn = null;
+//        pstate = null;
+//        try {
+//            conn = DriverManager.getConnection(connectDB.dbURL);
+//            sql = "Select * from sanpham,loaisanpham where sanpham.MaLSP=loaisanpham.MaLSP "
+//                    + "and TenSP like ?";
+//            pstate = conn.prepareCall(sql);
+//            pstate.setString(1, "%" + tenlsp + "%");
+//            ResultSet rs = pstate.executeQuery();
+//            while (rs.next()) {
+//                SanPham1 temp = new SanPham1(
+//                        rs.getString("MaSP"),
+//                        rs.getString("MaLSP"),
+//                        rs.getString("TenLSP"),
+//                        rs.getString("TenSP"),
+//                        rs.getString("HinhAnh"),
+//                        rs.getFloat("DonGia"),
+//                        rs.getInt("SoLuong")
+//                );
+//                listSanPham.add(temp);
+//
+//            }
+//            state.close();
+//            conn.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(SanPhamController.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            if (state != null) {
+//                try {
+//                    state.close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(SanPhamController.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//
+//            }
+//            if (conn != null) {
+//                try {
+//                    conn.close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(SanPhamController.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//
+//            }
+//        }
+//        return listSanPham;
+//
+//    }
+    
+    public static List<SanPham1> TimKiem(String tenlsp, String tenSP) {
         List<SanPham1> listSanPham = new ArrayList<>();
         conn = null;
         pstate = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
             sql = "Select * from sanpham,loaisanpham where sanpham.MaLSP=loaisanpham.MaLSP "
-                    + "and TenSP like ?";
+                    + "and TenSP like ? or TenLSP like ?";
             pstate = conn.prepareCall(sql);
-            pstate.setString(1, "%" + tenlsp + "%");
+            pstate.setString(1, "%" + tenSP + "%");
+            pstate.setString(2, "%" + tenlsp + "%");
             ResultSet rs = pstate.executeQuery();
             while (rs.next()) {
                 SanPham1 temp = new SanPham1(

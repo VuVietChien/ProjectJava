@@ -3,7 +3,7 @@ package Models;
 
 
 public class NhanVien {
-    private String MaNV,TenNV,NgaySinh,DiaChi,SDT;
+    protected String MaNV,TenNV,NgaySinh,DiaChi,SDT;
 
     public NhanVien() {
     }

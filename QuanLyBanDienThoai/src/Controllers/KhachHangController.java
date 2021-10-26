@@ -141,7 +141,7 @@ public class KhachHangController {
         try {
             conn = DriverManager.getConnection(dbURL);
 
-            sql = "DELETE FROM khachhang WHERE KhachHang.tenkh=?";
+            sql = "DELETE FROM khachhang WHERE KhachHang.makh=?";
             state = conn.prepareStatement(sql);
             state.setString(1, manganh);
             state.execute();
