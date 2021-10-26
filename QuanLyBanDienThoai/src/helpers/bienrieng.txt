@@ -1,2 +1,8 @@
 folder mở ảnh:
 D:\ProjectJavaNetbean12\ProjectJava\ProjectJava\ProjectJava\QuanLyBanDienThoai\src\giaodienchuan\images\Product Images
+
+
+
+
+
+    public static String dbURL = "jdbc:sqlserver://THUANNGUYEN\SQLEXPRESS;databaseName=quanlysieuthidienthoai;user=sa;password=123";

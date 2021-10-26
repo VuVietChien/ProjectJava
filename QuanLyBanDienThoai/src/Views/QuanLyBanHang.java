@@ -5,24 +5,22 @@
  */
 package Views;
 
+import Controllers.ChiTietHoaDonController;
 import Controllers.HoaDonController;
 import static Controllers.HoaDonController.insertHD;
 import Controllers.KhachHangController;
-import Controllers.LoaiSanPhamController;
 import Controllers.SanPhamController;
 import Controllers.KiemTraDLController;
 import Controllers.NhanVienController;
+import Models.ChiTietHoaDon;
 import Models.HoaDon;
 import Models.KhachHang;
-import Models.LoaiSanPham;
 import Models.NhanVien;
 import Models.SanPham1;
 import java.awt.Image;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -39,7 +37,7 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
     public DefaultTableModel tblDanhSachSanPham;
     public DefaultTableModel tblSPban;
     public List<SanPham1> listSanPham = new ArrayList<>();
-//    public List<LoaiSanPham> listLoaiSanPham = new ArrayList<>();
+    public List<ChiTietHoaDon> listChiTietHoaDons= new ArrayList<>();
     public List<KhachHang> listKhachHang = new ArrayList<>();
     public List<NhanVien> listNhanVien = new ArrayList<>();
     public String masp, malsp, tensp, hinhanh, macu;
@@ -83,24 +81,9 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
             });
         });
     }
-     public void InsertHoadon(Object[] datarow) {
+     public void InserttblHoadon(Object[] datarow) {
          DefaultTableModel model = (DefaultTableModel)tbSPBan.getModel();
          model.addRow(datarow);
-//        int index = dgdanhsach.getSelectedRow();
-//        TableModel model = dgdanhsach.getModel();
-//        masp = model.getValueAt(index, 0).toString();
-//        malsp = model.getValueAt(index, 1).toString();
-//        tensp = model.getValueAt(index, 2).toString();
-//        dongia = Float.parseFloat(model.getValueAt(index, 3).toString());
-//        soluong = Integer.parseInt(txtSoLuong.getText());
-//        hinhanh = model.getValueAt(index, 5).toString();
-//        listSanPham = SanPhamController.Select();
-//        thanhtien = soluong * dongia;
-//        stt++;
-//        tblSPban.setRowCount(0);
-//            tblSPban.addRow(new Object[]{
-//                stt,masp, tensp, soluong, dongia,thanhtien
-//            });
 
     }
 
@@ -603,7 +586,8 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
     private void dgdanhsachMouseClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dgdanhsachMouseClick
         // TODO add your handling code here:
         int index = dgdanhsach.getSelectedRow();
@@ -643,7 +627,7 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
                  soluong = Integer.parseInt(txtSoLuong.getText());
                  thanhtien = soluong * dongia;
                  tongtien+=thanhtien;
-                 InsertHoadon(new Object[]
+                 InserttblHoadon(new Object[]
                  {
                      stt, masp, tensp, soluong, dongia, thanhtien
                  });
@@ -711,12 +695,30 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         String manv = listNhanVien.get(cbbNhanVien.getSelectedIndex()).getMaNV();
         String makh = listKhachHang.get(cbbKhachHang.getSelectedIndex()).getMaKHString();
         
+        
+
+        
         int rs = JOptionPane.showConfirmDialog(this, "bạn có chắc chắn thanh toán không", "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
         HoaDon hd = new HoaDon(mahd,manv,makh,ngaylap,tongtien);
         
         if(rs == JOptionPane.YES_OPTION)
         {
             insertHD(hd);
+        }
+        
+        String MaSp;
+        int soluong;
+        float dongia;
+        for(int i =0;i<tbSPBan.getRowCount();i++)
+        {
+            
+            MaSp = tbSPBan.getValueAt(i, 1).toString();
+            soluong = Integer.parseInt(tbSPBan.getValueAt(i, 3).toString());
+            dongia = Float.parseFloat(tbSPBan.getValueAt(i, 4).toString());
+            ChiTietHoaDon cthd = new ChiTietHoaDon(mahd,MaSp,soluong,dongia);
+            JOptionPane.showMessageDialog(this, dongia,"thongbao", JOptionPane.WARNING_MESSAGE);
+            ChiTietHoaDonController.Insertcthd(cthd);
+            
         }
         
         

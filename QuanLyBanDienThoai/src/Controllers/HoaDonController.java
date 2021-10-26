@@ -27,7 +27,7 @@ public class HoaDonController {
         state = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            sql = "Select top 1 * from hoadon order by ngaylap desc";
+            sql = "select top 1 * from hoadon order by ngaylap desc , MaHD desc";
             state = conn.createStatement();
             ResultSet rs = state.executeQuery(sql);
              
