@@ -5,11 +5,14 @@
  */
 package Views;
 
+import Controllers.HoaDonController;
+import static Controllers.HoaDonController.insertHD;
 import Controllers.KhachHangController;
 import Controllers.LoaiSanPhamController;
 import Controllers.SanPhamController;
 import Controllers.KiemTraDLController;
 import Controllers.NhanVienController;
+import Models.HoaDon;
 import Models.KhachHang;
 import Models.LoaiSanPham;
 import Models.NhanVien;
@@ -526,6 +529,11 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_us_dollar_30px.png"))); // NOI18N
         jButton6.setText("Thanh Toán");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_cancel_30px_1.png"))); // NOI18N
         jButton7.setText("Hủy");
@@ -639,12 +647,13 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
                  {
                      stt, masp, tensp, soluong, dongia, thanhtien
                  });
-                 txtTongTien.setText(tongtien + " Triệu");
+                 txtTongTien.setText(String.valueOf(tongtien));
                  
                  LoadDate();
                  LoadTime();
                  LayNguonCBBKH();
                  LayNguonCBBNV();
+                 txtMaHD.setText(HoaDonController.LayMahd());
             }
             else
             {
@@ -693,6 +702,25 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
             Select();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        String mahd = txtMaHD.getText();
+        float tongtien= Float.parseFloat(txtTongTien.getText());
+        String ngaylap = txtDate.getText();
+        String manv = listNhanVien.get(cbbNhanVien.getSelectedIndex()).getMaNV();
+        String makh = listKhachHang.get(cbbKhachHang.getSelectedIndex()).getMaKHString();
+        
+        int rs = JOptionPane.showConfirmDialog(this, "bạn có chắc chắn thanh toán không", "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        HoaDon hd = new HoaDon(mahd,manv,makh,ngaylap,tongtien);
+        
+        if(rs == JOptionPane.YES_OPTION)
+        {
+            insertHD(hd);
+        }
+        
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

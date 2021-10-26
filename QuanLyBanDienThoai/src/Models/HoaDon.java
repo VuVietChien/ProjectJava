@@ -5,10 +5,13 @@
  */
 package Models;
 
+import java.util.Date;
+
 
 public class HoaDon extends NhanVien {
      protected String MaHD,MaKH,NgayLap,TenKH;
      protected float TongTien;
+     protected Date nhapDate;
 
     public HoaDon() {
     }
@@ -32,12 +35,14 @@ public class HoaDon extends NhanVien {
 
     
 
-    public HoaDon(String MaHD, String MaKH, String NgayLap, float TongTien) {
+    public HoaDon(String MaHD , String MaNV, String MaKH, String NgayLap, float TongTien) {
         this.MaHD = MaHD;
         this.MaKH = MaKH;
         this.NgayLap = NgayLap;
         this.TongTien = TongTien;
+        this.MaNV = MaNV;
     }
+    
     
     
 
