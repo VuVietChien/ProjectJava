@@ -41,6 +41,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         txtTenkh.setEditable(!b);
         txtSDT.setEditable(!b);
         txtTenkh.setEditable(!b);
+        txtDiaChi.setEditable(!b);
         txtNgaySinh.setEditable(!b);
         dgDanhSachTaiKhoan.setEnabled(b);
     }
@@ -270,7 +271,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLNgaySinh)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
@@ -315,7 +316,9 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         tenkh = model.getValueAt(index, 1).toString();
         ngaysinh = model.getValueAt(index, 2).toString();
         diachi = model.getValueAt(index, 3).toString();
-         sdt= model.getValueAt(index, 4).toString();
+        //   System.out.println(model.getValueAt(index, 3).toString());
+        sdt = model.getValueAt(index, 4).toString();
+        //   System.out.println( model.getValueAt(index, 4).toString());
 
         txtMaNV.setText(makh);
         txtTenkh.setText(tenkh);
@@ -345,7 +348,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-    if (txtMaNV.getText().length() <= 0) {
+        if (txtMaNV.getText().length() <= 0) {
             return;
         }
         int kq = JOptionPane.showConfirmDialog(this, "bạn có muốn xóa [" + txtMaNV.getText() + "] không ?",
@@ -388,13 +391,12 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
             return;
         }
 
-          if (txtNgaySinh.getText().length() <= 0) {
+        if (txtNgaySinh.getText().length() <= 0) {
             JOptionPane.showMessageDialog(this, "bạn chưa nhập ngày sinh", "thông báo", JOptionPane.WARNING_MESSAGE);
             txtNgaySinh.requestFocus();
             return;
         }
-        
-        
+
         if (txtSDT.getText().length() <= 0) {
             JOptionPane.showMessageDialog(this, "bạn chưa nhập số điện thoại", "thông báo", JOptionPane.WARNING_MESSAGE);
             txtSDT.requestFocus();
@@ -417,10 +419,10 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         makh = txtMaNV.getText();
         tenkh = txtTenkh.getText();
         sdt = txtSDT.getText();
-        diachi = txtTenkh.getText();
-        ngaysinh=txtNgaySinh.getText();
+        diachi = txtDiaChi.getText();
+        ngaysinh = txtNgaySinh.getText();
         //
-        NhanVien d = new NhanVien(makh, tenkh, ngaysinh,diachi,sdt);
+        NhanVien d = new NhanVien(makh, tenkh, ngaysinh, diachi, sdt);
         if (ktThem == true) {
             NhanVienController.ThemNganh(d);
         } else {
@@ -439,7 +441,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
             tbl.setRowCount(0);
             listTaiKhoan.forEach(p -> {
                 tbl.addRow(new Object[]{
-                   p.getMaNV(), p.getTenNV(), p.getNgaySinh(), p.getDiaChi(), p.getSDT()});
+                    p.getMaNV(), p.getTenNV(), p.getNgaySinh(), p.getDiaChi(), p.getSDT()});
             });
         } else {
             LayNguon();
@@ -449,6 +451,13 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
+        txtMaNV.setText("");
+        txtTenkh.setText("");
+        txtSDT.setText("");
+        txtDiaChi.setText("");
+        txtNgaySinh.setText("");
+        ///
+        txtMaNV.requestFocus();
 
     }//GEN-LAST:event_btnResetActionPerformed
 
