@@ -368,7 +368,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="36" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="T&#x1ed4;NG QU&#xc1;T H&#xd3;A &#x110;&#x1a0;N"/>
+                <Property name="text" type="java.lang.String" value="TH&#x1ed0;NG K&#xca; T&#x1ed4;NG QU&#xc1;T "/>
               </Properties>
             </Component>
           </SubComponents>
@@ -610,7 +610,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="T&#x1ed5;ng doanh thu: "/>
+                <Property name="text" type="java.lang.String" value="T&#x1ed5;ng ti&#x1ec1;n: "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblSLhoaDon">
@@ -892,7 +892,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="18" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="S&#x1ed1; l&#x1b0;&#x1ee3;ng h&#xf3;a &#x111;&#x1a1;n: "/>
+                    <Property name="text" type="java.lang.String" value="S&#x1ed1; l&#x1b0;&#x1ee3;ng h&#xe0;ng nh&#x1ead;p: "/>
                   </Properties>
                 </Component>
               </SubComponents>

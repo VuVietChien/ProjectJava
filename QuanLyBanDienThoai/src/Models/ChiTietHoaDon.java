@@ -17,28 +17,6 @@ public class ChiTietHoaDon extends HoaDon{
     public ChiTietHoaDon() {
     }
     
-//    public ChiTietHoaDon(String MaHD, String MSP, int DonGia, int SoLuong, float thanhTien) {
-//        this.MaHD = MaHD;
-//        this.MSP = MSP;
-//        this.DonGia = DonGia;
-//        this.SoLuong = SoLuong;
-//        this.thanhTien = thanhTien;
-//    }
-//
-//    public ChiTietHoaDon(String MaHD, String MSP, int DonGia, int SoLuong, float thanhTien, String MaKH, String NgayLap, float TongTien, String MaNV, String TenNV, String NgaySinh, String DiaChi, String SDT) {
-//  
-//        this.MaHD = MaHD;
-//        this.MSP = MSP;
-//        this.DonGia = DonGia;
-//        this.SoLuong = SoLuong;
-//        this.thanhTien = thanhTien;
-//    }
-//
-//    public ChiTietHoaDon(String maHD, String ngayLap, String tenNV,String tenKH, float thanhTien){
-//        super(tenNV, ngayLap,tenKH);
-//        this.MaHD = maHD;
-//        this.thanhTien = thanhTien;
-//    }
 
     public ChiTietHoaDon(String MaHD, String MSP, String TenNV, int SoLuong, float thanhTien, float DonGia) {
         this.MaHD = MaHD;
@@ -48,6 +26,13 @@ public class ChiTietHoaDon extends HoaDon{
         this.thanhTien = thanhTien;
         this.DonGia = DonGia;
     }
+    
+    public ChiTietHoaDon(String MaHD, String MSP, int SoLuong, float DonGia) {
+        this.MaHD = MaHD;
+        this.MSP = MSP;
+        this.SoLuong = SoLuong;
+        this.DonGia = DonGia;
+    }
 
     
     @Override
@@ -55,48 +40,7 @@ public class ChiTietHoaDon extends HoaDon{
         return "ChiTietHoaDon{" + "MaHD=" + MaHD + ", MSP=" + MSP + ", DonGia=" + DonGia + ", SoLuong=" + SoLuong + '}';
     }
     
-    
-//    public String getMaHD() {
-//        return MaHD;
-//    }
-//
-//    public void setMaHD(String MaHD) {
-//        this.MaHD = MaHD;
-//    }
-//
-//    public String getMSP() {
-//        return MSP;
-//    }
-//
-//    public void setMSP(String MSP) {
-//        this.MSP = MSP;
-//    }
-//
-//    public int getDonGia() {
-//        return DonGia;
-//    }
-//
-//    public void setDonGia(int DonGia) {
-//        this.DonGia = DonGia;
-//    }
-//
-//    public int getSoLuong() {
-//        return SoLuong;
-//    }
-//
-//    public void setSoLuong(int SoLuong) {
-//        this.SoLuong = SoLuong;
-//    }
-//
-//    public float getThanhTien() {
-//        return thanhTien;
-//    }
-//
-//    public void setThanhTien(float thanhTien) {
-//        this.thanhTien = thanhTien;
-//    }
-//    
-//   
+     
 
     public String getMaHD() {
         return MaHD;
@@ -173,11 +117,11 @@ public class ChiTietHoaDon extends HoaDon{
     }
 
     public float getDongia() {
-        return dongia;
+        return DonGia;
     }
 
     public void setDongia(float dongia) {
-        this.dongia = dongia;
+        this.DonGia = dongia;
     }
 
     public String getTenNV() {

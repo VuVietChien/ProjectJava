@@ -5,8 +5,11 @@
  */
 package Models;
 
+import java.util.Date;
+
 
 public class HoaDon extends NhanVien {
+     protected Date nhapDate;
      protected String MaHD,MaKH,NgayLap,TenKH,TenSP;
      protected int soluong;
      protected float TongTien,dongia;
@@ -53,8 +56,17 @@ public class HoaDon extends NhanVien {
         this.dongia = dongia;
     }
 
-    public HoaDon(String MaHD, String MaKH, String NgayLap, String TenKH, String TenSP, int soluong, float TongTien, float dongia, String MaNV, String TenNV, String NgaySinh, String DiaChi, String SDT) {
-        super(MaNV, TenNV, NgaySinh, DiaChi, SDT);
+
+    
+    public HoaDon(String maNV, String ngayLap, String tenKH){
+       // super(MaNV);
+        this.TenKH = tenKH;
+        this.NgayLap = ngayLap;
+    }
+
+    
+
+    public HoaDon(String MaHD , String MaNV, String MaKH, String NgayLap, float TongTien) {
         this.MaHD = MaHD;
         this.MaKH = MaKH;
         this.NgayLap = NgayLap;
@@ -62,20 +74,12 @@ public class HoaDon extends NhanVien {
         this.TenSP = TenSP;
         this.soluong = soluong;
         this.TongTien = TongTien;
-        this.dongia = dongia;
+        this.MaNV = MaNV;
     }
     
-//    public HoaDon(String MaHD, String MaKH, String NgayLap, String TenNV, String TenKH, String TenSP, int soluong, float TongTien, float dongia) {
-//        this.MaHD = MaHD;
-//        this.MaKH = MaKH;
-//        this.NgayLap = NgayLap;
-//        this.TenNV = TenNV;
-//        this.TenKH = TenKH;
-//        this.TenSP = TenSP;
-//        this.soluong = soluong;
-//        this.TongTien = TongTien;
-//        this.dongia = dongia;
-//    }
+    
+    
+
 
     public String getMaHD() {
         return MaHD;

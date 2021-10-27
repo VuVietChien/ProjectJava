@@ -1,9 +1,9 @@
 
 package Controllers;
 
-import static Controllers.ThongKeDoanhSo_Controller.conn;
-import static Controllers.ThongKeDoanhSo_Controller.pstate;
-import static Controllers.ThongKeDoanhSo_Controller.rs;
+import static Controllers.ThongKeDoanhSoController.conn;
+import static Controllers.ThongKeDoanhSoController.pstate;
+import static Controllers.ThongKeDoanhSoController.rs;
 import Models.ChiTietPhieuNhap;
 import Models.ThongKe;
 import Views.connectDB;
@@ -19,7 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class ThongKeNhapHang_Controller {
+public class ThongKeNhapHangController {
     public static Connection conn;
     public static Statement state;
     public static String sql;
@@ -33,20 +33,20 @@ public class ThongKeNhapHang_Controller {
         rs = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            String sql = "select phieunhap.MaPN,TenNV,TenNCC,sanpham.TenSP,NgayNhap,chitietphieunhap.SoLuong,chitietphieunhap.DonGia,sum(chitietphieunhap.SoLuong * chitietphieunhap.DonGia)as 'thanhTien'\n" +
+            String sql = "select phieunhap.MaPN,TenNV,TenNCC,sanpham.TenSP,phieunhap.NgayNhap,chitietphieunhap.SoLuong,chitietphieunhap.DonGia,sum(chitietphieunhap.SoLuong * chitietphieunhap.DonGia)as 'thanhTien'\n" +
 "from phieunhap inner join chitietphieunhap on phieunhap.MaPN=chitietphieunhap.MaPN inner join nhacungcap on phieunhap.MaNCC=nhacungcap.MaNCC\n" +
 "inner join NhanVien on phieunhap.MaNV=NhanVien.MaNV ,sanpham\n" +
 "where phieunhap.MaNV=NhanVien.MaNV and chitietphieunhap.MaSP=sanpham.MaSP\n" +
-"group by phieunhap.MaPN, TenNV, TenNCC, sanpham.TenSP,NgayNhap,chitietphieunhap.SoLuong,chitietphieunhap.DonGia";
+"group by phieunhap.MaPN, TenNV, TenNCC, sanpham.TenSP,phieunhap.NgayNhap,chitietphieunhap.SoLuong,chitietphieunhap.DonGia";
             pstate = conn.prepareStatement(sql);
             rs = pstate.executeQuery();
             while (rs.next()) {
                 ChiTietPhieuNhap ct = new ChiTietPhieuNhap();
-                ct.setMaPN(rs.getString("maPN"));
-                ct.setTenNV(rs.getString("tenNV"));
-                ct.setTenNCC(rs.getString("tenNCC"));
-                ct.setTenSP(rs.getString("tenSP"));
-                ct.setNgayLap(rs.getString("ngaylap"));
+                ct.setMaPN(rs.getString("MaPN"));
+                ct.setTenNV(rs.getString("TenNV"));
+                ct.setTenNCC(rs.getString("TenNCC"));
+                ct.setTenSP(rs.getString("TenSP"));
+                ct.setNgayNhap(rs.getString("NgayNhap"));
                 ct.setSoLuong(rs.getInt("SoLuong"));
                 ct.setDonGia(rs.getFloat("DonGia"));
                 ct.setThanhTien(rs.getFloat("thanhTien"));
@@ -59,14 +59,14 @@ public class ThongKeNhapHang_Controller {
                 try {
                     pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeNhapHang_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeNhapHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeNhapHang_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeNhapHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -80,7 +80,7 @@ public class ThongKeNhapHang_Controller {
         rs = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            String sql = "select phieunhap.MaPN,TenNV,TenNCC,sanpham.TenSP,NgayNhap,chitietphieunhap.SoLuong,chitietphieunhap.DonGia,sum(chitietphieunhap.SoLuong * chitietphieunhap.DonGia)as 'thanhTien'\n" +
+            String sql = "select phieunhap.MaPN,TenNV,TenNCC,sanpham.TenSP,phieunhap.NgayNhap,chitietphieunhap.SoLuong,chitietphieunhap.DonGia,sum(chitietphieunhap.SoLuong * chitietphieunhap.DonGia)as 'thanhTien'\n" +
 "from phieunhap inner join chitietphieunhap on phieunhap.MaPN=chitietphieunhap.MaPN inner join nhacungcap on phieunhap.MaNCC=nhacungcap.MaNCC\n" +
 "inner join NhanVien on phieunhap.MaNV=NhanVien.MaNV ,sanpham\n" +
 "where phieunhap.MaNV=NhanVien.MaNV and chitietphieunhap.MaSP=sanpham.MaSP and NgayNhap=?\n" +
@@ -94,7 +94,7 @@ public class ThongKeNhapHang_Controller {
                 ct.setTenNV(rs.getString("tenNV"));
                 ct.setTenNCC(rs.getString("tenNCC"));
                 ct.setTenSP(rs.getString("tenSP"));
-                ct.setNgayLap(rs.getString("ngaylap"));
+                ct.setNgayNhap(rs.getString("NgayNhap"));
                 ct.setSoLuong(rs.getInt("SoLuong"));
                 ct.setDonGia(rs.getFloat("DonGia"));
                 ct.setThanhTien(rs.getFloat("thanhTien"));
@@ -107,14 +107,14 @@ public class ThongKeNhapHang_Controller {
                 try {
                     pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeNhapHang_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeNhapHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeNhapHang_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeNhapHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -128,7 +128,7 @@ public class ThongKeNhapHang_Controller {
         rs = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            String sql = "select phieunhap.MaPN,TenNV,TenNCC,sanpham.TenSP,NgayNhap,chitietphieunhap.SoLuong,chitietphieunhap.DonGia,sum(chitietphieunhap.SoLuong * chitietphieunhap.DonGia)as 'thanhTien'\n" +
+            String sql = "select phieunhap.MaPN,TenNV,TenNCC,sanpham.TenSP,phieunhap.NgayNhap,chitietphieunhap.SoLuong,chitietphieunhap.DonGia,sum(chitietphieunhap.SoLuong * chitietphieunhap.DonGia)as 'thanhTien'\n" +
 "from phieunhap inner join chitietphieunhap on phieunhap.MaPN=chitietphieunhap.MaPN inner join nhacungcap on phieunhap.MaNCC=nhacungcap.MaNCC\n" +
 "inner join NhanVien on phieunhap.MaNV=NhanVien.MaNV ,sanpham\n" +
 "where phieunhap.MaNV=NhanVien.MaNV and chitietphieunhap.MaSP=sanpham.MaSP\n" +
@@ -143,7 +143,7 @@ public class ThongKeNhapHang_Controller {
                 ct.setTenNV(rs.getString("tenNV"));
                 ct.setTenNCC(rs.getString("tenNCC"));
                 ct.setTenSP(rs.getString("tenSP"));
-                ct.setNgayLap(rs.getString("ngaylap"));
+                ct.setNgayNhap(rs.getString("NgayNhap"));
                 ct.setSoLuong(rs.getInt("SoLuong"));
                 ct.setDonGia(rs.getFloat("DonGia"));
                 ct.setThanhTien(rs.getFloat("thanhTien"));
@@ -156,14 +156,14 @@ public class ThongKeNhapHang_Controller {
                 try {
                     pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeNhapHang_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeNhapHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeNhapHang_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeNhapHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }

@@ -12,8 +12,8 @@ public class ChiTietPhieuNhap extends PhieuNhap{
     
     
     
-    public ChiTietPhieuNhap(String MaPN, String MaSP, String TenNCC, int SoLuong, float DonGia, float ThanhTien, String MaNCC, String MaNV, String NgayLap, String TenKH, String TenSP, float TongTien) {
-        super(MaPN, MaNCC, MaNV, NgayLap, TenKH, TenSP, TongTien);
+    public ChiTietPhieuNhap(String MaPN, String MaSP, String TenNCC, int SoLuong, float DonGia, float ThanhTien, String MaNCC, String MaNV, String NgayNhap, String TenKH, String TenSP, float TongTien) {
+        super(MaPN, MaNCC, MaNV, NgayNhap, TenKH, TenSP, TongTien);
         this.MaPN = MaPN;
         this.MaSP = MaSP;
         this.TenNCC = TenNCC;
@@ -22,8 +22,8 @@ public class ChiTietPhieuNhap extends PhieuNhap{
         this.ThanhTien = ThanhTien;
     }
 
-    public ChiTietPhieuNhap(String MaPN, String MaSP, String TenNCC, int SoLuong, float DonGia, float ThanhTien, String MaNCC, String MaNV, String NgayLap, String TenKH, String TenSP, float TongTien, String TenNV, String NgaySinh, String DiaChi, String SDT) {
-        super(MaPN, MaNCC, MaNV, NgayLap, TenKH, TenSP, TongTien, TenNV, NgaySinh, DiaChi, SDT);
+    public ChiTietPhieuNhap(String MaPN, String MaSP, String TenNCC, int SoLuong, float DonGia, float ThanhTien, String MaNCC, String MaNV, String NgayNhap, String TenKH, String TenSP, float TongTien, String TenNV, String NgaySinh, String DiaChi, String SDT) {
+        super(MaPN, MaNCC, MaNV, NgayNhap, TenKH, TenSP, TongTien, TenNV, NgaySinh, DiaChi, SDT);
         this.MaPN = MaPN;
         this.MaSP = MaSP;
         this.TenNCC = TenNCC;
@@ -97,12 +97,12 @@ public class ChiTietPhieuNhap extends PhieuNhap{
         this.MaNV = MaNV;
     }
 
-    public String getNgayLap() {
-        return NgayLap;
+    public String getNgayNhap() {
+        return NgayNhap;
     }
 
     public void setNgayLap(String NgayLap) {
-        this.NgayLap = NgayLap;
+        this.NgayNhap = NgayNhap;
     }
 
     public String getTenKH() {

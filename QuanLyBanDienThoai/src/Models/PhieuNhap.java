@@ -3,29 +3,29 @@ package Models;
 
 
 public class PhieuNhap extends NhanVien{
-    protected String MaPN,MaNCC,MaNV,NgayLap,TenKH,TenSP;
+    protected String MaPN,MaNCC,MaNV,NgayNhap,TenKH,TenSP;
     protected float TongTien;
 
     public PhieuNhap() {
     }
     
     
-    public PhieuNhap(String MaPN, String MaNCC, String MaNV, String NgayLap, String TenKH, String TenSP, float TongTien) {
+    public PhieuNhap(String MaPN, String MaNCC, String MaNV, String NgayNhap, String TenKH, String TenSP, float TongTien) {
         this.MaPN = MaPN;
         this.MaNCC = MaNCC;
         this.MaNV = MaNV;
-        this.NgayLap = NgayLap;
+        this.NgayNhap = NgayNhap;
         this.TenKH = TenKH;
         this.TenSP = TenSP;
         this.TongTien = TongTien;
     }
 
-    public PhieuNhap(String MaPN, String MaNCC, String MaNV, String NgayLap, String TenKH, String TenSP, float TongTien, String TenNV, String NgaySinh, String DiaChi, String SDT) {
+    public PhieuNhap(String MaPN, String MaNCC, String MaNV, String NgayNhap, String TenKH, String TenSP, float TongTien, String TenNV, String NgaySinh, String DiaChi, String SDT) {
         super(MaNV, TenNV, NgaySinh, DiaChi, SDT);
         this.MaPN = MaPN;
         this.MaNCC = MaNCC;
         this.MaNV = MaNV;
-        this.NgayLap = NgayLap;
+        this.NgayNhap = NgayNhap;
         this.TenKH = TenKH;
         this.TenSP = TenSP;
         this.TongTien = TongTien;
@@ -55,12 +55,12 @@ public class PhieuNhap extends NhanVien{
         this.MaNV = MaNV;
     }
 
-    public String getNgayLap() {
-        return NgayLap;
+    public String getNgayNhap() {
+        return NgayNhap;
     }
 
-    public void setNgayLap(String NgayLap) {
-        this.NgayLap = NgayLap;
+    public void setNgayNhap(String NgayNhap) {
+        this.NgayNhap = NgayNhap;
     }
 
     public String getTenKH() {

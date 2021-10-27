@@ -5,8 +5,8 @@
  */
 package Views;
 
-import Controllers.ThongKeNhapHang_Controller;
-import Controllers.ThongKeDoanhSo_Controller;
+import Controllers.ThongKeNhapHangController;
+import Controllers.ThongKeDoanhSoController;
 import Models.ChiTietHoaDon;
 import Models.ChiTietPhieuNhap;
 import Models.KhachHang;
@@ -75,7 +75,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
     }
 
     private void loadData() {
-        cthdList = ThongKeDoanhSo_Controller.layNguon();
+        cthdList = ThongKeDoanhSoController.layNguon();
         tableModel.setRowCount(0);
          cthdList.forEach(p ->{
             tableModel.addRow(new Object[]{
@@ -85,7 +85,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
                 p.getTenSP(),
                 p.getNgayLap(),
                 p.getSoLuong(),
-                p.getDongia(),
+                PriceFormatter.format(p.getDongia()),
                 PriceFormatter.format(p.getThanhTien()) 
             });
         });
@@ -94,20 +94,20 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
     //tổng của bán sp
     private void loadSoLuongHD() {
         int n = tableModel.getRowCount();
-        lblSLhoaDon.setText("Số lượng hóa đơn: " + String.valueOf(n));
+        lblSLhoaDon.setText("Số lượng hàng bán: " + String.valueOf(n));
     }
     
 
     private void loadTongTien() {
-        tkList = ThongKeDoanhSo_Controller.getTongTien();
+        tkList = ThongKeDoanhSoController.getTongTien();
         for(ThongKe tk : tkList){
-            lblTongDoanhThu.setText("Tổng doanh thu: " +PriceFormatter.format(tk.getThanhTien()) );
+            lblTongDoanhThu.setText("Tổng tiền: " +PriceFormatter.format(tk.getThanhTien()) );
         }
     }
     
     
     private void loadData1() {
-        ctpnList = ThongKeNhapHang_Controller.layNguonPN();
+        ctpnList = ThongKeNhapHangController.layNguonPN();
         tableModel1.setRowCount(0);
          ctpnList.forEach(p ->{
             tableModel1.addRow(new Object[]{
@@ -115,9 +115,9 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
                 p.getTenNV(),
                 p.getTenNCC(),
                 p.getTenSP(),
-                p.getNgayLap(),
+                p.getNgayNhap(),
                 p.getSoLuong(),
-                p.getDonGia(),
+                PriceFormatter.format(p.getDonGia()),
                 PriceFormatter.format(p.getThanhTien()) 
             });
         });
@@ -131,7 +131,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
     
 
     private void loadTongTien1() {
-        tkList = ThongKeNhapHang_Controller.getTongTienPN();
+        tkList = ThongKeNhapHangController.getTongTienPN();
         for(ThongKe tk : tkList){
             lblTongDoanhThu1.setText("Tổng tiền: " +PriceFormatter.format(tk.getThanhTien()) );
         }
@@ -139,25 +139,25 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
     
     //thống kê tổng quát
     private void loadSP() {
-        tksp = ThongKeDoanhSo_Controller.getTongSP();
+        tksp = ThongKeDoanhSoController.getTongSP();
         for(SanPham1 tk : tksp){
             lblSP.setText(" " +String.valueOf(tk.getMaSP()) );
         }
     }
      private void loadNV() {
-        tknv = ThongKeDoanhSo_Controller.getTongNV();
+        tknv = ThongKeDoanhSoController.getTongNV();
         for(NhanVien nv : tknv){
             lblnv.setText(" " +String.valueOf(nv.getMaNV()) );
         }
     }
     private void loadKH() {
-        tkkh = ThongKeDoanhSo_Controller.getTongKH();
+        tkkh = ThongKeDoanhSoController.getTongKH();
         for(KhachHang kh : tkkh){
             lblkh.setText(" " +String.valueOf(kh.getMaKHString()) );
         }
     }
      private void loadNCC() {
-        tkncc = ThongKeDoanhSo_Controller.getTongNCC();
+        tkncc = ThongKeDoanhSoController.getTongNCC();
         for(NhaCungCap ncc : tkncc){
             lblncc.setText(" " +String.valueOf(ncc.getMaNCC()) );
         }
@@ -372,7 +372,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
         );
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel5.setText("TỔNG QUÁT HÓA ĐƠN");
+        jLabel5.setText("THỐNG KÊ TỔNG QUÁT ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -529,7 +529,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
         );
 
         lblTongDoanhThu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblTongDoanhThu.setText("Tổng doanh thu: ");
+        lblTongDoanhThu.setText("Tổng tiền: ");
 
         lblSLhoaDon.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblSLhoaDon.setText("Số lượng hóa đơn: ");
@@ -693,7 +693,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
         lblTongDoanhThu1.setText("Tổng doanh thu: ");
 
         lblSLhoaDon1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblSLhoaDon1.setText("Số lượng hóa đơn: ");
+        lblSLhoaDon1.setText("Số lượng hàng nhập: ");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -770,7 +770,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
             String ngayLap = dateFormat.format(dateNgayThongKe.getDate());
             int tongTT = 0;
             if (dateNgayThongKe.getDate() != null || dateNgayThongKe.equals("") == false) {
-                cthdList = ThongKeDoanhSo_Controller.findByDate(ngayLap);
+                cthdList = ThongKeDoanhSoController.findByDate(ngayLap);
                 tableModel.setRowCount(0);
                 for (ChiTietHoaDon cthd : cthdList) {
                     tableModel.addRow(new Object[]{
@@ -780,7 +780,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
                         cthd.getTenSP(),
                         cthd.getNgayLap(),
                         cthd.getSoLuong(),
-                        cthd.getDongia(),
+                        PriceFormatter.format(cthd.getDongia()),
                         PriceFormatter.format(cthd.getThanhTien())
                     });
                     PriceFormatter.format(tongTT += cthd.getThanhTien());
@@ -897,7 +897,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
     private void btnSapXepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSapXepActionPerformed
         // TODO add your handling code here:
         try {
-            cthdList = ThongKeDoanhSo_Controller.sortByTT();
+            cthdList = ThongKeDoanhSoController.sortByTT();
             tableModel.setRowCount(0);
             for (ChiTietHoaDon cthd : cthdList) {
                 tableModel.addRow(new Object[]{
@@ -907,7 +907,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
                     cthd.getTenSP(),
                     cthd.getNgayLap(),
                     cthd.getSoLuong(),
-                    cthd.getDongia(),
+                    PriceFormatter.format(cthd.getDongia()),
                     PriceFormatter.format(cthd.getThanhTien())
                 });
             }
@@ -966,14 +966,157 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
 
     private void btnSapXep1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSapXep1ActionPerformed
         // TODO add your handling code here:
+        try {
+            ctpnList = ThongKeNhapHangController.sortByTTPN();
+            tableModel1.setRowCount(0);
+            for (ChiTietPhieuNhap ctpn : ctpnList) {
+                tableModel1.addRow(new Object[]{
+                    ctpn.getMaPN(),
+                    ctpn.getTenNV(),
+                    ctpn.getTenNCC(),
+                    ctpn.getTenSP(),
+                    ctpn.getNgayNhap(),
+                    ctpn.getSoLuong(),
+                    PriceFormatter.format(ctpn.getDonGia()),
+                    PriceFormatter.format(ctpn.getThanhTien())
+                });
+            }
+            loadSoLuongHD1();
+            loadTongTien1();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, "Chưa có dữ liệu để sắp xếp");
+        }
     }//GEN-LAST:event_btnSapXep1ActionPerformed
 
     private void btnInThongKe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInThongKe1ActionPerformed
         // TODO add your handling code here:
+        FileOutputStream fileOutputStream = null;
+        BufferedOutputStream outputStream = null;
+        XSSFWorkbook workbook = null;
+
+        //Chọn đường dẫn để lưu file
+        JFileChooser excelFileChooser = new JFileChooser("F:\\hocjava\\Baitaplon\\ProjectJava");
+        //Thay đổi tiêu đề
+        excelFileChooser.setDialogTitle("Save as");
+        //Chỉ lưu dưới dạng các tập tin này
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILES", "xls", "xlsx", "xlsm");
+        excelFileChooser.setFileFilter(fnef);
+        int excelChoose = excelFileChooser.showSaveDialog(null);
+        Cell cell;
+        Row row;
+        //check nếu file đã được chọn
+        if (excelChoose == JFileChooser.APPROVE_OPTION) {
+            try {
+                workbook = new XSSFWorkbook();
+                XSSFSheet excelSheet = workbook.createSheet("JTable Sheet");
+
+                int rowNum = 0;
+
+                row = excelSheet.createRow(rowNum++);
+                cell = row.createCell(0);
+                cell.setCellValue("THỐNG KÊ DANH SÁCH Nhập Hàng");
+
+                row = excelSheet.createRow(rowNum++);
+
+                cell = row.createCell(0);
+                cell.setCellValue("MÃ PHIẾU NHẬP");
+
+                cell = row.createCell(1);
+                cell.setCellValue("TÊN NHÂN VIÊN");
+
+                cell = row.createCell(2);
+                cell.setCellValue("TÊN NHÀ CUNG CẤP");
+
+                cell = row.createCell(3);
+                cell.setCellValue("TÊN SẢN PHẨM");
+
+                cell = row.createCell(4);
+                cell.setCellValue("NGÀY NHẬP");
+
+                cell = row.createCell(5);
+                cell.setCellValue("SỐ LƯỢNG");
+
+                cell = row.createCell(6);
+                cell.setCellValue("ĐƠN GIÁ");
+
+                cell = row.createCell(7);
+                cell.setCellValue("THÀNH TIỀN");
+
+                for (int i = 0; i < tableModel1.getRowCount(); i++) {
+                    XSSFRow excelRow = excelSheet.createRow(rowNum++);
+                    for (int j = 0; j < tableModel1.getColumnCount(); j++) {
+                        XSSFCell excelCell = excelRow.createCell(j);
+                        excelCell.setCellValue(tableModel1.getValueAt(i, j).toString());
+                    }
+                }
+
+                fileOutputStream = new FileOutputStream(excelFileChooser.getSelectedFile() + ".xlsx");
+                outputStream = new BufferedOutputStream(fileOutputStream);
+                workbook.write(outputStream);
+
+                JOptionPane.showMessageDialog(rootPane, "Xuất dữ liệu thành công");
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(rootPane, "Đường dẫn file không hợp lệ");
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(rootPane, ex);
+            } finally {
+                if (outputStream != null) {
+                    try {
+                        outputStream.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(HomeThongKe.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if (fileOutputStream != null) {
+                    try {
+                        fileOutputStream.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(HomeThongKe.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if (workbook != null) {
+                    try {
+                        workbook.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(HomeThongKe.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_btnInThongKe1ActionPerformed
 
     private void btnThongKeNgay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeNgay1ActionPerformed
         // TODO add your handling code here:
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            String ngayLap = dateFormat.format(dateNgayThongKe1.getDate());
+            int tongTT = 0;
+            if (dateNgayThongKe1.getDate() != null || dateNgayThongKe1.equals("") == false) {
+                ctpnList = ThongKeNhapHangController.findByDatePN(ngayLap);
+                tableModel1.setRowCount(0);
+                for (ChiTietPhieuNhap ctpn : ctpnList) {
+                    tableModel1.addRow(new Object[]{
+                         ctpn.getMaPN(),
+                         ctpn.getTenNV(),
+                         ctpn.getTenNCC(),
+                         ctpn.getTenSP(),
+                         ctpn.getNgayNhap(),
+                         ctpn.getSoLuong(),
+                         PriceFormatter.format(ctpn.getDonGia()),
+                         PriceFormatter.format(ctpn.getThanhTien()) 
+                    });
+                    PriceFormatter.format(tongTT += ctpn.getThanhTien());
+                    lblTongDoanhThu1.setText("Tổng số tiền: " + String.valueOf(PriceFormatter.format(tongTT)));
+                }
+                loadSoLuongHD1();
+            } else {
+                loadData1();
+                loadTongTien1();
+                loadSoLuongHD1();
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, "Ngày thống kê không để trống!");
+        }
     }//GEN-LAST:event_btnThongKeNgay1ActionPerformed
 
 

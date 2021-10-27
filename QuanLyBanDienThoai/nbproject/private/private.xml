@@ -3,11 +3,42 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/F:/hocjava/Baitaplon/ProjectJava/QuanLyBanDienThoai/src/Views/HomeThongKe.java</file>
             <file>file:/F:/hocjava/Baitaplon/ProjectJava/QuanLyBanDienThoai/src/Controllers/ThongKeBanHang_Controller.java</file>
             <file>file:/F:/hocjava/Baitaplon/ProjectJava/QuanLyBanDienThoai/src/Models/PhieuNhap.java</file>
             <file>file:/F:/hocjava/Baitaplon/ProjectJava/QuanLyBanDienThoai/src/Controllers/ThongKeDoanhSo_Controller.java</file>
             <file>file:/F:/hocjava/Baitaplon/ProjectJava/QuanLyBanDienThoai/src/Models/ChiTietPhieuNhap.java</file>
+=======
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Controllers/HoaDonController.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Controllers/ThongKeDoanhSo_Controller.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Views/connectDB.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Models/NhaCungCap.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Models/KhachHang.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Views/Menu.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Models/SanPham1.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Controllers/KhachHangController.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Controllers/ChiTietHoaDonController.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Controllers/LoaiSanPhamController.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Controllers/SanPhamController.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Controllers/NhaCungCapController.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/build.xml</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Controllers/NhanVienController.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Views/QuanLyHoaDon.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Models/ChiTietHoaDon.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/manifest.mf</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/nbproject/project.properties</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Views/mdiSanPham1.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Controllers/KiemTraDLController.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Views/QuanLyKhachHang.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Models/NhanVien.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Views/HomeThongKe.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Views/QuanLyBanHang.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Controllers/TaiKhoanController.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Views/QuanLyNhanVien1.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Models/HoaDon.java</file>
+            <file>file:/E:/DhCNGTVT2022/Java_tutorial/ProjectJava/QuanLyBanDienThoai/src/Views/dangnhap.java</file>
+>>>>>>> 834b8e924a3ca5f4c75eef6c550b79bd2813cdca
         </group>
     </open-files>
 </project-private>

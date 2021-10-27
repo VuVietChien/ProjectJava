@@ -2,7 +2,7 @@
 package Views;
 
 
-import Controllers.ThongKeDoanhSo_Controller;
+import Controllers.ThongKeDoanhSoController;
 import Models.ChiTietHoaDon;
 import Models.ThongKe;
 import helpers.PriceFormatter;
@@ -39,7 +39,7 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
     }
     
     private void loadData() {
-        cthdList = ThongKeDoanhSo_Controller.layNguon();
+        cthdList = ThongKeDoanhSoController.layNguon();
         tableModel.setRowCount(0);
          cthdList.forEach(p ->{
             tableModel.addRow(new Object[]{
@@ -59,7 +59,7 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
     }
 
     private void loadTongTien() {
-        tkList = ThongKeDoanhSo_Controller.getTongTien();
+        tkList = ThongKeDoanhSoController.getTongTien();
         for(ThongKe tk : tkList){
             lblTongDanhThu.setText("Tổng doanh thu: " +PriceFormatter.format(tk.getThanhTien()) );
         }
@@ -267,7 +267,7 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
     private void btnSapXepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSapXepActionPerformed
         // TODO add your handling code here:
         try {
-            cthdList = ThongKeDoanhSo_Controller.sortByTT();
+            cthdList = ThongKeDoanhSoController.sortByTT();
             tableModel.setRowCount(0);
             for (ChiTietHoaDon cthd : cthdList) {
                 tableModel.addRow(new Object[]{
@@ -385,7 +385,7 @@ public class QuanLyThongKe extends javax.swing.JInternalFrame {
             String ngayLap = dateFormat.format(dateNgayThongKe.getDate());
             int tongTT = 0;
             if (dateNgayThongKe.getDate() != null || dateNgayThongKe.equals("") == false) {
-                cthdList = ThongKeDoanhSo_Controller.findByDate(ngayLap);
+                cthdList = ThongKeDoanhSoController.findByDate(ngayLap);
                 tableModel.setRowCount(0);
                 for (ChiTietHoaDon cthd : cthdList) {
                     tableModel.addRow(new Object[]{
