@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views;
 
 import Controllers.ChiTietHoaDonController;
@@ -20,13 +15,15 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class QuanLyHoaDon extends javax.swing.JInternalFrame {
-List<ChiTietHoaDon> cthdList = new ArrayList<>();
-    
+
+    List<ChiTietHoaDon> cthdList = new ArrayList<>();
+
     List<ThongKe> tkList = new ArrayList<>();
-    
+
     DefaultTableModel tableModel;
+
     public QuanLyHoaDon() {
-       initComponents();
+        initComponents();
         setResizable(false);
         //setLocationRelativeTo(null);
         tableModel = (DefaultTableModel) tblDanhSach.getModel();
@@ -38,30 +35,33 @@ List<ChiTietHoaDon> cthdList = new ArrayList<>();
             JOptionPane.showMessageDialog(rootPane, "Chưa có dữ liệu để thống kê");
         }
     }
-  private void loadData() {
+
+    private void loadData() {
         cthdList = ChiTietHoaDonController.layNguon();
         tableModel.setRowCount(0);
-         cthdList.forEach(p ->{
+        cthdList.forEach(p -> {
             tableModel.addRow(new Object[]{
                 p.getMaHD(),
                 p.getMaNV(),
                 p.getTenNV(),
                 p.getMaKH(),
                 p.getNgayLap(),
-                PriceFormatter.format(p.getThanhTien()) 
+                PriceFormatter.format(p.getThanhTien())
             });
         });
     }
 //    
+
     private void loadSoLuongHD() {
         int n = tableModel.getRowCount();
         lblSoLuongHD.setText("Số lượng hóa đơn: " + String.valueOf(n));
     }
 //
+
     private void loadTongTien() {
         tkList = ChiTietHoaDonController.getTongTien();
-        for(ThongKe tk : tkList){
-            lblTongDanhThu.setText("Tổng doanh thu: " +PriceFormatter.format(tk.getThanhTien()) );
+        for (ThongKe tk : tkList) {
+            lblTongDanhThu.setText("Tổng doanh thu: " + PriceFormatter.format(tk.getThanhTien()));
         }
     }
 
@@ -84,6 +84,7 @@ List<ChiTietHoaDon> cthdList = new ArrayList<>();
         btnInThongKe = new javax.swing.JButton();
         btnXOA = new javax.swing.JButton();
         btnTimKiem = new javax.swing.JButton();
+        btnXOA1 = new javax.swing.JButton();
         lblTongDanhThu = new javax.swing.JLabel();
         lblSoLuongHD = new javax.swing.JLabel();
 
@@ -139,6 +140,11 @@ List<ChiTietHoaDon> cthdList = new ArrayList<>();
             }
         });
         tblDanhSach.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tblDanhSach.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDanhSachMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDanhSach);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -180,6 +186,19 @@ List<ChiTietHoaDon> cthdList = new ArrayList<>();
             }
         });
 
+        btnXOA1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnXOA1.setText("RESERT");
+        btnXOA1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXOA1MouseClicked(evt);
+            }
+        });
+        btnXOA1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXOA1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -187,13 +206,15 @@ List<ChiTietHoaDon> cthdList = new ArrayList<>();
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(btnXOA, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                .addGap(86, 86, 86)
+                .addGap(48, 48, 48)
                 .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(149, 149, 149)
+                .addGap(58, 58, 58)
+                .addComponent(btnXOA1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91)
                 .addComponent(btnSapXep)
-                .addGap(47, 47, 47)
+                .addGap(63, 63, 63)
                 .addComponent(btnInThongKe)
-                .addGap(141, 141, 141))
+                .addGap(75, 75, 75))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +224,8 @@ List<ChiTietHoaDon> cthdList = new ArrayList<>();
                     .addComponent(btnSapXep)
                     .addComponent(btnInThongKe)
                     .addComponent(btnXOA)
-                    .addComponent(btnTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnXOA1))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -261,24 +283,24 @@ List<ChiTietHoaDon> cthdList = new ArrayList<>();
 
     private void btnSapXepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSapXepActionPerformed
         // TODO add your handling code here:
-//        try {
-//            cthdList = ThongKeDoanhSo_Controller.sortByTT();
-//            tableModel.setRowCount(0);
-//            for (ChiTietHoaDon cthd : cthdList) {
-//                tableModel.addRow(new Object[]{
-//                    cthd.getMaHD(),
-//                    cthd.getMaNV(),
-//                    cthd.getTenNV(),
-//                    cthd.getMaKH(),
-//                    cthd.getNgayLap(),
-//                    PriceFormatter.format(cthd.getThanhTien())
-//                });
-//            }
-//            loadSoLuongHD();
-//            loadTongTien();
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(rootPane, "Chưa có dữ liệu để sắp xếp");
-//        }
+        try {
+            cthdList = ChiTietHoaDonController.sortByTT();
+            tableModel.setRowCount(0);
+            for (ChiTietHoaDon cthd : cthdList) {
+                tableModel.addRow(new Object[]{
+                    cthd.getMaHD(),
+                    cthd.getMaNV(),
+                    cthd.getTenNV(),
+                    cthd.getMaKH(),
+                    cthd.getNgayLap(),
+                    PriceFormatter.format(cthd.getThanhTien())
+                });
+            }
+            loadSoLuongHD();
+            loadTongTien();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, "Chưa có dữ liệu để sắp xếp");
+        }
     }//GEN-LAST:event_btnSapXepActionPerformed
 
     private void btnInThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInThongKeActionPerformed
@@ -375,20 +397,21 @@ List<ChiTietHoaDon> cthdList = new ArrayList<>();
     private void btnXOAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXOAActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnXOAActionPerformed
-
+    int row;
     private void btnXOAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXOAMouseClicked
- int row;
- row = tblDanhSach.getSelectedRow();
-        if(row >= 0){
+
+        row = tblDanhSach.getSelectedRow();
+        if (row >= 0) {
             ChiTietHoaDon cthd = cthdList.get(row);
-            int option = JOptionPane.showConfirmDialog(rootPane, "Bạn có muốn xóa không");
-            if (option == 0) {
+            int option = JOptionPane.showConfirmDialog(this, "BẠN MUỐN XÓA KHÔNG?", "Thoát", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
+
                 ChiTietHoaDonController.deleteCTHD(cthd.getMaHD());
                 HoaDonController.deleteHD(cthd.getMaHD());
             }
             btnXOA.setEnabled(false);
         }
-      loadData();
+        loadData();
         loadSoLuongHD();
         loadTongTien();
         // TODO add your handling code here:
@@ -396,7 +419,7 @@ List<ChiTietHoaDon> cthdList = new ArrayList<>();
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
             String MaHD = JOptionPane.showInputDialog(this, "Nhập mã hóa đơn cần tìm");
             if (MaHD.equals("") == false) {
                 cthdList = ChiTietHoaDonController.findByDate(MaHD);
@@ -405,9 +428,10 @@ List<ChiTietHoaDon> cthdList = new ArrayList<>();
                     tableModel.addRow(new Object[]{
                         cthd.getMaHD(),
                         cthd.getNgayLap(),
-                        cthd.getMaNV(),
-                        cthd.getTenKH(),
-                        cthd.getThanhTien()
+                        cthd.getTenNV(),
+                        cthd.getMaKH(),
+                        cthd.getMaKH(),
+                        PriceFormatter.format(cthd.getThanhTien())
                     });
                     lblTongDanhThu.setText("Tổng tiền hóa đơn: " + String.valueOf(cthd.getThanhTien()));
                 }
@@ -417,12 +441,24 @@ List<ChiTietHoaDon> cthdList = new ArrayList<>();
                 loadTongTien();
                 loadSoLuongHD();
             }
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(rootPane, "Nhập không hợp lệ");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Nhập không hợp lê!!", "Thông Báo", JOptionPane.WARNING_MESSAGE);
         }
-
         btnXOA.setEnabled(false);
     }//GEN-LAST:event_btnTimKiemActionPerformed
+
+    private void tblDanhSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachMouseClicked
+        row = tblDanhSach.getSelectedRow();
+        btnXOA.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_tblDanhSachMouseClicked
+
+    private void btnXOA1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXOA1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXOA1MouseClicked
+
+    private void btnXOA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXOA1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXOA1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -431,6 +467,7 @@ List<ChiTietHoaDon> cthdList = new ArrayList<>();
     private javax.swing.JButton btnSapXep;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXOA;
+    private javax.swing.JButton btnXOA1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;

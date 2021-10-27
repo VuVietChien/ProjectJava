@@ -1,6 +1,4 @@
-
 package Controllers;
-
 
 import Models.ChiTietHoaDon;
 import Models.KhachHang;
@@ -8,7 +6,6 @@ import Models.NhaCungCap;
 import Models.NhanVien;
 import Models.SanPham1;
 import Models.ThongKe;
-//import Views.QuanLyThongKe;
 import Views.connectDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
