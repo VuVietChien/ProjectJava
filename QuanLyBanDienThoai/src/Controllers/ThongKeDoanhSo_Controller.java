@@ -29,6 +29,7 @@ public class ThongKeDoanhSo_Controller {
     public static PreparedStatement pstate;
     public static ResultSet rs;
     
+    //thống kê bán hàng
     public static List<ChiTietHoaDon> layNguon(){
         List<ChiTietHoaDon> cthdList = new ArrayList<>();
         conn = null;
@@ -172,7 +173,6 @@ public class ThongKeDoanhSo_Controller {
     
     public static List<ThongKe> getTongTien() {
         List<ThongKe> tkList = new ArrayList<>();
-        
         conn = null;
         pstate = null;
         rs = null;
@@ -208,9 +208,8 @@ public class ThongKeDoanhSo_Controller {
         return tkList;
     }
     
-
-
-
+    
+    //thống kê tổng quát
     public static List<SanPham1> getTongSP() {
         List<SanPham1> tksp = new ArrayList<>();
         
