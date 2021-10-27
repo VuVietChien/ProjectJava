@@ -77,6 +77,60 @@ public class SanPhamController {
         return listSanPham;
 
     }
+    
+    
+//    
+//    public static int LaySLSP(String masp) {
+//        List<SanPham1> listSanPham = new ArrayList<>();
+//        conn = null;
+//        state = null;
+//        try {
+//            conn = DriverManager.getConnection(connectDB.dbURL);
+//            sql = "Select * from sanpham,loaisanpham where sanpham.MaLSP=loaisanpham.MaLSP";
+//            state = conn.createStatement();
+//            ResultSet rs = state.executeQuery(sql);
+//            while (rs.next()) {
+//                SanPham1 temp = new SanPham1(
+//                        rs.getString("MaSP"),
+//                        rs.getString("MaLSP"),
+//                        rs.getString("TenLSP"),
+//                        rs.getString("TenSP"),
+//                        rs.getString("HinhAnh"),
+//                        rs.getFloat("DonGia"),
+//                        rs.getInt("SoLuong")
+//                );
+//                listSanPham.add(temp);
+//
+//            }
+//            state.close();
+//            conn.close();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(SanPhamController.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            if (state != null) {
+//                try {
+//                    state.close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(SanPhamController.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//
+//            }
+//            if (conn != null) {
+//                try {
+//                    conn.close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(SanPhamController.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//
+//            }
+//        }
+//        return listSanPham;
+//
+//    }
+    
+    
+    
+    
 
     public static void Insert(SanPham1 tk) {
         try {
@@ -129,6 +183,39 @@ public class SanPhamController {
             pstate.setInt(5, tk.getSoLuong());
             pstate.setString(6, tk.getHinhAnh());
             pstate.setString(7, macu);
+            pstate.execute();
+            pstate.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (pstate != null) {
+                try {
+                    pstate.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SanPhamController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SanPhamController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    
+    public static void UpdateSLkhiban(String masp ,int soluong) {
+        try {
+            conn = null;
+            pstate = null;
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            sql = "UPDATE sanpham SET SoLuong=? WHERE MaSP=?";
+            pstate = conn.prepareStatement(sql);
+            pstate.setInt(1, soluong);
+            pstate.setString(2, masp);
             pstate.execute();
             pstate.close();
             conn.close();

@@ -477,7 +477,7 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "STT", "Mã SP", "Tên SP", "Số Lượng", "Đơn Giá", "Thành Tiền"
+                "STT", "Mã SP", "Tên SP", "Số Lượng", "Đơn Giá (Triệu VND)", "Thành Tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -631,6 +631,14 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
             {
                  stt++;
                  soluong = Integer.parseInt(txtSoLuong.getText());
+                 if(soluong <= 0)
+                 {
+                     JOptionPane.showMessageDialog(this, "Bạn nhập sai số lượng(số lượng phải lớn hơn 0)", "cảnh báo",JOptionPane.WARNING_MESSAGE);
+                     txtSoLuong.setText("");
+                     return;
+                 }
+                 else
+                 {
                  thanhtien = soluong * dongia;
                  tongtien+=thanhtien;
                  InserttblHoadon(new Object[]
@@ -644,6 +652,7 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
                  LayNguonCBBKH();
                  LayNguonCBBNV();
                  txtMaHD.setText(HoaDonController.LayMahd());
+                 }
             }
             else
             {
@@ -724,9 +733,35 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
                 dongia = Float.parseFloat(tbSPBan.getValueAt(i, 4).toString());
                 ChiTietHoaDon cthd = new ChiTietHoaDon(mahd,MaSp,soluong,dongia);
                 ChiTietHoaDonController.Insertcthd(cthd);
+                int slsp = 0;
+                for(int j = 0; j<listSanPham.size();j++)
+                {
+                    if(listSanPham.get(j).getMaSP().equals(MaSp))
+                    {
+                        slsp = listSanPham.get(j).getSoLuong();
+                    }
+                }
+                
+                if(slsp > 0 && slsp >= soluong)
+                {
+                    int soluongmoi = slsp - soluong;
+                    SanPhamController.UpdateSLkhiban(MaSp,soluongmoi);
+                    Select();
+                    JOptionPane.showMessageDialog(this, "Thanh toán thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "Sản phẩm đã hết hàng, vui lòng nhập thêm", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                    xoatrang();
+                    return;
+                    
+                }
+                
 
             }
             xoatrang();
+            
+            
         }
         
         
