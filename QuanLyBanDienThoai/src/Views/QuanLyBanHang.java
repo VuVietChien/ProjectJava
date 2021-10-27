@@ -54,6 +54,9 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         tblDanhSachSanPham = (DefaultTableModel) dgdanhsach.getModel();
         tblSPban = (DefaultTableModel) tbSPBan.getModel();
         Select();
+        btnthanhtoan.setEnabled(false);
+        btnhuy.setEnabled(false);
+        btnxoa.setEnabled(false);
         KhoaMo();
         
     }
@@ -160,10 +163,10 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbSPBan = new javax.swing.JTable();
         jPanel14 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        btnxoa = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnthanhtoan = new javax.swing.JButton();
+        btnhuy = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -487,11 +490,11 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tbSPBan);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_delete_forever_30px_1.png"))); // NOI18N
-        jButton3.setText("Xóa ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnxoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_delete_forever_30px_1.png"))); // NOI18N
+        btnxoa.setText("Xóa ");
+        btnxoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnxoaActionPerformed(evt);
             }
         });
 
@@ -501,28 +504,28 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton3))
+                .addComponent(btnxoa))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnxoa, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_us_dollar_30px.png"))); // NOI18N
-        jButton6.setText("Thanh Toán");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnthanhtoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_us_dollar_30px.png"))); // NOI18N
+        btnthanhtoan.setText("Thanh Toán");
+        btnthanhtoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnthanhtoanActionPerformed(evt);
             }
         });
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_cancel_30px_1.png"))); // NOI18N
-        jButton7.setText("Hủy");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnhuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_cancel_30px_1.png"))); // NOI18N
+        btnhuy.setText("Hủy");
+        btnhuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnhuyActionPerformed(evt);
             }
         });
 
@@ -532,15 +535,15 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnhuy, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnthanhtoan, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnhuy, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnthanhtoan, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -621,6 +624,9 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
        }
        else
        {
+            btnthanhtoan.setEnabled(true);
+            btnhuy.setEnabled(true);
+            btnxoa.setEnabled(true);
                 if(KiemTraDLController.isNumeric(txtSoLuong.getText()) == true)
             {
                  stt++;
@@ -649,7 +655,7 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_BtnThemActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
 
         if(tbSPBan.getSelectedRowCount() == 1)
         {
@@ -659,17 +665,21 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         {
             JOptionPane.showMessageDialog(this, "Mời bạn chọn dòng muốn xóa !", "Thông báo", JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnxoaActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    public void xoatrang()
+    {
+            tblSPban.setRowCount(0);
+            txtTongTien.setText("");
+            txtMaHD.setText("");
+            txtDate.setText("");
+            txtTime.setText("");
+    }
+    private void btnhuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhuyActionPerformed
                 // TODO add your handling code here:
-        tblSPban.setRowCount(0);
-        txtTongTien.setText("");
-        txtMaHD.setText("");
-        txtDate.setText("");
-        txtTime.setText("");
+       xoatrang();
         
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnhuyActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -687,7 +697,7 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnthanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthanhtoanActionPerformed
         // TODO add your handling code here:
         String mahd = txtMaHD.getText();
         float tongtien= Float.parseFloat(txtTongTien.getText());
@@ -695,7 +705,9 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         String manv = listNhanVien.get(cbbNhanVien.getSelectedIndex()).getMaNV();
         String makh = listKhachHang.get(cbbKhachHang.getSelectedIndex()).getMaKHString();
         
-        
+        String MaSp;
+        int soluong;
+        float dongia;
 
         
         int rs = JOptionPane.showConfirmDialog(this, "bạn có chắc chắn thanh toán không", "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -704,36 +716,35 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         if(rs == JOptionPane.YES_OPTION)
         {
             insertHD(hd);
-        }
-        
-        String MaSp;
-        int soluong;
-        float dongia;
-        for(int i =0;i<tbSPBan.getRowCount();i++)
-        {
-            
-            MaSp = tbSPBan.getValueAt(i, 1).toString();
-            soluong = Integer.parseInt(tbSPBan.getValueAt(i, 3).toString());
-            dongia = Float.parseFloat(tbSPBan.getValueAt(i, 4).toString());
-            ChiTietHoaDon cthd = new ChiTietHoaDon(mahd,MaSp,soluong,dongia);
-            JOptionPane.showMessageDialog(this, dongia,"thongbao", JOptionPane.WARNING_MESSAGE);
-            ChiTietHoaDonController.Insertcthd(cthd);
-            
+            for(int i =0;i<tbSPBan.getRowCount();i++)
+            {
+
+                MaSp = tbSPBan.getValueAt(i, 1).toString();
+                soluong = Integer.parseInt(tbSPBan.getValueAt(i, 3).toString());
+                dongia = Float.parseFloat(tbSPBan.getValueAt(i, 4).toString());
+                ChiTietHoaDon cthd = new ChiTietHoaDon(mahd,MaSp,soluong,dongia);
+                ChiTietHoaDonController.Insertcthd(cthd);
+
+            }
+            xoatrang();
         }
         
         
-    }//GEN-LAST:event_jButton6ActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_btnthanhtoanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnThem;
+    private javax.swing.JButton btnhuy;
+    private javax.swing.JButton btnthanhtoan;
+    private javax.swing.JButton btnxoa;
     private javax.swing.JComboBox<String> cbbKhachHang;
     private javax.swing.JComboBox<String> cbbNhanVien;
     private javax.swing.JTable dgdanhsach;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
