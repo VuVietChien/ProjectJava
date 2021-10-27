@@ -40,6 +40,7 @@ public class HoaDonController {
             state.close();
             conn.close();
         } catch (SQLException ex) {
+            
         } 
                 String[] parts = mahd.split("D");
                 String part1 = parts[0]; // H

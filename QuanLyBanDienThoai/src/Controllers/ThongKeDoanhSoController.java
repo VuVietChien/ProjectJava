@@ -22,13 +22,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class ThongKeDoanhSo_Controller {
+public class ThongKeDoanhSoController {
     public static Connection conn;
     public static Statement state;
     public static String sql;
     public static PreparedStatement pstate;
     public static ResultSet rs;
     
+    //thống kê bán hàng
     public static List<ChiTietHoaDon> layNguon(){
         List<ChiTietHoaDon> cthdList = new ArrayList<>();
         conn = null;
@@ -61,14 +62,14 @@ public class ThongKeDoanhSo_Controller {
                 try {
                     pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -108,14 +109,14 @@ public class ThongKeDoanhSo_Controller {
                 try {
                     pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -156,14 +157,14 @@ public class ThongKeDoanhSo_Controller {
                 try {
                     pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -172,7 +173,6 @@ public class ThongKeDoanhSo_Controller {
     
     public static List<ThongKe> getTongTien() {
         List<ThongKe> tkList = new ArrayList<>();
-        
         conn = null;
         pstate = null;
         rs = null;
@@ -208,9 +208,8 @@ public class ThongKeDoanhSo_Controller {
         return tkList;
     }
     
-
-
-
+    
+    //thống kê tổng quát
     public static List<SanPham1> getTongSP() {
         List<SanPham1> tksp = new ArrayList<>();
         
