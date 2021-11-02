@@ -2,7 +2,6 @@ package Controllers;
 
 import Models.ChiTietHoaDon;
 import Models.ThongKe;
-import Views.QuanLyThongKe;
 import Views.connectDB;
 import static Views.connectDB.dbURL;
 import java.sql.Connection;
