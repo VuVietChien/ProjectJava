@@ -123,6 +123,54 @@ public class ThongKeDoanhSoController {
         return cthdList;
     }
     
+    public static List<ChiTietHoaDon> findByMonth(String ngayLap,String ngayLap1){
+        List<ChiTietHoaDon> cthdList = new ArrayList<>();
+        conn = null;
+        pstate = null;
+        rs = null;
+        try {
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            String sql = "select ChiTietHoaDon.maHD,tenNV, tenKH,sanpham.TenSP, ngayLap,chitiethoadon.SoLuong,chitiethoadon.DonGia,sum(chitiethoadon.SoLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
+"from ChiTietHoaDon inner join SanPham on SanPham.maSP = ChiTietHoaDon.maSP inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD inner join khachhang on khachhang.MaKH = HoaDon.MaKH, NhanVien\n" +
+"where NhanVien.maNV = HoaDon.maNV and (MONTH(NgayLap))=? and (YEAR(NgayLap))=?\n" +
+"group by ChiTietHoaDon.maHD, HoaDon.maNV, tenNV, tenKH,sanpham.TenSP, ngayLap,chitiethoadon.SoLuong,chitiethoadon.DonGia";
+            pstate = conn.prepareStatement(sql);
+            pstate.setString(1, ngayLap);
+            pstate.setString(2, ngayLap1);
+            rs = pstate.executeQuery();
+            while (rs.next()) {
+                ChiTietHoaDon ct = new ChiTietHoaDon();
+                ct.setMaHD(rs.getString("maHD"));
+                ct.setMaNV(rs.getString("tenNV"));
+                ct.setTenKH(rs.getString("tenKH"));
+                ct.setTenSP(rs.getString("tenSP"));
+                ct.setNgayLap(rs.getString("ngaylap"));
+                ct.setSoLuong(rs.getInt("SoLuong"));
+                ct.setDongia(rs.getFloat("DonGia"));
+                ct.setThanhTien(rs.getFloat("thanhTien"));
+                cthdList.add(ct);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi: " + ex);
+        } finally {
+            if (pstate != null) {
+                try {
+                    pstate.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return cthdList;
+    }
+    
      public static List<ChiTietHoaDon> sortByTT() {
         List<ChiTietHoaDon> cthds = new ArrayList<>();
         conn = null;

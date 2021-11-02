@@ -14,12 +14,19 @@ public class DoiMatKhau extends javax.swing.JInternalFrame {
     public DoiMatKhau() {
         initComponents();
         HienThongTin();
+        KhoaMo(true);
     }
     
     private void HienThongTin(){
         txtTenTK.setText(SharedData.nguoiDangNhap.getTenTaiKhoan());
         txtMaNV.setText(SharedData.nguoiDangNhap.getMaNV());
         txtMaQuyen.setText(SharedData.nguoiDangNhap.getMaQuyen());
+    }
+    
+    public void KhoaMo(boolean b) {
+        txtTenTK.setEditable(!b);
+        txtMaNV.setEditable(!b);
+        txtMaQuyen.setEditable(!b);
     }
   
     @SuppressWarnings("unchecked")
@@ -181,7 +188,10 @@ public class DoiMatKhau extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtGhiActionPerformed
 
     private void txtKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKetThucActionPerformed
-        dispose();
+        int kq = JOptionPane.showConfirmDialog(this, "Bạn có muốn kết thúc không?", "Thông báo", JOptionPane.YES_NO_OPTION);
+        if (kq == JOptionPane.YES_OPTION) {
+            dispose();
+        }
     }//GEN-LAST:event_txtKetThucActionPerformed
 
 
