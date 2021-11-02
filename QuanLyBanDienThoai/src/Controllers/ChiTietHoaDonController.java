@@ -1,7 +1,9 @@
 package Controllers;
 
-
 import Models.*;
+import Models.ChiTietHoaDon;
+import Models.ThongKe;
+
 import Views.connectDB;
 import static Views.connectDB.dbURL;
 import java.sql.Connection;
@@ -54,14 +56,14 @@ public class ChiTietHoaDonController {
                 try {
                     pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -99,14 +101,14 @@ public class ChiTietHoaDonController {
                 try {
                     pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -145,14 +147,14 @@ public class ChiTietHoaDonController {
                 try {
                     pstate.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ThongKeDoanhSo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ThongKeDoanhSoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
