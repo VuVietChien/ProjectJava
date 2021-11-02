@@ -3,7 +3,7 @@ package Views;
 
 
 import Controllers.TaiKhoanController;
-import CuaHangDienThoai.Project_Java;
+import CuaHangDienThoai.Splash;
 import Models.TaiKhoan;
 import helpers.SharedData;
 import javax.swing.JOptionPane;

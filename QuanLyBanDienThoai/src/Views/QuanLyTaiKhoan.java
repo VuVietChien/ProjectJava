@@ -49,8 +49,8 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
         }
 
         listNhanVien = NhanVienController.LayNguonNganh();
-        for (int i = 0; i < listNhanVien.size(); i++) {
-            cboNV.addItem(listNhanVien.get(i).getTenNV());
+        for (int j = 0; j < listNhanVien.size(); j++) {
+            cboNV.addItem(listNhanVien.get(j).getTenNV());
         }
     }
 
@@ -232,6 +232,12 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
         });
 
         cboNV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cboNV.setSelectedIndex(-1);
+        cboNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNVActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -449,6 +455,10 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         Select();
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void cboNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboNVActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

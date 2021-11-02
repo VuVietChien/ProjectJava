@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Views;
+package CuaHangDienThoai;
 
+import Views.dangnhap;
 import helpers.SharedData;
 import javax.swing.JOptionPane;
 

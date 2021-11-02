@@ -5,6 +5,11 @@
  */
 package Views;
 
+import static Controllers.HoaDonController.conn;
+import static Controllers.HoaDonController.sql;
+import static Controllers.HoaDonController.state;
+import Models.HoaDon;
+import Models.NhanVien;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
@@ -13,7 +18,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -27,6 +35,7 @@ public class dangky extends javax.swing.JFrame {
     /**
      * Creates new form dangky
      */
+    public static int indexmanv = 30;
     public dangky() {
         initComponents();
         this.setTitle("Đăng nhập");
@@ -167,7 +176,36 @@ public class dangky extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//  public static String LayMaNV() {
+//        List<NhanVien> listNhanVien = new ArrayList<>();
+//        String manv = "";
+//        conn = null;
+//        state = null;
+//        try {
+//            conn = DriverManager.getConnection(connectDB.dbURL);
+//            sql = "select top 1 * from NhanVien order by MaHD desc";
+//            state = conn.createStatement();
+//            ResultSet rs = state.executeQuery(sql);
+//
+//            while (rs.next()) {
+//                mahd = rs.getString("Mahd");
+//
+//            }
+//
+//            state.close();
+//            conn.close();
+//        } catch (SQLException ex) {
+//
+//        }
+//        String[] parts = mahd.split("D");
+//        String part1 = parts[0]; // H
+//        String part2 = parts[1];
+//        int a = Integer.parseInt(part2);
+//        a++;
+//        String mhdmoi = "HD" + String.valueOf(a);
+//
+//        return mhdmoi;
+//    }
     private void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
         // TODO add your handling code here:
         int kq = JOptionPane.showConfirmDialog(this, "Bạn có muốn đăng ký không?", "Thông báo", JOptionPane.YES_NO_OPTION);
@@ -183,12 +221,13 @@ public class dangky extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Thiếu tên tài khoản hoặc mật khẩu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
+                
                 String sql = "insert into taikhoan values (?,?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ps.setString(1, username);
                 ps.setString(2, password);
                 ps.setString(3, "NV12");
-                ps.setString(4, "Q4 ");
+                ps.setString(4, "Q4");
                 int n = ps.executeUpdate();
 
                 if (n != 0) {
