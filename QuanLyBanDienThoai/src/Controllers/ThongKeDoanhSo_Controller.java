@@ -33,19 +33,21 @@ public class ThongKeDoanhSo_Controller {
         rs = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            String sql = "select chitiethoadon.maHD, HoaDon.maNV,tenNV, khachhang.MaKH, ngayLap, sum(chitiethoadon.SoLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
-                "from chitiethoadon inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD,NhanVien,khachhang\n" +
-                "where NhanVien.maNV = HoaDon.maNV and khachhang.MaKH=hoadon.MaKH\n" +
-                "group by chitiethoadon.maHD, HoaDon.maNV, tenNV, khachhang.MaKH, ngayLap";
+            String sql = "select ChiTietHoaDon.maHD,tenNV, tenKH,sanpham.TenSP, ngayLap,chitiethoadon.SoLuong,chitiethoadon.DonGia,sum(chitiethoadon.SoLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
+"from ChiTietHoaDon inner join SanPham on SanPham.maSP = ChiTietHoaDon.maSP inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD inner join khachhang on khachhang.MaKH = HoaDon.MaKH, NhanVien\n" +
+"where NhanVien.maNV = HoaDon.maNV\n" +
+"group by ChiTietHoaDon.maHD, HoaDon.maNV, tenNV, tenKH,sanpham.TenSP, ngayLap,chitiethoadon.SoLuong,chitiethoadon.DonGia";
             pstate = conn.prepareStatement(sql);
             rs = pstate.executeQuery();
             while (rs.next()) {
                 ChiTietHoaDon ct = new ChiTietHoaDon();
                 ct.setMaHD(rs.getString("maHD"));
-                ct.setMaNV(rs.getString("maNV"));
                 ct.setTenNV(rs.getString("tenNV"));
-                ct.setMaKH(rs.getString("MaKH"));
+                ct.setTenKH(rs.getString("tenKH"));
+                ct.setTenSP(rs.getString("tenSP"));
                 ct.setNgayLap(rs.getString("ngaylap"));
+                ct.setSoLuong(rs.getInt("SoLuong"));
+                ct.setDongia(rs.getFloat("DonGia"));
                 ct.setThanhTien(rs.getFloat("thanhTien"));
                 cthdList.add(ct);
             }
@@ -77,20 +79,22 @@ public class ThongKeDoanhSo_Controller {
         rs = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            String sql = "select chitiethoadon.maHD, HoaDon.maNV,tenNV, khachhang.MaKH, ngayLap, sum(chitiethoadon.SoLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
-                "from chitiethoadon inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD,NhanVien,khachhang\n" +
-                "where NhanVien.maNV = HoaDon.maNV and khachhang.MaKH=hoadon.MaKH and ngayLap=?\n" +
-                "group by chitiethoadon.maHD, HoaDon.maNV, tenNV, khachhang.MaKH, ngayLap";
+            String sql = "select ChiTietHoaDon.maHD,tenNV, tenKH,sanpham.TenSP, ngayLap,chitiethoadon.SoLuong,chitiethoadon.DonGia,sum(chitiethoadon.SoLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
+"from ChiTietHoaDon inner join SanPham on SanPham.maSP = ChiTietHoaDon.maSP inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD inner join khachhang on khachhang.MaKH = HoaDon.MaKH, NhanVien\n" +
+"where NhanVien.maNV = HoaDon.maNV and ngayLap=?\n" +
+"group by ChiTietHoaDon.maHD, HoaDon.maNV, tenNV, tenKH,sanpham.TenSP, ngayLap,chitiethoadon.SoLuong,chitiethoadon.DonGia";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, ngayLap);
             rs = pstate.executeQuery();
             while (rs.next()) {
                 ChiTietHoaDon ct = new ChiTietHoaDon();
                 ct.setMaHD(rs.getString("maHD"));
-                ct.setMaNV(rs.getString("maNV"));
-                ct.setTenNV(rs.getString("tenNV"));
-                ct.setMaKH(rs.getString("MaKH"));
+                ct.setMaNV(rs.getString("tenNV"));
+                ct.setTenKH(rs.getString("tenKH"));
+                ct.setTenSP(rs.getString("tenSP"));
                 ct.setNgayLap(rs.getString("ngaylap"));
+                ct.setSoLuong(rs.getInt("SoLuong"));
+                ct.setDongia(rs.getFloat("DonGia"));
                 ct.setThanhTien(rs.getFloat("thanhTien"));
                 cthdList.add(ct);
             }
@@ -122,22 +126,24 @@ public class ThongKeDoanhSo_Controller {
         rs = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            String sql = "select chitiethoadon.maHD, HoaDon.maNV,tenNV, khachhang.MaKH, ngayLap, sum(chitiethoadon.soLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
-"from chitiethoadon inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD,NhanVien,khachhang\n" +
-"where NhanVien.maNV = HoaDon.maNV and khachhang.MaKH=hoadon.MaKH\n" +
-"group by chitiethoadon.maHD, HoaDon.maNV, tenNV, khachhang.MaKH, ngayLap\n" +
-                "order by thanhTien";
+            String sql = "select ChiTietHoaDon.maHD,tenNV, tenKH,sanpham.TenSP, ngayLap,chitiethoadon.SoLuong,chitiethoadon.DonGia,sum(chitiethoadon.SoLuong * chitiethoadon.DonGia) as 'thanhTien'\n" +
+"from ChiTietHoaDon inner join SanPham on SanPham.maSP = ChiTietHoaDon.maSP inner join HoaDon on ChiTietHoaDon.maHD = HoaDon.maHD inner join khachhang on khachhang.MaKH = HoaDon.MaKH, NhanVien\n" +
+"where NhanVien.maNV = HoaDon.maNV \n" +
+"group by ChiTietHoaDon.maHD, HoaDon.maNV, tenNV, tenKH,sanpham.TenSP, ngayLap,chitiethoadon.SoLuong,chitiethoadon.DonGia\n" +
+"order by thanhTien";
             
             pstate = conn.prepareStatement(sql);
             rs = pstate.executeQuery();
             while (rs.next()) {
                 ChiTietHoaDon ct = new ChiTietHoaDon();
                 ct.setMaHD(rs.getString("maHD"));
-                ct.setMaNV(rs.getString("maNV"));
                 ct.setTenNV(rs.getString("tenNV"));
-                ct.setMaKH(rs.getString("makh"));
+                ct.setTenKH(rs.getString("tenKH"));
+                ct.setTenSP(rs.getString("tenSP"));
                 ct.setNgayLap(rs.getString("ngaylap"));
-                ct.setThanhTien(rs.getFloat("thanhtien"));
+                ct.setSoLuong(rs.getInt("SoLuong"));
+                ct.setDongia(rs.getFloat("DonGia"));
+                ct.setThanhTien(rs.getFloat("thanhTien"));
                 cthds.add(ct);
             }
         } catch (SQLException ex) {

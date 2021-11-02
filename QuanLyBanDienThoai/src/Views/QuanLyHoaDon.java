@@ -2,8 +2,13 @@ package Views;
 
 import Controllers.ChiTietHoaDonController;
 import Controllers.HoaDonController;
-import Models.*;
+import Models.ChiTietHoaDon;
+import Models.ThongKe;
 import helpers.PriceFormatter;
+import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,8 +16,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class QuanLyHoaDon extends javax.swing.JInternalFrame {
 
@@ -305,93 +318,93 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
 
     private void btnInThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInThongKeActionPerformed
 
-        //        FileOutputStream fileOutputStream = null;
-        //        BufferedOutputStream outputStream = null;
-        //        XSSFWorkbook workbook = null;
+                FileOutputStream fileOutputStream = null;
+                BufferedOutputStream outputStream = null;
+                XSSFWorkbook workbook = null;
+        
+                //Chọn đường dẫn để lưu file
+                JFileChooser excelFileChooser = new JFileChooser("D:\\LAP TRINH JAVA");
+                //Thay đổi tiêu đề
+                excelFileChooser.setDialogTitle("Save as");
+                //Chỉ lưu dưới dạng các tập tin này
+                FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILES", "xls", "xlsx", "xlsm");
+                excelFileChooser.setFileFilter(fnef);
+                int excelChoose = excelFileChooser.showSaveDialog(null);
+                Cell cell;
+                Row row;
+                //check nếu file đã được chọn
+                if (excelChoose == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        workbook = new XSSFWorkbook();
+                        XSSFSheet excelSheet = workbook.createSheet("JTable Sheet");
+        
+                        int rowNum = 0;
+        
+                        row = excelSheet.createRow(rowNum++);
+                        cell = row.createCell(0);
+                        cell.setCellValue("THỐNG KÊ DANH SÁCH HOÁ ĐƠN");
+        
+                        row = excelSheet.createRow(rowNum++);
+        
+                        cell = row.createCell(0);
+                        cell.setCellValue("MÃ HOÁ ĐƠN");
         //
-        //        //Chọn đường dẫn để lưu file
-        //        JFileChooser excelFileChooser = new JFileChooser("E:\\JAVA-TRAIN\\BaiTapLon_Nhom2\\BTL_QuanLyBanHang\\XuatThongKeFileExcel");
-        //        //Thay đổi tiêu đề
-        //        excelFileChooser.setDialogTitle("Save as");
-        //        //Chỉ lưu dưới dạng các tập tin này
-        //        FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILES", "xls", "xlsx", "xlsm");
-        //        excelFileChooser.setFileFilter(fnef);
-        //        int excelChoose = excelFileChooser.showSaveDialog(null);
-        //        Cell cell;
-        //        Row row;
-        //        //check nếu file đã được chọn
-        //        if (excelChoose == JFileChooser.APPROVE_OPTION) {
-        //            try {
-        //                workbook = new XSSFWorkbook();
-        //                XSSFSheet excelSheet = workbook.createSheet("JTable Sheet");
+                        cell = row.createCell(1);
+                        cell.setCellValue("MÃ NHÂN VIÊN");
+        
+                        cell = row.createCell(2);
+                        cell.setCellValue("TÊN NHÂN VIÊN");
+        
+                        cell = row.createCell(3);
+                        cell.setCellValue("TÊN KHÁCH HÀNG");
+        
+                        cell = row.createCell(4);
+                        cell.setCellValue("NGÀY LẬP");
         //
-        //                int rowNum = 0;
-        //
-        //                row = excelSheet.createRow(rowNum++);
-        //                cell = row.createCell(0);
-        //                cell.setCellValue("THỐNG KÊ DANH SÁCH HOÁ ĐƠN");
-        //
-        //                row = excelSheet.createRow(rowNum++);
-        //
-        //                cell = row.createCell(0);
-        //                cell.setCellValue("MÃ HOÁ ĐƠN");
-        //
-        //                cell = row.createCell(1);
-        //                cell.setCellValue("MÃ NHÂN VIÊN");
-        //
-        //                cell = row.createCell(2);
-        //                cell.setCellValue("TÊN NHÂN VIÊN");
-        //
-        //                cell = row.createCell(3);
-        //                cell.setCellValue("TÊN KHÁCH HÀNG");
-        //
-        //                cell = row.createCell(4);
-        //                cell.setCellValue("NGÀY LẬP");
-        //
-        //                cell = row.createCell(5);
-        //                cell.setCellValue("THÀNH TIỀN");
-        //
-        //                for (int i = 0; i < tableModel.getRowCount(); i++) {
-        //                    XSSFRow excelRow = excelSheet.createRow(rowNum++);
-        //                    for (int j = 0; j < tableModel.getColumnCount(); j++) {
-        //                        XSSFCell excelCell = excelRow.createCell(j);
-        //                        excelCell.setCellValue(tableModel.getValueAt(i, j).toString());
-        //                    }
-        //                }
-        //
-        //                fileOutputStream = new FileOutputStream(excelFileChooser.getSelectedFile() + ".xlsx");
-        //                outputStream = new BufferedOutputStream(fileOutputStream);
-        //                workbook.write(outputStream);
-        //
-        //                JOptionPane.showMessageDialog(rootPane, "Xuất dữ liệu thành công");
-        //            } catch (FileNotFoundException ex) {
-        //                JOptionPane.showMessageDialog(rootPane, "Đường dẫn file không hợp lệ");
-        //            } catch (IOException ex) {
-        //                JOptionPane.showMessageDialog(rootPane, ex);
-        //            } finally {
-        //                if (outputStream != null) {
-        //                    try {
-        //                        outputStream.close();
-        //                    } catch (IOException ex) {
-        //                        Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
-        //                    }
-        //                }
-        //                if (fileOutputStream != null) {
-        //                    try {
-        //                        fileOutputStream.close();
-        //                    } catch (IOException ex) {
-        //                        Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
-        //                    }
-        //                }
-        //                if (workbook != null) {
-        //                    try {
-        //                        workbook.close();
-        //                    } catch (IOException ex) {
-        //                        Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
-        //                    }
-        //                }
-        //            }
-        //        }
+                        cell = row.createCell(5);
+                        cell.setCellValue("THÀNH TIỀN");
+        
+                        for (int i = 0; i < tableModel.getRowCount(); i++) {
+                            XSSFRow excelRow = excelSheet.createRow(rowNum++);
+                            for (int j = 0; j < tableModel.getColumnCount(); j++) {
+                                XSSFCell excelCell = excelRow.createCell(j);
+                                excelCell.setCellValue(tableModel.getValueAt(i, j).toString());
+                            }
+                        }
+        
+                        fileOutputStream = new FileOutputStream(excelFileChooser.getSelectedFile() + ".xlsx");
+                        outputStream = new BufferedOutputStream(fileOutputStream);
+                        workbook.write(outputStream);
+        
+                        JOptionPane.showMessageDialog(rootPane, "Xuất dữ liệu thành công");
+                    } catch (FileNotFoundException ex) {
+                        JOptionPane.showMessageDialog(rootPane, "Đường dẫn file không hợp lệ");
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(rootPane, ex);
+                    } finally {
+                        if (outputStream != null) {
+                            try {
+                                outputStream.close();
+                            } catch (IOException ex) {
+                                //Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                        if (fileOutputStream != null) {
+                            try {
+                                fileOutputStream.close();
+                            } catch (IOException ex) {
+                               // Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                        if (workbook != null) {
+                            try {
+                                workbook.close();
+                            } catch (IOException ex) {
+                              //  Logger.getLogger(ThongKe.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }
+                }
     }//GEN-LAST:event_btnInThongKeActionPerformed
 
     private void btnXOAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXOAActionPerformed
@@ -413,7 +426,7 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
         }
         loadData();
         loadSoLuongHD();
-        loadTongTien();
+        // loadTongTien();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnXOAMouseClicked
 
@@ -457,6 +470,8 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnXOA1MouseClicked
 
     private void btnXOA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXOA1ActionPerformed
+        loadData();
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnXOA1ActionPerformed
 

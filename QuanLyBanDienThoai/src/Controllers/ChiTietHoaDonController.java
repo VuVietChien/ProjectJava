@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class ChiTietHoaDonController {
 
@@ -224,5 +225,41 @@ public class ChiTietHoaDonController {
             }
         }
 
+    }
+    
+    public static void Insertcthd(ChiTietHoaDon cthd) {
+        try {
+            conn = null;
+            pstate = null;
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            sql = "INSERT INTO chitiethoadon(MaHD,MaSP,soluong,DonGia) VALUES(?,?,?,?)";
+            pstate = conn.prepareStatement(sql);
+            pstate.setString(1, cthd.getMaHD());
+            pstate.setString(2, cthd.getMSP());
+            pstate.setInt(3, cthd.getSoLuong());
+            pstate.setFloat(4, cthd.getDongia());
+            
+            pstate.execute();
+            pstate.close();
+            conn.close();
+         
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (pstate != null) {
+                try {
+                    pstate.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SanPhamController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SanPhamController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
 }

@@ -5,21 +5,55 @@
  */
 package Models;
 
+import java.util.Date;
+
 
 public class HoaDon extends NhanVien {
-     protected String MaHD,MaKH,NgayLap,TenKH;
-     protected float TongTien;
+     protected Date nhapDate;
+     protected String MaHD,MaKH,NgayLap,TenKH,TenSP;
+     protected int soluong;
+     protected float TongTien,dongia;
 
     public HoaDon() {
     }
+    
+    
+//    public HoaDon(String MaHD, String MaKH, String NgayLap, String TenKH, float TongTien, String MaNV, String TenNV, String NgaySinh, String DiaChi, String SDT) {
+//        super(MaNV, TenNV, NgaySinh, DiaChi, SDT);
+//        this.MaHD = MaHD;
+//        this.MaKH = MaKH;
+//        this.NgayLap = NgayLap;
+//        this.TenKH = TenKH;
+//        this.TongTien = TongTien;
+//    }
+//
+//
+//    
+//    public HoaDon(String maNV, String ngayLap, String tenKH){
+//       // super(MaNV);
+//        this.TenKH = tenKH;
+//        this.NgayLap = ngayLap;
+//    }
+//
+//    
+//
+//    public HoaDon(String MaHD, String MaKH, String NgayLap, float TongTien) {
+//        this.MaHD = MaHD;
+//        this.MaKH = MaKH;
+//        this.NgayLap = NgayLap;
+//        this.TongTien = TongTien;
+//    }
+//    
 
-    public HoaDon(String MaHD, String MaKH, String NgayLap, String TenKH, float TongTien, String MaNV, String TenNV, String NgaySinh, String DiaChi, String SDT) {
-        super(MaNV, TenNV, NgaySinh, DiaChi, SDT);
+    public HoaDon(String MaHD, String MaKH, String NgayLap, String TenKH, String TenSP, int soluong, float TongTien, float dongia) {
         this.MaHD = MaHD;
         this.MaKH = MaKH;
         this.NgayLap = NgayLap;
         this.TenKH = TenKH;
+        this.TenSP = TenSP;
+        this.soluong = soluong;
         this.TongTien = TongTien;
+        this.dongia = dongia;
     }
 
 
@@ -32,12 +66,17 @@ public class HoaDon extends NhanVien {
 
     
 
-    public HoaDon(String MaHD, String MaKH, String NgayLap, float TongTien) {
+    public HoaDon(String MaHD , String MaNV, String MaKH, String NgayLap, float TongTien) {
         this.MaHD = MaHD;
         this.MaKH = MaKH;
         this.NgayLap = NgayLap;
+        this.TenKH = TenKH;
+        this.TenSP = TenSP;
+        this.soluong = soluong;
         this.TongTien = TongTien;
+        this.MaNV = MaNV;
     }
+    
     
     
 
@@ -74,6 +113,22 @@ public class HoaDon extends NhanVien {
         this.TenKH = TenKH;
     }
 
+    public String getTenSP() {
+        return TenSP;
+    }
+
+    public void setTenSP(String TenSP) {
+        this.TenSP = TenSP;
+    }
+
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
+    }
+
     public float getTongTien() {
         return TongTien;
     }
@@ -82,10 +137,47 @@ public class HoaDon extends NhanVien {
         this.TongTien = TongTien;
     }
 
-    public String getSDT() {
-        return SDT;
+    public float getDongia() {
+        return dongia;
     }
 
+    public void setDongia(float dongia) {
+        this.dongia = dongia;
+    }
+
+    public String getMaNV() {
+        return MaNV;
+    }
+
+    public void setMaNV(String MaNV) {
+        this.MaNV = MaNV;
+    }
+
+    public String getTenNV() {
+        return TenNV;
+    }
+
+    public void setTenNV(String TenNV) {
+        this.TenNV = TenNV;
+    }
+
+    public String getNgaySinh() {
+        return NgaySinh;
+    }
+
+    public void setNgaySinh(String NgaySinh) {
+        this.NgaySinh = NgaySinh;
+    }
+
+    public String getDiaChi() {
+        return DiaChi;
+    }
+
+    public void setDiaChi(String DiaChi) {
+        this.DiaChi = DiaChi;
+    }
+    
+    
      @Override
     public void setSDT(String SDT) {
         this.SDT = SDT;

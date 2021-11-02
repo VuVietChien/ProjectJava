@@ -72,10 +72,12 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
          cthdList.forEach(p ->{
             tableModel.addRow(new Object[]{
                 p.getMaHD(),
-                p.getMaNV(),
                 p.getTenNV(),
-                p.getMaKH(),
+                p.getTenKH(),
+                p.getTenSP(),
                 p.getNgayLap(),
+                p.getSoLuong(),
+                p.getDongia(),
                 PriceFormatter.format(p.getThanhTien()) 
             });
         });
@@ -154,10 +156,11 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
         btnReset = new javax.swing.JButton();
         btnSapXep = new javax.swing.JButton();
         btnInThongKe = new javax.swing.JButton();
-        dateNgayThongKe = new com.toedter.calendar.JDateChooser();
         btnThongKeNgay = new javax.swing.JButton();
+        dateNgayThongKe = new com.toedter.calendar.JDateChooser();
         lblTongDoanhThu = new javax.swing.JLabel();
         lblSLhoaDon = new javax.swing.JLabel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
 
         lnhanvien.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 255)));
 
@@ -348,15 +351,15 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
                     .addComponent(psanpham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pkhachhang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnhacc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Tổng", jPanel1);
 
-        jPanel3.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel3.setBackground(new java.awt.Color(102, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Thống kê doanh số");
+        jLabel1.setText("Thống kê bán hàng");
 
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnBack.setText("Quay lại menu");
@@ -393,11 +396,11 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã hóa đơn", "Mã nhân viên", "Tên nhân viên", "Mã khách hàng", "Ngày lập", "Thành tiền"
+                "Mã hóa đơn", "Tên nhân viên", "Tên khách hàng", "Tên sản phẩm", "Ngày lập", "Số lượng", "Đơn giá", "Thành tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -433,8 +436,6 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
             }
         });
 
-        dateNgayThongKe.setDateFormatString("");
-
         btnThongKeNgay.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnThongKeNgay.setText("Thống kê theo ngày");
         btnThongKeNgay.addActionListener(new java.awt.event.ActionListener() {
@@ -448,9 +449,9 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(dateNgayThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(46, 46, 46)
+                .addComponent(dateNgayThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
                 .addComponent(btnThongKeNgay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(29, 29, 29)
                 .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -464,14 +465,14 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(dateNgayThongKe, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnThongKeNgay)
                         .addComponent(btnReset)
                         .addComponent(btnSapXep)
-                        .addComponent(btnInThongKe))
-                    .addComponent(dateNgayThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnInThongKe)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         lblTongDoanhThu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -511,10 +512,11 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSLhoaDon)
                     .addComponent(lblTongDoanhThu))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Hóa Đơn", jPanel2);
+        jTabbedPane1.addTab("Bán Hàng", jPanel2);
+        jTabbedPane1.addTab("Nhập Hàng", jTabbedPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -555,10 +557,12 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
             for (ChiTietHoaDon cthd : cthdList) {
                 tableModel.addRow(new Object[]{
                     cthd.getMaHD(),
-                    cthd.getMaNV(),
                     cthd.getTenNV(),
-                    cthd.getMaKH(),
+                    cthd.getTenKH(),
+                    cthd.getTenSP(),
                     cthd.getNgayLap(),
+                    cthd.getSoLuong(),
+                    cthd.getDongia(),
                     PriceFormatter.format(cthd.getThanhTien())
                 });
             }
@@ -603,18 +607,24 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
                                 cell.setCellValue("MÃ HOÁ ĐƠN");
                 
                                 cell = row.createCell(1);
-                                cell.setCellValue("MÃ NHÂN VIÊN");
-                
-                                cell = row.createCell(2);
                                 cell.setCellValue("TÊN NHÂN VIÊN");
                 
+                                cell = row.createCell(2);
+                                cell.setCellValue("TÊN KHÁCH HÀNG");
+                
                                 cell = row.createCell(3);
-                                cell.setCellValue("MÃ KHÁCH HÀNG");
+                                cell.setCellValue("TÊN SẢN PHẨM");
                 
                                 cell = row.createCell(4);
                                 cell.setCellValue("NGÀY LẬP");
-                
+                                
                                 cell = row.createCell(5);
+                                cell.setCellValue("SỐ LƯỢNG");
+                                
+                                cell = row.createCell(6);
+                                cell.setCellValue("ĐƠN GIÁ");
+                
+                                cell = row.createCell(7);
                                 cell.setCellValue("THÀNH TIỀN");
                 
                                 for (int i = 0; i < tableModel.getRowCount(); i++) {
@@ -673,11 +683,13 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
                 for (ChiTietHoaDon cthd : cthdList) {
                     tableModel.addRow(new Object[]{
                         cthd.getMaHD(),
-                        cthd.getMaNV(),
                         cthd.getTenNV(),
-                        cthd.getMaKH(),
+                        cthd.getTenKH(),
+                        cthd.getTenSP(),
                         cthd.getNgayLap(),
-                        cthd.getThanhTien()
+                        cthd.getSoLuong(),
+                        cthd.getDongia(),
+                        PriceFormatter.format(cthd.getThanhTien())
                     });
                     PriceFormatter.format(tongTT += cthd.getThanhTien());
                     lblTongDoanhThu.setText("Tổng doanh thu: " + String.valueOf(PriceFormatter.format(tongTT)));
@@ -729,6 +741,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel lblSLhoaDon;
     private javax.swing.JLabel lblSP;
     private javax.swing.JLabel lblTongDoanhThu;
