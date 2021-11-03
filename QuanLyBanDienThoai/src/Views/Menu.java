@@ -415,7 +415,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_lbSanPhamMouseClicked
 
     private void lbTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbTaiKhoanMouseClicked
-        // TODO add your handling code here:
+        // TODO add your handlimHomeThongKeng code here:
         Desktop.removeAll();
         QuanLyTaiKhoan qlsp = new QuanLyTaiKhoan();
         Desktop.add(qlsp).setVisible(true);
