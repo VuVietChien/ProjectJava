@@ -215,6 +215,9 @@
         <Component class="javax.swing.JTextField" name="txtTenkh">
         </Component>
         <Component class="javax.swing.JTextField" name="txtSDT">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSDTKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnThem">
           <Properties>
@@ -281,6 +284,17 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNgaySinh">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="nh&#x1ead;p ng&#xe0;y sinh (n&#x103;m-th&#xe1;ng-ng&#xe0;y)"/>
+          </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNgaySinhFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNgaySinhFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNgaySinhKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLNgaySinh">
           <Properties>

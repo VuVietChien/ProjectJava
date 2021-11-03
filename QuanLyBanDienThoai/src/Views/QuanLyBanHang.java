@@ -145,7 +145,6 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         BtnThem = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         txtTimKiem = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         txtMaHD = new javax.swing.JLabel();
@@ -292,36 +291,30 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         });
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Tìm Kiếm"));
+        jPanel9.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+            .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         );
 
-        jButton2.setText("Tìm Kiếm");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(BtnThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
@@ -341,14 +334,16 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
                         .addGap(192, 192, 192)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,7 +367,7 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
 
         jPanel6.getAccessibleContext().setAccessibleName("");
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Mã Hóa Đơn"));
 
@@ -607,6 +602,7 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         txtLoaiSP.setText(malsp);
         txtMaSP.setText(masp);
         lbImageSanPham.setIcon(ResizeImage(String.valueOf(hinhanh)));
+        txtSoLuong.setText("");
         
         
     }//GEN-LAST:event_dgdanhsachMouseClick
@@ -690,22 +686,6 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnhuyActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        String tensp = txtTimKiem.getText();
-        if (tensp != null && tensp.length() > 0) {
-            listSanPham = SanPhamController.TimKiem(tensp,tensp);
-            tblDanhSachSanPham.setRowCount(0);
-            listSanPham.forEach(p -> {
-            tblDanhSachSanPham.addRow(new Object[]{
-                p.getMaSP(), p.getTenLSP(), p.getTenSP(), p.getDonGia(), p.getSoLuong(),p.getHinhAnh()
-            });
-            });
-        } else {
-            Select();
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void btnthanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthanhtoanActionPerformed
         // TODO add your handling code here:
         String mahd = txtMaHD.getText();
@@ -745,7 +725,7 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
                 if(slsp > 0 && slsp >= soluong)
                 {
                     int soluongmoi = slsp - soluong;
-                    SanPhamController.UpdateSLkhiban(MaSp,soluongmoi);
+                    SanPhamController.UpdateSLSP(MaSp,soluongmoi);
                     Select();
                     JOptionPane.showMessageDialog(this, "Thanh toán thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -755,13 +735,10 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
                     xoatrang();
                     return;
                     
-                }
-                
-
+                }   
             }
             xoatrang();
-            
-            
+              
         }
         
         
@@ -769,6 +746,22 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_btnthanhtoanActionPerformed
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        // TODO add your handling code here:
+        String tensp = txtTimKiem.getText();
+        if (tensp != null && tensp.length() > 0) {
+            listSanPham = SanPhamController.TimKiem(tensp,tensp);
+            tblDanhSachSanPham.setRowCount(0);
+            listSanPham.forEach(p -> {
+            tblDanhSachSanPham.addRow(new Object[]{
+                p.getMaSP(), p.getTenLSP(), p.getTenSP(), p.getDonGia(), p.getSoLuong(),p.getHinhAnh()
+            });
+            });
+        } else {
+            Select();
+        }
+    }//GEN-LAST:event_txtTimKiemKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -779,7 +772,6 @@ public class QuanLyBanHang extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbbKhachHang;
     private javax.swing.JComboBox<String> cbbNhanVien;
     private javax.swing.JTable dgdanhsach;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

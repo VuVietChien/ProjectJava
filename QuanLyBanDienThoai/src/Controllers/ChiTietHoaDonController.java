@@ -1,7 +1,9 @@
 package Controllers;
 
+import Models.*;
 import Models.ChiTietHoaDon;
 import Models.ThongKe;
+
 import Views.connectDB;
 import static Views.connectDB.dbURL;
 import java.sql.Connection;
@@ -167,8 +169,7 @@ public class ChiTietHoaDonController {
         rs = null;
         try {
             conn = DriverManager.getConnection(connectDB.dbURL);
-            String sql = "select sum(SoLuong*donGia) as 'tongTien'\n"
-                    + "from ChiTietHoaDon";
+            String sql = "select sum(SoLuong*donGia) as 'tongTien'\n" + "from ChiTietHoaDon";
             pstate = conn.prepareStatement(sql);
             rs = pstate.executeQuery();
             while (rs.next()) {

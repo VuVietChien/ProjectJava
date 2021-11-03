@@ -21,6 +21,7 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
     public QuanLyKhachHang() {
         initComponents();
         tbl = (DefaultTableModel) dgDanhSachTaiKhoan.getModel();
+          KhoaMo(true);
         LayNguon();
         Design();
     }
@@ -48,10 +49,10 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
 
     public void Design() {
         dgDanhSachTaiKhoan.setAutoResizeMode(dgDanhSachTaiKhoan.AUTO_RESIZE_OFF);
-        dgDanhSachTaiKhoan.getColumnModel().getColumn(0).setPreferredWidth(100);
-        dgDanhSachTaiKhoan.getColumnModel().getColumn(1).setPreferredWidth(100);
-        dgDanhSachTaiKhoan.getColumnModel().getColumn(2).setPreferredWidth(100);
-        dgDanhSachTaiKhoan.getColumnModel().getColumn(3).setPreferredWidth(100);
+        dgDanhSachTaiKhoan.getColumnModel().getColumn(0).setPreferredWidth(190);
+        dgDanhSachTaiKhoan.getColumnModel().getColumn(1).setPreferredWidth(190);
+        dgDanhSachTaiKhoan.getColumnModel().getColumn(2).setPreferredWidth(190);
+        dgDanhSachTaiKhoan.getColumnModel().getColumn(3).setPreferredWidth(170);
     }
 
     public void LayNguon() {

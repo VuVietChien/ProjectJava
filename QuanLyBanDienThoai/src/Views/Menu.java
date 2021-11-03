@@ -189,6 +189,11 @@ public class Menu extends javax.swing.JFrame {
         lbNhapHang.setForeground(new java.awt.Color(255, 255, 255));
         lbNhapHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_downloads_30px.png"))); // NOI18N
         lbNhapHang.setText("Nhập hàng");
+        lbNhapHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbNhapHangMouseClicked(evt);
+            }
+        });
 
         lbLoaiSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbLoaiSP.setForeground(new java.awt.Color(255, 255, 255));
@@ -481,6 +486,14 @@ public class Menu extends javax.swing.JFrame {
         Desktop.add(qlsp).setVisible(true);
         qlsp.setLocation((Desktop.getWidth() - qlsp.getWidth()) / 2, (Desktop.getHeight() - qlsp.getHeight()) / 2);
     }//GEN-LAST:event_LbNhaCCMouseClicked
+
+    private void lbNhapHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbNhapHangMouseClicked
+        // TODO add your handling code here:
+        Desktop.removeAll();
+        QuanLyNhapHang qlnh = new QuanLyNhapHang();
+        Desktop.add(qlnh).setVisible(true);
+        qlnh.setLocation((Desktop.getWidth() - qlnh.getWidth()) / 2, (Desktop.getHeight() - qlnh.getHeight()) / 2);
+    }//GEN-LAST:event_lbNhapHangMouseClicked
 
     /**
      * @param args the command line arguments
