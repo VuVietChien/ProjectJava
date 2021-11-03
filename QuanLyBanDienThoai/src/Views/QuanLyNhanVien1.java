@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views;
 
 import Controllers.NhanVienController;
 import Models.NhanVien;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +17,13 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
 
     DefaultTableModel tbl;
     List<NhanVien> listTaiKhoan = new ArrayList<>();
-    public String makh, tenkh, diachi, sdt, ngaysinh, macu;
+    public String makh, tenkh, diachi, ngaysinh, macu, sdt;
     private boolean ktThem;
 
     public QuanLyNhanVien1() {
         initComponents();
         tbl = (DefaultTableModel) dgDanhSachTaiKhoan.getModel();
+        KhoaMo(true);
         LayNguon();
         Design();
     }
@@ -56,11 +54,11 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
 
     public void Design() {
         dgDanhSachTaiKhoan.setAutoResizeMode(dgDanhSachTaiKhoan.AUTO_RESIZE_OFF);
-        dgDanhSachTaiKhoan.getColumnModel().getColumn(0).setPreferredWidth(100);
-        dgDanhSachTaiKhoan.getColumnModel().getColumn(1).setPreferredWidth(100);
-        dgDanhSachTaiKhoan.getColumnModel().getColumn(2).setPreferredWidth(100);
-        dgDanhSachTaiKhoan.getColumnModel().getColumn(3).setPreferredWidth(100);
-        dgDanhSachTaiKhoan.getColumnModel().getColumn(4).setPreferredWidth(100);
+        dgDanhSachTaiKhoan.getColumnModel().getColumn(0).setPreferredWidth(150);
+        dgDanhSachTaiKhoan.getColumnModel().getColumn(1).setPreferredWidth(150);
+        dgDanhSachTaiKhoan.getColumnModel().getColumn(2).setPreferredWidth(150);
+        dgDanhSachTaiKhoan.getColumnModel().getColumn(3).setPreferredWidth(150);
+        dgDanhSachTaiKhoan.getColumnModel().getColumn(4).setPreferredWidth(130);
     }
 
     public void LayNguon() {
@@ -145,6 +143,12 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         jLaSDT.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLaSDT.setText("Số điện thoại:");
 
+        txtSDT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSDTKeyTyped(evt);
+            }
+        });
+
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +202,22 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
+            }
+        });
+
+        txtNgaySinh.setForeground(new java.awt.Color(204, 204, 204));
+        txtNgaySinh.setText("nhập ngày sinh (năm-tháng-ngày)");
+        txtNgaySinh.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNgaySinhFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNgaySinhFocusLost(evt);
+            }
+        });
+        txtNgaySinh.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNgaySinhKeyTyped(evt);
             }
         });
 
@@ -315,6 +335,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         makh = model.getValueAt(index, 0).toString();
         tenkh = model.getValueAt(index, 1).toString();
         ngaysinh = model.getValueAt(index, 2).toString();
+        //      System.out.println(model.getValueAt(index, 2).toString());
         diachi = model.getValueAt(index, 3).toString();
         //   System.out.println(model.getValueAt(index, 3).toString());
         sdt = model.getValueAt(index, 4).toString();
@@ -322,7 +343,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
 
         txtMaNV.setText(makh);
         txtTenkh.setText(tenkh);
-        txtSDT.setText(sdt);
+        txtSDT.setText("" + sdt);
         txtDiaChi.setText(diachi);
         txtNgaySinh.setText(ngaysinh);
     }//GEN-LAST:event_dgDanhSachTaiKhoanMouseClicked
@@ -392,7 +413,8 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         }
 
         if (txtNgaySinh.getText().length() <= 0) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập ngày sinh", "thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "bạn chưa nhập ngày sinh"+"["+"Ngày sinh có định dạng năm - tháng - ngày"+"]" 
+       , "thông báo", JOptionPane.WARNING_MESSAGE);
             txtNgaySinh.requestFocus();
             return;
         }
@@ -460,6 +482,40 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         txtMaNV.requestFocus();
 
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void txtSDTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSDTKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSDTKeyTyped
+
+    private void txtNgaySinhFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNgaySinhFocusGained
+//
+        if (txtNgaySinh.getText().equals("nhập ngày sinh (năm-tháng-ngày)")) {
+
+            txtNgaySinh.setText("");
+        }
+       txtNgaySinh.setForeground(Color.BLACK);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNgaySinhFocusGained
+
+    private void txtNgaySinhFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNgaySinhFocusLost
+
+        if (txtNgaySinh.getText().equals("")) {      
+          txtNgaySinh.setText("nhập ngày sinh (năm-tháng-ngày)");
+        }
+        txtNgaySinh.setForeground(new Color(201,204,204));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNgaySinhFocusLost
+
+    private void txtNgaySinhKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNgaySinhKeyTyped
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNgaySinhKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
