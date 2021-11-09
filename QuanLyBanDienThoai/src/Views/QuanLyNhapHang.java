@@ -169,6 +169,9 @@ public class QuanLyNhapHang extends javax.swing.JInternalFrame {
         btnNhapHang = new javax.swing.JButton();
         btnhuy = new javax.swing.JButton();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         dgdanhsach.setModel(new javax.swing.table.DefaultTableModel(
