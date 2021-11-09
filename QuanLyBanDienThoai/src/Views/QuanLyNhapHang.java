@@ -332,6 +332,10 @@ public class QuanLyNhapHang extends javax.swing.JInternalFrame {
             .addComponent(jScrollPane1)
             .addComponent(BtnThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 102, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addComponent(lbImageSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,10 +356,6 @@ public class QuanLyNhapHang extends javax.swing.JInternalFrame {
                         .addGap(124, 124, 124)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 102, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,7 +378,7 @@ public class QuanLyNhapHang extends javax.swing.JInternalFrame {
                             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbImageSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lbImageSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(BtnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -643,7 +643,7 @@ public class QuanLyNhapHang extends javax.swing.JInternalFrame {
         {
             if(KiemTraDLController.isNumeric(txtSoLuong.getText()) == true && KiemTraDLController.isFloat(txtDonGia.getText()) == true)
             {
-                stt++;
+                stt = tblSPmua.getRowCount() + 1;
                 soluong = Integer.parseInt(txtSoLuong.getText());
                 dongia = Float.parseFloat(txtDonGia.getText());
                 if(soluong <= 0 || dongia<=0)
@@ -712,7 +712,13 @@ public class QuanLyNhapHang extends javax.swing.JInternalFrame {
 
         if(tbSPBan.getSelectedRowCount() == 1)
         {
+            int column = 5;
+            int row = tbSPBan.getSelectedRow();
+            float tientru = Float.parseFloat(tbSPBan.getValueAt(row, column).toString());
             tblSPmua.removeRow(tbSPBan.getSelectedRow());
+            tongtien = tongtien - tientru;
+            txtTongTien.setText(String.valueOf(tongtien));
+            
         }
         else
         {
@@ -761,6 +767,8 @@ public class QuanLyNhapHang extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Nhập hàng thành công "+ soluong +" sản phẩm " + tensp, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 
             }
+            stt = 0;       // TODO add your handling code here:
+            tongtien = 0;  
             xoatrang();
 
         }
@@ -769,6 +777,8 @@ public class QuanLyNhapHang extends javax.swing.JInternalFrame {
 
     private void btnhuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhuyActionPerformed
         // TODO add your handling code here:
+        stt = 0;       // TODO add your handling code here:
+        tongtien = 0;  
         xoatrang();
 
     }//GEN-LAST:event_btnhuyActionPerformed
