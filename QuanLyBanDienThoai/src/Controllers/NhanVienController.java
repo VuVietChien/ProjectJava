@@ -31,7 +31,7 @@ public class NhanVienController {
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
                 NhanVien cn = new NhanVien();
-                cn.setMaNV(rs.getString("MaNv"));
+                cn.setMaNV(rs.getString("MaNV"));
                 cn.setTenNV(rs.getString("TenNV"));
                 cn.setNgaySinh(rs.getString("NgaySinh"));
                 cn.setDiaChi(rs.getString("DiaChi"));

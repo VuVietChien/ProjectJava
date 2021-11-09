@@ -37,10 +37,9 @@ public class Menu extends javax.swing.JFrame {
 
     // phan quyen tai khoan
     private void processLoginSuccessful() {
-        lbLoginName.setText(SharedData.nguoiDangNhap.getTenTaiKhoan());
+        lbLoginName.setText(SharedData.nguoiDangNhap.getTenNV());
         lbRole.setText(SharedData.nguoiDangNhap.getTenQuyen());
-        if (SharedData.nguoiDangNhap.getTenQuyen().equalsIgnoreCase("Nhân viên thống kê")) {
-            lbSanPham.setVisible(false);
+        if (SharedData.nguoiDangNhap.getTenQuyen().equalsIgnoreCase("Nhân viên bán hàng")) {
             lbTaiKhoan.setVisible(false);
 
         }
@@ -424,7 +423,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_lbSanPhamMouseClicked
 
     private void lbTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbTaiKhoanMouseClicked
-        // TODO add your handling code here:
+        // TODO add your handlimHomeThongKeng code here:
         Desktop.removeAll();
         QuanLyTaiKhoan qlsp = new QuanLyTaiKhoan();
         Desktop.add(qlsp).setVisible(true);
