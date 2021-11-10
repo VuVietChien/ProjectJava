@@ -36,7 +36,7 @@ public class NhanVienController {
                 cn.setNgaySinh(rs.getString("NgaySinh"));
                 cn.setDiaChi(rs.getString("DiaChi"));
                 cn.setSDT(rs.getString("sdt"));
-                
+
                 arrNganh.add(cn);
             }
             state.close();
@@ -73,10 +73,10 @@ public class NhanVienController {
             state = conn.prepareStatement(sql);
             state.setString(1, cn.getMaNV());
             state.setString(2, cn.getTenNV());
-             state.setString(3, cn.getNgaySinh());
+            state.setString(3, cn.getNgaySinh());
             state.setString(4, cn.getDiaChi());
             state.setString(5, cn.getSDT());
-            
+
             //
             state.execute();
             state.close();
@@ -110,9 +110,9 @@ public class NhanVienController {
 
             sql = "Update nhanvien Set manv=?,tennv=?,ngaysinh=?, nhanvien.diachi=?,nhanvien.sdt=? Where manv=?";
             state = conn.prepareStatement(sql);
-              state.setString(1, cn.getMaNV());
+            state.setString(1, cn.getMaNV());
             state.setString(2, cn.getTenNV());
-             state.setString(3, cn.getNgaySinh());
+            state.setString(3, cn.getNgaySinh());
             state.setString(4, cn.getDiaChi());
             state.setString(5, cn.getSDT());
             state.setString(6, macu);
@@ -141,10 +141,10 @@ public class NhanVienController {
     }
 
     public static void XoaNganh(String manganh) {
-         conn = null;
-        PreparedStatement state = null;
 
         try {
+            conn = null;
+            PreparedStatement state = null;
             conn = DriverManager.getConnection(dbURL);
 
             sql = "Delete From NhanVien Where nhanvien.manv = ?";
@@ -171,8 +171,8 @@ public class NhanVienController {
                 }
             }
         }
-        }
-    
+    }
+
     // Kiem tra trung tentaikhoan
     public static boolean KiemTraTrungMa(String manhap, boolean ktThem, String macu) {
         boolean kq = false;
@@ -228,10 +228,9 @@ public class NhanVienController {
                 NhanVien temp = new NhanVien(
                         rs.getString("manv"),
                         rs.getString("tennv"),
-                         rs.getString("ngaysinh"),
+                        rs.getString("ngaysinh"),
                         rs.getString("diachi"),
                         rs.getString("sdt")
-                       
                 );
                 listTaiKhoan.add(temp);
             }

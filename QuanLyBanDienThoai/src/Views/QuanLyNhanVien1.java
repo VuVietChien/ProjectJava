@@ -103,6 +103,8 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         jLNgaySinh = new javax.swing.JLabel();
         txtDiaChi = new javax.swing.JTextField();
 
+        setClosable(true);
+
         dgDanhSachTaiKhoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -244,10 +246,8 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
                             .addComponent(txtTenkh)
                             .addComponent(txtSDT)
                             .addComponent(txtNgaySinh, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(btnThem)
                         .addGap(18, 18, 18)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,13 +257,13 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
                         .addComponent(btnTimKiem)
                         .addGap(18, 18, 18)
                         .addComponent(btnReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnGhi, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnKhong)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnKetThuc)))
-                .addContainerGap())
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,12 +291,12 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLNgaySinh)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
                     .addComponent(btnXoa)
-                    .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReset)
                     .addComponent(btnGhi)
                     .addComponent(btnKhong)
@@ -447,8 +447,10 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         NhanVien d = new NhanVien(makh, tenkh, ngaysinh, diachi, sdt);
         if (ktThem == true) {
             NhanVienController.ThemNganh(d);
+             JOptionPane.showMessageDialog(this, "Thêm thành công", "Thông báo", JOptionPane.NO_OPTION);
         } else {
             NhanVienController.CapNhatNganh(d, macu);
+             JOptionPane.showMessageDialog(this, "Sửa thành công", "Thông báo", JOptionPane.NO_OPTION);
         }
         // TODO add your handling code here:
         LayNguon();
@@ -507,7 +509,7 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         if (txtNgaySinh.getText().equals("")) {      
           txtNgaySinh.setText("nhập ngày sinh (năm-tháng-ngày)");
         }
-        txtNgaySinh.setForeground(new Color(201,204,204));
+  txtNgaySinh.setForeground(Color.BLACK);
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNgaySinhFocusLost
 

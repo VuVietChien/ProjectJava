@@ -95,6 +95,8 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
         btnReset = new javax.swing.JButton();
         txtTenkh = new javax.swing.JTextField();
 
+        setClosable(true);
+
         dgDanhSachTaiKhoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -134,6 +136,12 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Số điện thoại");
+
+        txtSDT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSDTKeyTyped(evt);
+            }
+        });
 
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -212,19 +220,18 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
                             .addComponent(txtTenkh))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
                         .addComponent(btnThem)
                         .addGap(18, 18, 18)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(26, 26, 26)
                         .addComponent(btnTimKiem)
                         .addGap(18, 18, 18)
                         .addComponent(btnReset)
-                        .addGap(18, 18, 18)
+                        .addGap(28, 28, 28)
                         .addComponent(btnGhi, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addComponent(btnKhong)
                         .addGap(18, 18, 18)
                         .addComponent(btnKetThuc)))
@@ -249,18 +256,17 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnThem)
-                        .addComponent(btnKetThuc)
-                        .addComponent(btnKhong)
-                        .addComponent(btnXoa)
-                        .addComponent(btnSua)
-                        .addComponent(btnGhi)
-                        .addComponent(btnReset))
-                    .addComponent(btnTimKiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThem)
+                    .addComponent(btnKetThuc)
+                    .addComponent(btnKhong)
+                    .addComponent(btnXoa)
+                    .addComponent(btnSua)
+                    .addComponent(btnGhi)
+                    .addComponent(btnReset)
+                    .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -392,10 +398,15 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
          diachi = txtDiaChi.getText();
         //
         KhachHang d = new KhachHang(  makh ,tenkh, diachi ,sdt);
-        if (ktThem == true)
+        if (ktThem == true){
 
-            KhachHangController.ThemNganh(d); else
+            KhachHangController.ThemNganh(d); 
+         JOptionPane.showMessageDialog(this, "Thêm thành công", "Thông báo", JOptionPane.NO_OPTION);
+        }
+         else
             KhachHangController.CapNhatNganh(d, macu);
+             JOptionPane.showMessageDialog(this, "Sửa thành công", "Thông báo", JOptionPane.NO_OPTION);
+                 
         // TODO add your handling code here:
         LayNguon();
         KhoaMo(true);
@@ -427,6 +438,15 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
         txtMaKH.requestFocus();
         
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void txtSDTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSDTKeyTyped
+
+
+   char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSDTKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
