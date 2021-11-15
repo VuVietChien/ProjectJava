@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/F:/hocjava/Baitaplon/notphatcuoi/ProjectJava/QuanLyBanDienThoai/src/Views/HomeThongKe.java</file>
+=======
+            <file>file:/C:/Users/ADMIN/Desktop/ProjectJava/QuanLyBanDienThoai/src/Views/QuanLyHoaDon.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/ProjectJava/QuanLyBanDienThoai/src/Views/QuanLyNhanVien1.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/ProjectJava/QuanLyBanDienThoai/src/Views/QuanLyKhachHang.java</file>
+>>>>>>> cdc96e6ba6f11ed8d5ee63f2d6bc8b8cb28a14d1
         </group>
     </open-files>
 </project-private>
