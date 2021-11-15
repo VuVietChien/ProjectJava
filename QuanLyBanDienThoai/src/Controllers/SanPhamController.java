@@ -207,7 +207,7 @@ public class SanPhamController {
         }
     }
     
-    public static void UpdateSLkhiban(String masp ,int soluong) {
+    public static void UpdateSLSP(String masp ,int soluong) {
         try {
             conn = null;
             pstate = null;

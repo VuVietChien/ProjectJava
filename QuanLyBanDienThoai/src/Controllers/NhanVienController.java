@@ -31,7 +31,7 @@ public class NhanVienController {
             ResultSet rs = state.executeQuery(sql);
             while (rs.next()) {
                 NhanVien cn = new NhanVien();
-                cn.setMaNV(rs.getString("MaNv"));
+                cn.setMaNV(rs.getString("MaNV"));
                 cn.setTenNV(rs.getString("TenNV"));
                 cn.setNgaySinh(rs.getString("NgaySinh"));
                 cn.setDiaChi(rs.getString("DiaChi"));
@@ -214,15 +214,16 @@ public class NhanVienController {
         return kq;
     }
 
-    public static List<NhanVien> TimKiemTheoTenTaiKhoan(String tentk) {
-        List<NhanVien> listTaiKhoan = new ArrayList<>();
+    public static List<NhanVien> TimKiemNhanVien(String tentk, String manv) {
+        List<NhanVien> listNv = new ArrayList<>();
         conn = null;
         pstate = null;
         try {
             conn = DriverManager.getConnection(dbURL);
-            sql = "SELECT * FROM nhanvien where nhanvien.manv like ?";
+            sql = "SELECT * FROM nhanvien where nhanvien.tennv like ? or nhanvien.manv ?";
             pstate = conn.prepareCall(sql);
             pstate.setString(1, "%" + tentk + "%");
+              pstate.setString(2, "%" + manv + "%");
             ResultSet rs = pstate.executeQuery();
             while (rs.next()) {
                 NhanVien temp = new NhanVien(
@@ -232,12 +233,13 @@ public class NhanVienController {
                         rs.getString("diachi"),
                         rs.getString("sdt")
                 );
-                listTaiKhoan.add(temp);
+                listNv.add(temp);
             }
             state.close();
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(NhanVienController.class.getName()).log(Level.SEVERE, null, ex);
+            //  Logger.getLogger(NhanVienController.class.getName()).log(Level.SEVERE, null, ex);
+                  ex.printStackTrace();
         } finally {
             if (state != null) {
                 try {
@@ -256,7 +258,7 @@ public class NhanVienController {
 
             }
         }
-        return listTaiKhoan;
+        return listNv;
 
     }
 }

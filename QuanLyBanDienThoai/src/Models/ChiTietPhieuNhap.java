@@ -3,13 +3,20 @@ package Models;
 
 
 public class ChiTietPhieuNhap extends PhieuNhap{
+
     protected String MaPN,MaSP,TenNCC;
     protected int SoLuong;
     protected float DonGia,ThanhTien;
 
     public ChiTietPhieuNhap() {
     }
-    
+
+    public ChiTietPhieuNhap(String MaPN, String MaSP, int SoLuong, float DonGia) {
+        this.MaPN = MaPN;
+        this.MaSP = MaSP;
+        this.SoLuong = SoLuong;
+        this.DonGia = DonGia;
+    }
     
     
     public ChiTietPhieuNhap(String MaPN, String MaSP, String TenNCC, int SoLuong, float DonGia, float ThanhTien, String MaNCC, String MaNV, String NgayNhap, String TenKH, String TenSP, float TongTien) {

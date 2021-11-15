@@ -49,8 +49,8 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
         }
 
         listNhanVien = NhanVienController.LayNguonNganh();
-        for (int i = 0; i < listNhanVien.size(); i++) {
-            cboNV.addItem(listNhanVien.get(i).getTenNV());
+        for (int j = 0; j < listNhanVien.size(); j++) {
+            cboNV.addItem(listNhanVien.get(j).getTenNV());
         }
     }
 
@@ -447,6 +447,10 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         Select();
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void cboNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboNVActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

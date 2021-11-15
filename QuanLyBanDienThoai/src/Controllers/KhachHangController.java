@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.KhachHang;
+import Views.connectDB;
 import static Views.connectDB.dbURL;
 import java.util.*;
 import java.sql.Connection;
@@ -15,20 +16,20 @@ import java.util.logging.Logger;
 public class KhachHangController {
 
     public static Connection conn;
-    public static Statement state;
+    public static Statement ppstate;
     public static String sql;
-    public static PreparedStatement pstate;
+    public static PreparedStatement pppstate;
     public static ResultSet rs;
 
     public static List<KhachHang> LayNguonNganh() {
         List<KhachHang> arrNganh = new ArrayList<>();
         conn = null;
-        Statement state = null;
+        Statement ppstate = null;
         try {
             conn = DriverManager.getConnection(dbURL);
             sql = "Select * From KhachHang";
-            state = conn.createStatement();
-            ResultSet rs = state.executeQuery(sql);
+            ppstate = conn.createStatement();
+            ResultSet rs = ppstate.executeQuery(sql);
             while (rs.next()) {
                 KhachHang cn = new KhachHang();
                 cn.setMaKHString(rs.getString("makh"));
@@ -37,14 +38,14 @@ public class KhachHangController {
                 cn.setSodt(rs.getString("sdt"));
                 arrNganh.add(cn);
             }
-            state.close();
+            ppstate.close();
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (state != null) {
+            if (ppstate != null) {
                 try {
-                    state.close();
+                    ppstate.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -61,27 +62,27 @@ public class KhachHangController {
         return arrNganh;
     }
 
-    public static void ThemNganh(KhachHang cn) {
-        conn = null;
-        PreparedStatement state = null;
+    public static void Them(KhachHang cn) {
         try {
+            conn = null;
+            pppstate = null;
             conn = DriverManager.getConnection(dbURL);
 
             sql = "Insert Into khachhang(makh,tenkh,diachi,sdt) values (?,?,?,?)";
-            state = conn.prepareStatement(sql);
-            state.setString(1, cn.getMaKHString());
-            state.setString(2, cn.getTenKH());
-            state.setString(3, cn.getDiaChiString());
-            state.setString(4, cn.getSodt());
-            state.execute();
-            state.close();
+            ppstate = conn.prepareStatement(sql);
+            pppstate.setString(1, cn.getMaKHString());
+            pppstate.setString(2, cn.getTenKH());
+            pppstate.setString(3, cn.getDiaChiString());
+            pppstate.setString(4, cn.getSodt());
+            pppstate.execute();
+            ppstate.close();
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (state != null) {
+            if (ppstate != null) {
                 try {
-                    state.close();
+                    ppstate.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -98,21 +99,21 @@ public class KhachHangController {
 
     public static void CapNhatNganh(KhachHang cn, String macu) {
         conn = null;
-        PreparedStatement state = null;
+        PreparedStatement ppstate = null;
 
         try {
             conn = DriverManager.getConnection(dbURL);
 
             sql = "Update khachhang Set makh=?,tenkh=?,diachi=?,sdt=? Where makh=?";
-            state = conn.prepareStatement(sql);
-            state.setString(1, cn.getMaKHString());
-            state.setString(2, cn.getTenKH());
-            state.setString(3, cn.getDiaChiString());
-            state.setString(4, cn.getSodt());
-            state.setString(5, macu);
+            ppstate = conn.prepareStatement(sql);
+            ppstate.setString(1, cn.getMaKHString());
+            ppstate.setString(2, cn.getTenKH());
+            ppstate.setString(3, cn.getDiaChiString());
+            ppstate.setString(4, cn.getSodt());
+            ppstate.setString(5, macu);
 
-            state.execute();
-            state.close();
+            ppstate.execute();
+            ppstate.close();
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,9 +125,9 @@ public class KhachHangController {
                     Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if (state != null) {
+            if (ppstate != null) {
                 try {
-                    state.close();
+                    ppstate.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -136,16 +137,16 @@ public class KhachHangController {
 
     public static void XoaNganh(String manganh) {
         conn = null;
-        PreparedStatement state = null;
+        PreparedStatement ppstate = null;
 
         try {
             conn = DriverManager.getConnection(dbURL);
 
             sql = "DELETE FROM khachhang WHERE KhachHang.makh=?";
-            state = conn.prepareStatement(sql);
-            state.setString(1, manganh);
-            state.execute();
-            state.close();
+            ppstate = conn.prepareStatement(sql);
+            ppstate.setString(1, manganh);
+            ppstate.execute();
+            ppstate.close();
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
@@ -157,9 +158,9 @@ public class KhachHangController {
                     Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if (state != null) {
+            if (ppstate != null) {
                 try {
-                    state.close();
+                    ppstate.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -167,11 +168,10 @@ public class KhachHangController {
         }
     }
 
-    // Kiem tra trung tentaikhoan
     public static boolean KiemTraTrungMa(String manhap, boolean ktThem, String macu) {
         boolean kq = false;
         conn = null;
-        state = null;
+        ppstate = null;
         try {
             conn = DriverManager.getConnection(dbURL);
             if (ktThem == true) {
@@ -180,19 +180,19 @@ public class KhachHangController {
                 sql = "SELECT MaKH FROM khachhang WHERE MaKH='"
                         + manhap + "' and MaKH<>'" + macu + "'";
             }
-            state = conn.createStatement();
-            ResultSet rs = state.executeQuery(sql);
+            ppstate = conn.createStatement();
+            ResultSet rs = ppstate.executeQuery(sql);
             if (rs.next()) {
                 kq = true;
             }
-            state.close();
+            ppstate.close();
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (state != null) {
+            if (ppstate != null) {
                 try {
-                    state.close();
+                    ppstate.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -208,16 +208,17 @@ public class KhachHangController {
         return kq;
     }
 
-    public static List<KhachHang> TimKiemTheoTenTaiKhoan(String tentk) {
-        List<KhachHang> listTaiKhoan = new ArrayList<>();
+    public static List<KhachHang> TimKiemKhachHang(String tenkh,String makh) {
+        List<KhachHang> listKh = new ArrayList<>();
         conn = null;
-        pstate = null;
+        pppstate = null;
         try {
-            conn = DriverManager.getConnection(dbURL);
-            sql = "SELECT * FROM khachhang where khachhang.makh like ?";
-            pstate = conn.prepareCall(sql);
-            pstate.setString(1, "%" + tentk + "%");
-            ResultSet rs = pstate.executeQuery();
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            sql = "SELECT * FROM khachhang where makh like ? or tenkh like ?";
+            pppstate = conn.prepareCall(sql);
+            pppstate.setString(1, "%" + tenkh + "%");
+            pppstate.setString(2, "%" + makh + "%");
+            ResultSet rs = pppstate.executeQuery();
             while (rs.next()) {
                 KhachHang temp = new KhachHang(
                         rs.getString("maKH"),
@@ -225,16 +226,17 @@ public class KhachHangController {
                         rs.getString("diachi"),
                         rs.getString("sdt")
                 );
-                listTaiKhoan.add(temp);
+                listKh.add(temp);
             }
-            state.close();
+            ppstate.close();
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TaiKhoanController.class.getName()).log(Level.SEVERE, null, ex);
+          //  Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
+          ex.printStackTrace();
         } finally {
-            if (state != null) {
+            if (ppstate != null) {
                 try {
-                    state.close();
+                    ppstate.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -246,10 +248,9 @@ public class KhachHangController {
                 } catch (SQLException ex) {
                     Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
             }
         }
-        return listTaiKhoan;
+        return listKh;
 
     }
 }

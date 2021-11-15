@@ -5,7 +5,7 @@
  */
 package Views;
 
-import CuaHangDienThoai.Project_Java;
+import CuaHangDienThoai.Splash;
 import Models.TaiKhoan;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -284,21 +284,16 @@ public class dangnhap extends javax.swing.JFrame {
                     return;
                 }
 
-                String sql = "Select * from taikhoan,phanquyen where phanquyen.MaQuyen=taikhoan.MaQuyen and tentaikhoan='" + username + "' and matkhau='" + password + "'";
+                String sql = "Select * from taikhoan,phanquyen,NhanVien where phanquyen.MaQuyen=taikhoan.MaQuyen and NhanVien.MaNV=taikhoan.MaNV and tentaikhoan='" + username + "' and matkhau='" + password + "'";
                 try ( Statement statement = conn.createStatement()) {
                     ResultSet rs = statement.executeQuery(sql);
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-
-//                        Project_Java.TenTK = rs.getString("tentaikhoan");
-//                        Project_Java.MatKhau = rs.getString("matkhau");
-//                        Project_Java.MaNV = rs.getString("manv");
-//                        Project_Java.MaQuyen = rs.getString("maquyen");
-
                         TaiKhoan tk = new TaiKhoan();
                         tk.setTenTaiKhoan(username);
-                        tk.setMaQuyen(rs.getString("MaQuyen"));
                         tk.setTenQuyen(rs.getString("TenQuyen"));
+                        tk.setMaQuyen(rs.getString("MaQuyen"));
+                        tk.setTenNV(rs.getString("TenNV"));
                         tk.setMatKhau(password);
                         tk.setMaNV(rs.getString("MaNV"));
                         

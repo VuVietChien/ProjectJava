@@ -1,14 +1,14 @@
-
+ 
 package Models;
 
 
 public class PhieuNhap extends NhanVien{
-    protected String MaPN,MaNCC,MaNV,NgayNhap,TenKH,TenSP;
+    protected String MaPN,MaNCC,MaNV,NgayNhap,gioNhap,TenKH,TenSP;
     protected float TongTien;
 
     public PhieuNhap() {
     }
-    
+     
     
     public PhieuNhap(String MaPN, String MaNCC, String MaNV, String NgayNhap, String TenKH, String TenSP, float TongTien) {
         this.MaPN = MaPN;
@@ -19,6 +19,18 @@ public class PhieuNhap extends NhanVien{
         this.TenSP = TenSP;
         this.TongTien = TongTien;
     }
+
+    public PhieuNhap(String MaPN, String MaNCC, String MaNV, String NgayNhap, String gioNhap, float TongTien) {
+        this.MaPN = MaPN;
+        this.MaNCC = MaNCC;
+        this.MaNV = MaNV;
+        this.NgayNhap = NgayNhap;
+        this.gioNhap = gioNhap;
+        this.TongTien = TongTien;
+    }
+    
+    
+    
 
     public PhieuNhap(String MaPN, String MaNCC, String MaNV, String NgayNhap, String TenKH, String TenSP, float TongTien, String TenNV, String NgaySinh, String DiaChi, String SDT) {
         super(MaNV, TenNV, NgaySinh, DiaChi, SDT);
@@ -91,6 +103,15 @@ public class PhieuNhap extends NhanVien{
     public String getTenNV() {
         return TenNV;
     }
+
+    public String getGioNhap() {
+        return gioNhap;
+    }
+
+    public void setGioNhap(String gioNhap) {
+        this.gioNhap = gioNhap;
+    }
+    
 
     public void setTenNV(String TenNV) {
         this.TenNV = TenNV;
