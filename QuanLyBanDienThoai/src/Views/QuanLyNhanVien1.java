@@ -103,6 +103,8 @@ public class QuanLyNhanVien1 extends javax.swing.JInternalFrame {
         jLNgaySinh = new javax.swing.JLabel();
         txtDiaChi = new javax.swing.JTextField();
 
+        setTitle("Quản Lý Nhân Viên");
+
         dgDanhSachTaiKhoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},

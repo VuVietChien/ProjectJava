@@ -91,6 +91,8 @@ public class mdiLoaiSanPham extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         txtMoTa = new javax.swing.JTextField();
 
+        setTitle("Quản Lý Loại Sản Phẩm");
+
         dgDanhSach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},

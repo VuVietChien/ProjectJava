@@ -46,6 +46,7 @@ public class Menu extends javax.swing.JFrame {
         }
 
     }
+
     
     public void getChaoMung()
     {
@@ -121,7 +122,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(130, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
         );
@@ -130,7 +131,7 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(321, 321, 321)
                 .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Desktop.setLayer(jPanel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -151,9 +152,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(Desktop)
-                .addContainerGap())
+            .addComponent(Desktop)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -502,8 +501,10 @@ public class Menu extends javax.swing.JFrame {
 
     private void mouseClickedQLbanhang(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mouseClickedQLbanhang
         // TODO add your handling code here:
+        Desktop.removeAll();
         QuanLyBanHang qlbh = new QuanLyBanHang();
         Desktop.add(qlbh);
+        
         qlbh.setVisible(true);
         qlbh.setLocation((Desktop.getWidth() - qlbh.getWidth()) / 2, (Desktop.getHeight() - qlbh.getHeight()) / 2);
     }//GEN-LAST:event_mouseClickedQLbanhang

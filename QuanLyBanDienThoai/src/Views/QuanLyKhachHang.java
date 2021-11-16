@@ -95,6 +95,8 @@ public class QuanLyKhachHang extends javax.swing.JInternalFrame {
         btnReset = new javax.swing.JButton();
         txtTenkh = new javax.swing.JTextField();
 
+        setTitle("Quản Lý Khách Hàng");
+
         dgDanhSachTaiKhoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

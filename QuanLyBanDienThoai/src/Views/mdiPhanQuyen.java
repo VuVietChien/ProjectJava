@@ -89,6 +89,7 @@ public class mdiPhanQuyen extends javax.swing.JInternalFrame {
         txtChiTietQuyen = new javax.swing.JTextField();
 
         setClosable(true);
+        setTitle("Quản Lý Quyền");
 
         dgDanhSach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

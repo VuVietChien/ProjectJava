@@ -139,6 +139,7 @@ public class mdiSanPham1 extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setClosable(true);
+        setTitle("Quản Lý Sản Phẩm");
 
         btnKetThuc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_exit_30px.png"))); // NOI18N
         btnKetThuc.setText("Kết thúc");
@@ -228,7 +229,6 @@ public class mdiSanPham1 extends javax.swing.JInternalFrame {
             }
         });
 
-        btnTimKiem.setIcon(new javax.swing.ImageIcon("D:\\ProjectJavaNetbeans\\ProjectJava\\QuanLyBanDienThoai\\src\\giaodienchuan\\images\\search_30px.png")); // NOI18N
         btnTimKiem.setText("Tìm kiếm");
         btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

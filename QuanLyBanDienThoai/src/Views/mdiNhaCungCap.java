@@ -95,6 +95,8 @@ public class mdiNhaCungCap extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         txtSDT = new javax.swing.JTextField();
 
+        setTitle("Quản Lý Nhà Cung Cấp");
+
         dgDanhSach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
