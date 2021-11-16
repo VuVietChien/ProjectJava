@@ -217,14 +217,15 @@ public class NhanVienController {
     public static List<NhanVien> TimKiemNhanVien(String tentk, String manv) {
         List<NhanVien> listNv = new ArrayList<>();
         conn = null;
-        pstate = null;
+        //state = null;
+           PreparedStatement state = null;
         try {
             conn = DriverManager.getConnection(dbURL);
-            sql = "SELECT * FROM nhanvien where nhanvien.tennv like ? or nhanvien.manv ?";
-            pstate = conn.prepareCall(sql);
-            pstate.setString(1, "%" + tentk + "%");
-              pstate.setString(2, "%" + manv + "%");
-            ResultSet rs = pstate.executeQuery();
+            sql = "SELECT * FROM nhanvien where nhanvien.tennv like ? or nhanvien.manv like ?";
+            state = conn.prepareCall(sql);
+            state.setString(1, "%" + tentk + "%");
+              state.setString(2, "%" + manv + "%");
+            ResultSet rs = state.executeQuery();
             while (rs.next()) {
                 NhanVien temp = new NhanVien(
                         rs.getString("manv"),

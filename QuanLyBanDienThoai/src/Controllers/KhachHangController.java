@@ -63,26 +63,28 @@ public class KhachHangController {
     }
 
     public static void Them(KhachHang cn) {
+        conn = null;
+        PreparedStatement state = null;
         try {
-            conn = null;
-            pppstate = null;
             conn = DriverManager.getConnection(dbURL);
 
-            sql = "Insert Into khachhang(makh,tenkh,diachi,sdt) values (?,?,?,?)";
-            ppstate = conn.prepareStatement(sql);
-            pppstate.setString(1, cn.getMaKHString());
-            pppstate.setString(2, cn.getTenKH());
-            pppstate.setString(3, cn.getDiaChiString());
-            pppstate.setString(4, cn.getSodt());
-            pppstate.execute();
-            ppstate.close();
+            sql = "Insert Into khachhang(Makh,Tenkh,DiaChi,SDT) values (?,?,?,?)";
+            state = conn.prepareStatement(sql);
+            state.setString(1, cn.getMaKHString());
+            state.setString(2, cn.getTenKH());
+            state.setString(3, cn.getDiaChiString());
+            state.setString(4, cn.getSodt());
+
+            //
+            state.execute();
+            state.close();
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (ppstate != null) {
+            if (state != null) {
                 try {
-                    ppstate.close();
+                    state.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(KhachHangController.class.getName()).log(Level.SEVERE, null, ex);
                 }
