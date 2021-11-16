@@ -980,8 +980,11 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
                 loadSoLuongHD();
             } if(tableModel.getRowCount() == 0)
             {
-                JOptionPane.showMessageDialog(this, "Không có dữu liệu", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-                lblTongDoanhThu.setText("Tổng Tiền: 0 VND");
+                loadData();
+                loadSoLuongHD();
+                loadTongTien();
+                dateNgayThongKe.setDate(null);
+                JOptionPane.showMessageDialog(this, "Không có dữu liệu, Vui lòng chọn thời gian khác", "Thông Báo", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, "Ngày thống kê không để trống!");
@@ -1117,6 +1120,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
             loadSoLuongHD();
             loadTongTien();
             year.setText("");
+            month.setSelectedItem("1");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, "Chưa có dữ liệu");
         }
@@ -1157,6 +1161,7 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
             loadSoLuongHD1();
             loadTongTien1();
             year1.setText("");
+            month1.setSelectedItem("1");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, "Chưa có dữ liệu");
         }
@@ -1309,8 +1314,11 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
                 loadSoLuongHD1();
             }if(tableModel1.getRowCount() == 0)
             {
-                JOptionPane.showMessageDialog(this, "Không có dữu liệu", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-                lblTongDoanhThu1.setText("Tổng Tiền: 0 VND");
+                loadData1();
+                loadSoLuongHD1();
+                loadTongTien1();
+                dateNgayThongKe1.setDate(null);
+                JOptionPane.showMessageDialog(this, "Không có dữu liệu, Vui lòng chọn thời gian khác", "Thông Báo", JOptionPane.ERROR_MESSAGE);   
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, "Ngày thống kê không để trống!");
@@ -1348,8 +1356,12 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
                 
             }if(tableModel.getRowCount() == 0)
             {
-                JOptionPane.showMessageDialog(this, "Không có dữu liệu", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-                lblTongDoanhThu.setText("Tổng Tiền: 0 VND");
+                loadData();
+                loadSoLuongHD();
+                loadTongTien();
+                year.setText("");
+                month.setSelectedItem("1");
+                JOptionPane.showMessageDialog(this, "Không có dữu liệu, Vui lòng chọn thời gian khác", "Thông Báo", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, "Ngày thống kê không để trống!");
@@ -1387,8 +1399,12 @@ public class HomeThongKe extends javax.swing.JInternalFrame {
                 
             }if(tableModel1.getRowCount() == 0)
             {
-                JOptionPane.showMessageDialog(this, "Không có dữu liệu", "Thông Báo", JOptionPane.ERROR_MESSAGE);
-                lblTongDoanhThu1.setText("Tổng Tiền: 0 VND");
+                loadData1();
+                loadSoLuongHD1();
+                loadTongTien1();
+                year1.setText("");
+                month1.setSelectedItem("1");
+                JOptionPane.showMessageDialog(this, "Không có dữu liệu, Vui lòng chọn thời gian khác", "Thông Báo", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(rootPane, "Ngày thống kê không để trống!");
