@@ -1,10 +1,6 @@
 
 package Controllers;
 
-import static Controllers.ThongKeDoanhSoController.conn;
-import static Controllers.ThongKeDoanhSoController.pstate;
-import static Controllers.ThongKeDoanhSoController.rs;
-import Models.ChiTietHoaDon;
 import Models.ChiTietPhieuNhap;
 import Models.ThongKe;
 import Views.connectDB;

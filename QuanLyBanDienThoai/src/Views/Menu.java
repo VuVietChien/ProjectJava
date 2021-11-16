@@ -52,7 +52,7 @@ public class Menu extends javax.swing.JFrame {
         
         txtTitle.setText("Chào Mừng "+ SharedData.nguoiDangNhap.getTenNV());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -128,9 +128,9 @@ public class Menu extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(321, 321, 321)
+                .addGap(279, 279, 279)
                 .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Desktop.setLayer(jPanel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
