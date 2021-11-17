@@ -36,7 +36,7 @@ public class NhanVienController {
                 cn.setNgaySinh(rs.getString("NgaySinh"));
                 cn.setDiaChi(rs.getString("DiaChi"));
                 cn.setSDT(rs.getString("sdt"));
-                
+
                 arrNganh.add(cn);
             }
             state.close();
@@ -73,10 +73,10 @@ public class NhanVienController {
             state = conn.prepareStatement(sql);
             state.setString(1, cn.getMaNV());
             state.setString(2, cn.getTenNV());
-             state.setString(3, cn.getNgaySinh());
+            state.setString(3, cn.getNgaySinh());
             state.setString(4, cn.getDiaChi());
             state.setString(5, cn.getSDT());
-            
+
             //
             state.execute();
             state.close();
@@ -110,9 +110,9 @@ public class NhanVienController {
 
             sql = "Update nhanvien Set manv=?,tennv=?,ngaysinh=?, nhanvien.diachi=?,nhanvien.sdt=? Where manv=?";
             state = conn.prepareStatement(sql);
-              state.setString(1, cn.getMaNV());
+            state.setString(1, cn.getMaNV());
             state.setString(2, cn.getTenNV());
-             state.setString(3, cn.getNgaySinh());
+            state.setString(3, cn.getNgaySinh());
             state.setString(4, cn.getDiaChi());
             state.setString(5, cn.getSDT());
             state.setString(6, macu);
@@ -141,10 +141,10 @@ public class NhanVienController {
     }
 
     public static void XoaNganh(String manganh) {
-         conn = null;
-        PreparedStatement state = null;
 
         try {
+            conn = null;
+            PreparedStatement state = null;
             conn = DriverManager.getConnection(dbURL);
 
             sql = "Delete From NhanVien Where nhanvien.manv = ?";
@@ -171,8 +171,8 @@ public class NhanVienController {
                 }
             }
         }
-        }
-    
+    }
+
     // Kiem tra trung tentaikhoan
     public static boolean KiemTraTrungMa(String manhap, boolean ktThem, String macu) {
         boolean kq = false;
@@ -214,31 +214,33 @@ public class NhanVienController {
         return kq;
     }
 
-    public static List<NhanVien> TimKiemTheoTenTaiKhoan(String tentk) {
-        List<NhanVien> listTaiKhoan = new ArrayList<>();
+    public static List<NhanVien> TimKiemNhanVien(String tentk, String manv) {
+        List<NhanVien> listNv = new ArrayList<>();
         conn = null;
-        pstate = null;
+        //state = null;
+           PreparedStatement state = null;
         try {
             conn = DriverManager.getConnection(dbURL);
-            sql = "SELECT * FROM nhanvien where nhanvien.manv like ?";
-            pstate = conn.prepareCall(sql);
-            pstate.setString(1, "%" + tentk + "%");
-            ResultSet rs = pstate.executeQuery();
+            sql = "SELECT * FROM nhanvien where nhanvien.tennv like ? or nhanvien.manv like ?";
+            state = conn.prepareCall(sql);
+            state.setString(1, "%" + tentk + "%");
+              state.setString(2, "%" + manv + "%");
+            ResultSet rs = state.executeQuery();
             while (rs.next()) {
                 NhanVien temp = new NhanVien(
                         rs.getString("manv"),
                         rs.getString("tennv"),
-                         rs.getString("ngaysinh"),
+                        rs.getString("ngaysinh"),
                         rs.getString("diachi"),
                         rs.getString("sdt")
-                       
                 );
-                listTaiKhoan.add(temp);
+                listNv.add(temp);
             }
             state.close();
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(NhanVienController.class.getName()).log(Level.SEVERE, null, ex);
+            //  Logger.getLogger(NhanVienController.class.getName()).log(Level.SEVERE, null, ex);
+                  ex.printStackTrace();
         } finally {
             if (state != null) {
                 try {
@@ -257,7 +259,7 @@ public class NhanVienController {
 
             }
         }
-        return listTaiKhoan;
+        return listNv;
 
     }
 }

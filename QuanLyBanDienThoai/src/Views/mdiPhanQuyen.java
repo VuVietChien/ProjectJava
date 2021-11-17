@@ -368,7 +368,7 @@ public class mdiPhanQuyen extends javax.swing.JInternalFrame {
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
         // TODO add your handling code here:
-        String tenquyen = JOptionPane.showInputDialog(this, "Nhập tên ngành cần tìm");
+        String tenquyen = JOptionPane.showInputDialog(this, "Nhập tên quyền cần tìm");
         if (tenquyen != null && tenquyen.length() > 0) {
             listQuyen = QuyenController.TimKiemTheoTenQuyen(tenquyen);
             tblDanhSachQuyen.setRowCount(0);
@@ -385,6 +385,7 @@ public class mdiPhanQuyen extends javax.swing.JInternalFrame {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
+        XoaTrang();
         Select();
     }//GEN-LAST:event_btnResetActionPerformed
 

@@ -98,7 +98,6 @@ public class dangnhap extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         plInput = new javax.swing.JPanel();
-        rbNhoMatKhau = new javax.swing.JRadioButton();
         lbImgPass = new javax.swing.JLabel();
         lbImgUser = new javax.swing.JLabel();
         txtTenDN = new javax.swing.JTextField();
@@ -143,14 +142,6 @@ public class dangnhap extends javax.swing.JFrame {
                 .addContainerGap(97, Short.MAX_VALUE))
         );
 
-        rbNhoMatKhau.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        rbNhoMatKhau.setText("Giữ đăng nhập");
-        rbNhoMatKhau.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbNhoMatKhauActionPerformed(evt);
-            }
-        });
-
         lbImgPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_password_40px.png"))); // NOI18N
 
         lbImgUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_circled_user_male_skin_type_1_2_40px.png"))); // NOI18N
@@ -180,9 +171,6 @@ public class dangnhap extends javax.swing.JFrame {
                     .addComponent(lbImgPass))
                 .addGap(5, 5, 5)
                 .addGroup(plInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(plInputLayout.createSequentialGroup()
-                        .addComponent(rbNhoMatKhau)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(txtMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                     .addComponent(txtTenDN))
                 .addContainerGap())
@@ -207,8 +195,7 @@ public class dangnhap extends javax.swing.JFrame {
                     .addGroup(plInputLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lbImgPass, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(8, 8, 8)
-                .addComponent(rbNhoMatKhau))
+                .addGap(35, 35, 35))
         );
 
         btnDangNhap.setText("Đăng nhập");
@@ -218,7 +205,7 @@ public class dangnhap extends javax.swing.JFrame {
             }
         });
 
-        btnDangKy.setText("Đăng ký");
+        btnDangKy.setText("Thoát");
         btnDangKy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDangKyActionPerformed(evt);
@@ -313,19 +300,18 @@ public class dangnhap extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
-    private void rbNhoMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNhoMatKhauActionPerformed
-    }//GEN-LAST:event_rbNhoMatKhauActionPerformed
-
-    private void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
-        // TODO add your handling code here:
-        dangky dk = new dangky();
-        dk.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnDangKyActionPerformed
-
     private void txtTenDNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenDNActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTenDNActionPerformed
+
+    private void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thoát không","Xác Nhận", JOptionPane.YES_NO_OPTION);
+        if(result == JOptionPane.YES_OPTION)
+        {
+            dispose();
+        }
+    }//GEN-LAST:event_btnDangKyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -382,7 +368,6 @@ public class dangnhap extends javax.swing.JFrame {
     private javax.swing.JLabel lbImgPass;
     private javax.swing.JLabel lbImgUser;
     private javax.swing.JPanel plInput;
-    private javax.swing.JRadioButton rbNhoMatKhau;
     private javax.swing.JPasswordField txtMatKhau;
     private javax.swing.JTextField txtTenDN;
     // End of variables declaration//GEN-END:variables

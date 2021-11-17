@@ -138,7 +138,7 @@ public class ThongKeDoanhSoController {
             while (rs.next()) {
                 ChiTietHoaDon ct = new ChiTietHoaDon();
                 ct.setMaHD(rs.getString("maHD"));
-                ct.setMaNV(rs.getString("tenNV"));
+                ct.setTenNV(rs.getString("tenNV"));
                 ct.setTenKH(rs.getString("tenKH"));
                 ct.setTenSP(rs.getString("tenSP"));
                 ct.setNgayLap(rs.getString("ngaylap"));

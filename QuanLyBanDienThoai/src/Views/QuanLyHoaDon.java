@@ -109,6 +109,7 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
         jLabel1.setText("HÓA ĐƠN");
 
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_replay_30px.png"))); // NOI18N
         btnBack.setText("Quay lại menu");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,9 +124,9 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(235, 235, 235)
                 .addComponent(jLabel1)
-                .addGap(348, 348, 348))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,6 +166,7 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnSapXep.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnSapXep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/sort-ascending_icon-icons.com_73158.png"))); // NOI18N
         btnSapXep.setText("Sắp xếp theo thành tiền");
         btnSapXep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,6 +175,7 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
         });
 
         btnInThongKe.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnInThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_ms_excel_30px.png"))); // NOI18N
         btnInThongKe.setText("In danh sách (Excel)");
         btnInThongKe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +184,7 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
         });
 
         btnXOA.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnXOA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_cancel_30px_1.png"))); // NOI18N
         btnXOA.setText("Xóa");
         btnXOA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -194,6 +198,7 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
         });
 
         btnTimKiem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/search_magnifyng_glass_search_locate_icon_124190.png"))); // NOI18N
         btnTimKiem.setText("Tìm kiếm theo mã");
         btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,6 +207,7 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
         });
 
         btnXOA1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnXOA1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/giaodienchuan/images/icons8_refresh_30px.png"))); // NOI18N
         btnXOA1.setText("RESERT");
         btnXOA1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -219,17 +225,17 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(btnXOA, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                .addGap(48, 48, 48)
-                .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(btnXOA1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91)
+                .addGap(18, 18, 18)
+                .addComponent(btnXOA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
+                .addComponent(btnTimKiem)
+                .addGap(29, 29, 29)
+                .addComponent(btnXOA1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addComponent(btnSapXep)
-                .addGap(63, 63, 63)
+                .addGap(27, 27, 27)
                 .addComponent(btnInThongKe)
-                .addGap(75, 75, 75))
+                .addGap(25, 25, 25))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +247,7 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
                     .addComponent(btnXOA)
                     .addComponent(btnTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnXOA1))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblTongDanhThu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -257,22 +263,22 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(lblSoLuongHD)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
                 .addComponent(lblTongDanhThu)
                 .addGap(162, 162, 162))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane1)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap()))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(451, Short.MAX_VALUE)
+                .addContainerGap(460, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTongDanhThu)
                     .addComponent(lblSoLuongHD))
@@ -285,7 +291,7 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(44, Short.MAX_VALUE)))
+                    .addContainerGap(34, Short.MAX_VALUE)))
         );
 
         pack();
@@ -428,7 +434,7 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
         }
         loadData();
         loadSoLuongHD();
-        // loadTongTien();
+        loadTongTien();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnXOAMouseClicked
 
@@ -451,11 +457,12 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
                     lblTongDanhThu.setText("Tổng tiền hóa đơn: " + String.valueOf(cthd.getThanhTien()));
                 }
                 loadSoLuongHD();
-            } else {
+            }
+            
                 loadData();
                 loadTongTien();
                 loadSoLuongHD();
-            }
+           
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Nhập không hợp lê!!", "Thông Báo", JOptionPane.WARNING_MESSAGE);
         }
@@ -473,6 +480,7 @@ public class QuanLyHoaDon extends javax.swing.JInternalFrame {
 
     private void btnXOA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXOA1ActionPerformed
         loadData();
+
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnXOA1ActionPerformed

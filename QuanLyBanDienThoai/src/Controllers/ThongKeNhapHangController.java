@@ -1,9 +1,6 @@
 
 package Controllers;
 
-import static Controllers.ThongKeDoanhSoController.conn;
-import static Controllers.ThongKeDoanhSoController.pstate;
-import static Controllers.ThongKeDoanhSoController.rs;
 import Models.ChiTietPhieuNhap;
 import Models.ThongKe;
 import Views.connectDB;
@@ -87,6 +84,55 @@ public class ThongKeNhapHangController {
 "group by phieunhap.MaPN, TenNV, TenNCC, sanpham.TenSP,NgayNhap,chitietphieunhap.SoLuong,chitietphieunhap.DonGia";
             pstate = conn.prepareStatement(sql);
             pstate.setString(1, ngayLap);
+            rs = pstate.executeQuery();
+            while (rs.next()) {
+                ChiTietPhieuNhap ct = new ChiTietPhieuNhap();
+                ct.setMaPN(rs.getString("maPN"));
+                ct.setTenNV(rs.getString("tenNV"));
+                ct.setTenNCC(rs.getString("tenNCC"));
+                ct.setTenSP(rs.getString("tenSP"));
+                ct.setNgayNhap(rs.getString("NgayNhap"));
+                ct.setSoLuong(rs.getInt("SoLuong"));
+                ct.setDonGia(rs.getFloat("DonGia"));
+                ct.setThanhTien(rs.getFloat("thanhTien"));
+                ctpnList.add(ct);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi: " + ex);
+        } finally {
+            if (pstate != null) {
+                try {
+                    pstate.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ThongKeNhapHangController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ThongKeNhapHangController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return ctpnList;
+    }
+    
+    public static List<ChiTietPhieuNhap> findByMonthPN(String ngayLap,String ngayLap1){
+        List<ChiTietPhieuNhap> ctpnList = new ArrayList<>();
+        conn = null;
+        pstate = null;
+        rs = null;
+        try {
+            conn = DriverManager.getConnection(connectDB.dbURL);
+            String sql = "select phieunhap.MaPN,TenNV,TenNCC,sanpham.TenSP,phieunhap.NgayNhap,chitietphieunhap.SoLuong,chitietphieunhap.DonGia,sum(chitietphieunhap.SoLuong * chitietphieunhap.DonGia)as 'thanhTien'\n" +
+"from phieunhap inner join chitietphieunhap on phieunhap.MaPN=chitietphieunhap.MaPN inner join nhacungcap on phieunhap.MaNCC=nhacungcap.MaNCC\n" +
+"inner join NhanVien on phieunhap.MaNV=NhanVien.MaNV ,sanpham\n" +
+"where phieunhap.MaNV=NhanVien.MaNV and chitietphieunhap.MaSP=sanpham.MaSP and (MONTH(NgayNhap))=? and (YEAR(NgayNhap))=?\n" +
+"group by phieunhap.MaPN, TenNV, TenNCC, sanpham.TenSP,NgayNhap,chitietphieunhap.SoLuong,chitietphieunhap.DonGia";
+            pstate = conn.prepareStatement(sql);
+            pstate.setString(1, ngayLap);
+            pstate.setString(2, ngayLap1);
             rs = pstate.executeQuery();
             while (rs.next()) {
                 ChiTietPhieuNhap ct = new ChiTietPhieuNhap();

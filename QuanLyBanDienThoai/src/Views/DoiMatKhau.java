@@ -49,6 +49,8 @@ public class DoiMatKhau extends javax.swing.JInternalFrame {
         txtMatKhauL1 = new javax.swing.JPasswordField();
         txtMatKhauL2 = new javax.swing.JPasswordField();
 
+        setClosable(true);
+
         jLabel1.setText("Tên Tài Khoản :");
 
         jLabel2.setText("Mã Quyền :");

@@ -445,6 +445,7 @@ public class QuanLyTaiKhoan extends javax.swing.JInternalFrame {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
+        XoaTrang();
         Select();
     }//GEN-LAST:event_btnResetActionPerformed
 
